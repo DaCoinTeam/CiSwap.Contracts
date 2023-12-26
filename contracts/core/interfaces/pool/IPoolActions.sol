@@ -16,9 +16,7 @@ interface IPoolActions {
         SwapParams calldata params
     ) external returns (int256 amount0, int256 amount1);
 
-    function mint(
-        address recipient
-    ) external returns (uint amount, uint feeToOwner);
+    function mint(address recipient) external returns (uint amount);
 
     function burn(
         address recipient,
@@ -31,4 +29,17 @@ interface IPoolActions {
         uint256 amount1,
         bytes calldata callback
     ) external returns (uint paid0, uint paid1);
+
+    function collectProtocol(
+        address recipient,
+        uint amount0Requested,
+        uint amount1Requested
+    )
+        external
+        returns (
+            uint amount0,
+            uint amount1,
+            uint amountFeeTo0,
+            uint amountFeeTo1
+        );
 }

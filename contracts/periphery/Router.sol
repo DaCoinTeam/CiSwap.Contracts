@@ -78,7 +78,7 @@ contract Router is
             pool,
             cache.amount1
         );
-        (amount, ) = IPool(pool).mint(params.recipient);
+        amount = IPool(pool).mint(params.recipient);
         require(amount >= params.amountMin);
     }
 

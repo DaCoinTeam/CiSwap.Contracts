@@ -6,9 +6,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/math/SafeCast.sol";
+import "../shared/libraries/ExtendMath.sol";
 import "../shared/libraries/SafeTransfer.sol";
 import "../shared/libraries/TokenLib.sol";
 import "./libraries/PoolMath.sol";
+import "./interfaces/IFactory.sol";
 import "./libraries/Oracle.sol";
 import "../shared/base/NoDelegateCall.sol";
 import "./interfaces/pool/IPool.sol";
@@ -18,6 +20,9 @@ import "./interfaces/callee/IFlashCallee.sol";
 contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
     using Oracle for Oracle.Observation[];
     using SafeCast for *;
+    using ExtendMath for uint;
+
+    uint24 public constant FEE_PROTOCOL_RATE = 20000;
 
     address public immutable override factory;
     uint24 public immutable override fee;
@@ -37,6 +42,8 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         uint reserve1;
         uint observationCardinality;
         bool unlocked;
+        uint feeProtocol0;
+        uint feeProtocol1;
     }
     Slot0 public override slot0;
 
@@ -75,9 +82,9 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         _;
     }
 
-    function _update(uint adjusted0, uint adjusted1) internal {
-        slot0.reserve0 = adjusted0;
-        slot0.reserve1 = adjusted1;
+    function _update(uint adjusted0Net, uint adjusted1Net) internal {
+        slot0.reserve0 = adjusted0Net;
+        slot0.reserve1 = adjusted1Net;
 
         Slot0 memory _slot0 = slot0;
 
@@ -89,17 +96,6 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         );
 
         emit Sync(_slot0.reserve0, _slot0.reserve1);
-    }
-
-    struct SwapCache {
-        address tokenIn;
-        address tokenOut;
-        uint amountIn;
-        uint amountOut;
-        uint reserveIn;
-        uint reserveOut;
-        uint actualIn;
-        uint actualOut;
     }
 
     function observe(
@@ -121,6 +117,33 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             );
     }
 
+    function price0X96() external view override returns (uint) {
+        Slot0 memory _slot0 = slot0;
+        return
+            PoolMath.computePriceX96(
+                _slot0.reserve0,
+                _slot0.reserve1,
+                fee,
+                true
+            );
+    }
+
+    function price1X96() external view override returns (uint) {
+        Slot0 memory _slot0 = slot0;
+        return
+            PoolMath.computePriceX96(
+                _slot0.reserve0,
+                _slot0.reserve1,
+                fee,
+                false
+            );
+    }
+
+    function liquidity() external view override returns (uint) {
+        Slot0 memory _slot0 = slot0;
+        return PoolMath.computeLiquidity(_slot0.reserve0, _slot0.reserve1);
+    }
+
     function initialize() external override onlyFactory {
         uint adjusted0 = _adjusted0();
         uint adjusted1 = _adjusted1();
@@ -131,7 +154,9 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             reserve0: adjusted0,
             reserve1: adjusted1,
             observationCardinality: observationCardinality,
-            unlocked: true
+            unlocked: true,
+            feeProtocol0: 0,
+            feeProtocol1: 0
         });
 
         uint liquidityLock = PoolMath.computeLiquidity(adjusted0, adjusted1);
@@ -139,6 +164,18 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         _mint(address(this), liquidityLock);
 
         emit Initialized();
+    }
+
+    struct SwapCache {
+        address tokenIn;
+        address tokenOut;
+        uint amountIn;
+        uint amountOut;
+        uint reserveIn;
+        uint reserveOut;
+        uint actualIn;
+        uint actualOut;
+        uint feeAmount;
     }
 
     function swap(
@@ -158,7 +195,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         bool exactInput = params.amountSpecified > 0;
         if (exactInput) {
             cache.amountIn = params.amountSpecified.toUint256();
-            cache.amountOut = PoolMath.computeAmountOut(
+            (cache.amountOut, cache.feeAmount) = PoolMath.computeAmountOut(
                 PoolMath.ComputeAmountOutParams({
                     reserveIn: params.zeroForOne
                         ? _slot0.reserve0
@@ -174,7 +211,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             require(cache.amountOut >= params.limitAmountCalculated);
         } else {
             cache.amountOut = (-params.amountSpecified).toUint256();
-            cache.amountIn = PoolMath.computeAmountIn(
+            (cache.amountIn, cache.feeAmount) = PoolMath.computeAmountIn(
                 PoolMath.ComputeAmountInParams({
                     reserveIn: params.zeroForOne
                         ? _slot0.reserve0
@@ -195,6 +232,9 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             params.recipient,
             cache.amountOut
         );
+        params.zeroForOne
+            ? slot0.feeProtocol1 += _computeFeeProtocol(cache.feeAmount)
+            : slot0.feeProtocol0 += _computeFeeProtocol(cache.feeAmount);
 
         amount0 = params.zeroForOne
             ? -cache.amountIn.toInt256()
@@ -211,54 +251,52 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             );
         }
 
-        uint adjusted0 = _adjusted0();
-        uint adjusted1 = _adjusted1();
+        uint adjusted0Net = _adjusted0() -
+            _slot0.feeProtocol0 -
+            (params.zeroForOne ? 0 : cache.feeAmount);
 
-        uint adjustedIn = params.zeroForOne ? adjusted0 : adjusted1;
+        uint adjusted1Net = _adjusted1() -
+            _slot0.feeProtocol1 -
+            (params.zeroForOne ? cache.feeAmount : 0);
 
-        require(adjustedIn >= cache.reserveIn + cache.amountIn);
+        uint adjustedInNet = params.zeroForOne ? adjusted0Net : adjusted1Net;
 
-        _update(adjusted0, adjusted1);
+        require(adjustedInNet >= cache.reserveIn + cache.amountIn);
+
+        _update(adjusted0Net, adjusted1Net);
 
         emit Swap(_msgSender(), amount0, amount1, params.recipient);
     }
 
     function mint(
         address recipient
-    )
-        external
-        override
-        lock
-        noDelegateCall
-        returns (uint amount, uint feeToOwner)
-    {
+    ) external override lock noDelegateCall returns (uint amount) {
         uint totalSupply = totalSupply();
         Slot0 memory _slot0 = slot0;
-        uint adjusted0 = _adjusted0();
-        uint adjusted1 = _adjusted1();
+        uint adjusted0Net = _adjusted0() - _slot0.feeProtocol0;
+        uint adjusted1Net = _adjusted1() - _slot0.feeProtocol1;
 
-        require(adjusted0 > _slot0.reserve0 || adjusted1 > _slot0.reserve1);
+        require(
+            adjusted0Net > _slot0.reserve0 || adjusted1Net > _slot0.reserve1
+        );
 
-        (amount, feeToOwner) = PoolMath.computeAmountMint(
+        amount = PoolMath.computeAmountMint(
             totalSupply,
             _slot0.reserve0,
             _slot0.reserve1,
-            adjusted0,
-            adjusted1,
-            fee
+            adjusted0Net,
+            adjusted1Net
         );
 
         _mint(recipient, amount);
-        _mint(owner(), feeToOwner);
 
-        _update(adjusted0, adjusted1);
+        _update(adjusted0Net, adjusted1Net);
 
         emit Mint(
             _msgSender(),
             amount,
-            feeToOwner,
-            adjusted0 - _slot0.reserve0,
-            adjusted1 - _slot0.reserve1,
+            adjusted0Net - _slot0.reserve0,
+            adjusted1Net - _slot0.reserve1,
             recipient
         );
     }
@@ -278,27 +316,34 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
 
         Slot0 memory _slot0 = slot0;
 
-        uint balance0 = _balance0();
-        uint balance1 = _balance1();
+        uint balance0Net = _balance0() - _slot0.feeProtocol0;
+        uint balance1Net = _balance1() - _slot0.feeProtocol1;
 
-        (amount0, amount1) = PoolMath.computeAmountsBurn(
-            amount,
-            supplyLP,
-            _slot0.reserve0,
-            _slot0.reserve1,
-            balance0,
-            balance1
-        );
+        uint feeProtocol0;
+        uint feeProtocol1;
+        (amount0, amount1, feeProtocol0, feeProtocol1) = PoolMath
+            .computeAmountsBurn(
+                amount,
+                supplyLP,
+                _slot0.reserve0,
+                _slot0.reserve1,
+                balance0Net,
+                balance1Net,
+                fee
+            );
 
         SafeTransfer.transfer(token0, recipient, amount0);
         SafeTransfer.transfer(token1, recipient, amount1);
 
+        slot0.feeProtocol0 += feeProtocol0;
+        slot0.feeProtocol1 += feeProtocol1;
+
         _burn(_msgSender(), amount);
 
-        uint adjusted0 = balance0 + constant0 - amount0;
-        uint adjusted1 = balance1 + constant1 - amount1;
+        uint adjusted0Net = balance0Net + constant0 - amount0 - feeProtocol0;
+        uint adjusted1Net = balance1Net + constant1 - amount1 - feeProtocol1;
 
-        _update(adjusted0, adjusted1);
+        _update(adjusted0Net, adjusted1Net);
 
         emit Burn(_msgSender(), amount, amount0, amount1, recipient);
     }
@@ -316,25 +361,74 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
 
         Slot0 memory _slot0 = slot0;
 
-        uint adjusted0 = _adjusted0();
-        uint adjusted1 = _adjusted1();
+        uint adjusted0Net = _adjusted0() - _slot0.feeProtocol0;
+        uint adjusted1Net = _adjusted1() - _slot0.feeProtocol1;
 
-        require(
-            PoolMath.hasLiquidityGrownAfterFees(
-                _slot0.reserve0,
-                _slot0.reserve1,
-                adjusted0,
-                adjusted1,
-                fee
-            )
+        bool result;
+        (result, paid0, paid1) = PoolMath.hasLiquidityGrownAfterFees(
+            _slot0.reserve0,
+            _slot0.reserve1,
+            adjusted0Net,
+            adjusted1Net,
+            fee
         );
+        require(result);
 
-        paid0 = adjusted0 - _slot0.reserve0;
-        paid1 = adjusted1 - _slot0.reserve1;
+        uint feeProtocol0 = _computeFeeProtocol(paid0);
+        uint feeProtocol1 = _computeFeeProtocol(paid1);
 
-        _update(adjusted0, adjusted1);
+        slot0.feeProtocol0 += feeProtocol0;
+        slot0.feeProtocol1 += feeProtocol1;
+
+        _update(adjusted0Net - feeProtocol0, adjusted1Net - feeProtocol1);
 
         emit Flash(_msgSender(), amount0, amount1, paid0, paid1, recipient);
+    }
+
+    function collectProtocol(
+        address recipient,
+        uint amount0Requested,
+        uint amount1Requested
+    )
+        external
+        override
+        onlyOwner
+        returns (
+            uint amount0,
+            uint amount1,
+            uint amountFeeTo0,
+            uint amountFeeTo1
+        )
+    {
+        uint amount0Gross = amount0Requested;
+        Slot0 memory _slot0 = slot0;
+        if (amount0Requested > _slot0.feeProtocol0)
+            amount0Gross = _slot0.feeProtocol0;
+
+        uint amount1Gross = amount1Requested;
+        if (amount1Requested > _slot0.feeProtocol1)
+            amount1Gross = _slot0.feeProtocol1;
+
+        address feeTo = IFactory(factory).feeTo();
+
+        amountFeeTo0 = _computeFeeProtocol(amount0Gross);
+        amountFeeTo1 = _computeFeeProtocol(amount1Gross);
+        amount0 = amount0Gross - amountFeeTo0;
+        amount1 = amount1Gross - amountFeeTo1;
+
+        SafeTransfer.transfer(token0, owner(), amount0);
+        SafeTransfer.transfer(token1, owner(), amount1);
+        SafeTransfer.transfer(token0, feeTo, amountFeeTo0);
+        SafeTransfer.transfer(token1, feeTo, amountFeeTo0);
+
+        emit CollectProtocol(
+            recipient,
+            amount0,
+            amount1,
+            amountFeeTo0,
+            amountFeeTo1,
+            recipient
+        );
     }
 
     function _balance0() private view returns (uint) {
@@ -351,5 +445,9 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
 
     function _adjusted1() private view returns (uint) {
         return _balance1() + constant1;
+    }
+
+    function _computeFeeProtocol(uint amount) private pure returns (uint) {
+        return amount.computePercentageOf(FEE_PROTOCOL_RATE);
     }
 }

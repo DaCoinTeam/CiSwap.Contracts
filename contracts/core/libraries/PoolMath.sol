@@ -68,15 +68,17 @@ library PoolMath {
 
     function computeAmountOut(
         ComputeAmountOutParams memory params
-    ) internal pure returns (uint amountOut) {
+    ) internal pure returns (uint amountOut, uint feeAmount) {
         require(params.amountIn != 0);
 
         uint kLast = params.reserveIn * params.reserveOut;
         uint reserveInAdjusted = params.reserveIn + params.amountIn;
         uint reserveOutAdjusted = kLast / reserveInAdjusted;
+
         require(reserveOutAdjusted >= params.constantOut);
         uint amountOutGross = params.reserveOut - reserveOutAdjusted;
         amountOut = amountOutGross.computePercentageOf(10e4 - params.fee);
+        feeAmount = amountOutGross - amountOut;
     }
 
     struct ComputeAmountInParams {
@@ -89,12 +91,15 @@ library PoolMath {
 
     function computeAmountIn(
         ComputeAmountInParams memory params
-    ) internal pure returns (uint amountIn) {
+    ) internal pure returns (uint amountIn, uint feeAmount) {
         require(params.amountOut != 0);
 
         uint amountOutGross = params.amountOut.computePartOf(10e4 - params.fee);
+        feeAmount = amountOutGross - params.amountOut;
+
         uint kLast = params.reserveIn * params.reserveOut;
         uint reserveOutAdjusted = params.reserveOut - amountOutGross;
+
         require(reserveOutAdjusted >= params.constantOut);
         uint reserveInAdjusted = kLast.divRoundingUp(reserveOutAdjusted);
         amountIn = reserveInAdjusted - params.reserveIn;
@@ -107,23 +112,36 @@ library PoolMath {
         return (reserve0 * reserve1).sqrt();
     }
 
+    function computePriceX96(
+        uint reserve0,
+        uint reserve1,
+        uint24 fee,
+        bool zeroForOne
+    ) internal pure returns (uint) {
+        return
+            zeroForOne
+                ? reserve1.mulDiv(1 << 96, reserve0).computePercentageOf(
+                    10e4 - fee
+                )
+                : reserve0.mulDiv(1 << 96, reserve1).computePercentageOf(
+                    10e4 - fee
+                );
+    }
+
     function computeAmountMint(
         uint totalSupply,
         uint reserve0,
         uint reserve1,
         uint adjusted0,
-        uint adjusted1,
-        uint24 fee
-    ) internal pure returns (uint amount, uint feeToOwner) {
+        uint adjusted1
+    ) internal pure returns (uint amount) {
         uint liquidityBefore = PoolMath.computeLiquidity(reserve0, reserve1);
         uint liquidityAfter = PoolMath.computeLiquidity(adjusted0, adjusted1);
         require(liquidityAfter > liquidityBefore);
-        uint amountGross = (liquidityAfter - liquidityBefore).mulDiv(
+        amount = (liquidityAfter - liquidityBefore).mulDiv(
             totalSupply,
             liquidityBefore
         );
-        amount = amountGross.computePercentageOf(10e4 - fee);
-        feeToOwner = amountGross - amount;
     }
 
     function computeAmountsBurn(
@@ -131,34 +149,63 @@ library PoolMath {
         uint totalSupply,
         uint reserve0,
         uint reserve1,
-        uint balance0,
-        uint balance1
-    ) internal pure returns (uint amount0, uint amount1) {
-        amount0 = reserve0.mulDiv(amount, totalSupply);
-        amount1 = reserve1.mulDiv(amount, totalSupply);
-        uint kLast = (reserve0 - amount0) * (reserve1 - amount1);
+        uint balance0Net,
+        uint balance1Net,
+        uint24 fee
+    )
+        internal
+        pure
+        returns (
+            uint amount0,
+            uint amount1,
+            uint feeProtocol0,
+            uint feeProtocol1
+        )
+    {
+        uint amount0Gross = reserve0.mulDiv(amount, totalSupply);
+        uint amount1Gross = reserve1.mulDiv(amount, totalSupply);
+        uint kLast = (reserve0 - amount0Gross) * (reserve1 - amount1Gross);
 
-        if (amount0 > balance0) {
-            amount0 = balance0;
-            uint reserve1Adjusted = kLast / (reserve0 - amount0);
-            amount1 = reserve1 - reserve1Adjusted;
-        } else if (amount1 > balance1) {
-            amount1 = balance1;
-            uint reserve0Adjusted = kLast / (reserve1 - amount1);
-            amount0 = reserve0 - reserve0Adjusted;
+        if (amount0Gross > balance0Net) {
+            amount0Gross = balance0Net;
+            uint reserve1Adjusted = kLast / (reserve0 - amount0Gross);
+            amount1Gross = reserve1 - reserve1Adjusted;
+        } else if (amount1Gross > balance1Net) {
+            amount1Gross = balance1Net;
+            uint reserve0Adjusted = kLast / (reserve1 - amount1Gross);
+            amount0Gross = reserve0 - reserve0Adjusted;
         }
+        amount0 = amount0Gross.computePercentageOf(10e4 - fee);
+        amount1 = amount1Gross.computePercentageOf(10e4 - fee);
+        feeProtocol0 = amount0Gross - amount0;
+        feeProtocol1 = amount1Gross - amount1;
     }
 
     function hasLiquidityGrownAfterFees(
         uint reserve0,
         uint reserve1,
-        uint adjusted0,
-        uint adjusted1,
+        uint adjusted0Net,
+        uint adjusted1Net,
         uint24 fee
-    ) internal pure returns (bool){
+    )
+        internal
+        pure
+        returns (
+            bool result,
+            uint paid0,
+            uint paid1
+        )
+    {   
         uint liquidityBefore = PoolMath.computeLiquidity(reserve0, reserve1);
-        uint liquidityAfterGross = PoolMath.computeLiquidity(adjusted0, adjusted1);
-        uint liquidityAfter = liquidityAfterGross.computePercentageOf(10e4 - fee);
-        return liquidityAfter >= liquidityBefore;
+        uint liquidityAfterGross = PoolMath.computeLiquidity(
+            adjusted0Net,
+            adjusted1Net
+        );
+        uint liquidityAfter = liquidityAfterGross.computePercentageOf(
+            10e4 - fee
+        );
+        result = liquidityAfter >= liquidityBefore;
+        paid0 = adjusted0Net - reserve0;
+        paid1 = adjusted1Net - reserve1;
     }
 }

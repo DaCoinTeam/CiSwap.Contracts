@@ -8,7 +8,9 @@ interface IPoolState {
             uint reserve0,
             uint reserve1,
             uint observationCardinality,
-            bool unlocked
+            bool unlocked,
+            uint feeProtocol0,
+            uint feeProtocol1
         );
 
     function observe(
@@ -30,4 +32,10 @@ interface IPoolState {
             uint reserve0Cumulative,
             uint reserve1Cumulative
         );
+
+    function price0X96() external view returns (uint);
+
+    function price1X96() external view returns (uint);
+
+    function liquidity() external view returns (uint);
 }

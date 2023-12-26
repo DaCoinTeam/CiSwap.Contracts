@@ -10,6 +10,7 @@ import "../shared/libraries/TokenLib.sol";
 import "../shared/libraries/SafeTransfer.sol";
 
 contract Factory is IFactory, Ownable, PoolDeployer {
+    address public override feeTo;
     mapping(uint24 => bool) public override getFeeAmountEnabled;
     mapping(address => mapping(address => address[])) public override getPool;
     address[] public override pools;
@@ -23,6 +24,8 @@ contract Factory is IFactory, Ownable, PoolDeployer {
         emit FeeAmountEnabled(1000);
         getFeeAmountEnabled[2500] = true;
         emit FeeAmountEnabled(2500);
+
+        feeTo = _msgSender();
     }
 
     function createPool(
@@ -62,5 +65,9 @@ contract Factory is IFactory, Ownable, PoolDeployer {
         getPool[token1][token0].push(pool);
 
         emit PoolCreated(_msgSender(), params.config, pool);
+    }
+
+    function setFeeTo(address account) external override {
+        feeTo = account;
     }
 }

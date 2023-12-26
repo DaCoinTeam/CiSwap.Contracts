@@ -30,4 +30,7 @@ interface IFactory {
     function getFeeAmountEnabled(uint24 fee) external returns (bool);
 
     function pools(uint index) external view returns (address);
+
+    function feeTo() external view returns (address);
+    function setFeeTo(address account) external;
 }

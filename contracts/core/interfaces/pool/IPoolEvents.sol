@@ -16,7 +16,6 @@ interface IPoolEvents {
     event Mint(
         address indexed sender,
         uint amount,
-        uint feeToOwner,
         uint amount0,
         uint amount1,
         address indexed recipient
@@ -38,6 +37,16 @@ interface IPoolEvents {
         uint paid1,
         address indexed recipient
     );
+
+    event CollectProtocol(
+        address indexed sender,
+        uint amount0,
+        uint amount1,
+        uint amountFeeTo0,
+        uint amountFeeTo1,
+        address indexed recipient
+    );
+
 
     event Sync(uint256 reserve0, uint256 reserve1);
 }
