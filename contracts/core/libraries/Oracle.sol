@@ -55,7 +55,7 @@ library Oracle {
             self[cardinality - 1] = _transform(last, time, reserve0, reserve1);
             return cardinality;
         }
-        self[cardinality] = _transform(last, time, reserve0, reserve1);
+        self.push(_transform(last, time, reserve0, reserve1));
         return cardinality + 1;
     }
 

@@ -14,11 +14,14 @@ const config: HardhatUserConfig = {
             },
         },
     },
-    gasReporter: {
-        currency: "ETH",
-        enabled: true,
-        gasPrice: 25,
-    },
+    // gasReporter: {
+    //     currency: "ETH",
+    //     enabled: true,
+    //     gasPrice: 25,
+    // },
+    mocha: {
+        parallel: true
+    }
 }
 
 export default config

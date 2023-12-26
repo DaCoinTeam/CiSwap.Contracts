@@ -71,7 +71,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
     }
 
     modifier lock() {
-        require(slot0.unlocked);
+        require(slot0.unlocked, "Lock");
         slot0.unlocked = false;
         _;
         slot0.unlocked = true;
@@ -82,9 +82,9 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         _;
     }
 
-    function _update(uint adjusted0Net, uint adjusted1Net) internal {
-        slot0.reserve0 = adjusted0Net;
-        slot0.reserve1 = adjusted1Net;
+    function _update(uint reserve0, uint reserve1) internal {
+        slot0.reserve0 = reserve0;
+        slot0.reserve1 = reserve1;
 
         Slot0 memory _slot0 = slot0;
 
@@ -95,7 +95,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             _slot0.reserve1
         );
 
-        emit Sync(_slot0.reserve0, _slot0.reserve1);
+        emit Sync(reserve0, reserve1);
     }
 
     function observe(
@@ -145,8 +145,8 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
     }
 
     function initialize() external override onlyFactory {
-        uint adjusted0 = _adjusted0();
-        uint adjusted1 = _adjusted1();
+        uint adjusted0 = _balance0() + constant0;
+        uint adjusted1 = _balance1() + constant1;
 
         uint observationCardinality = observations.initialize(block.timestamp);
 
@@ -208,7 +208,10 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
                     fee: fee
                 })
             );
-            require(cache.amountOut >= params.limitAmountCalculated);
+            require(
+                cache.amountOut >= params.limitAmountCalculated,
+                "Output limit exceeded"
+            );
         } else {
             cache.amountOut = (-params.amountSpecified).toUint256();
             (cache.amountIn, cache.feeAmount) = PoolMath.computeAmountIn(
@@ -224,7 +227,10 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
                     fee: fee
                 })
             );
-            require(cache.amountIn <= params.limitAmountCalculated);
+            require(
+                cache.amountIn <= params.limitAmountCalculated,
+                "Input limit exceeded"
+            );
         }
 
         SafeTransfer.transfer(
@@ -232,9 +238,11 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             params.recipient,
             cache.amountOut
         );
+
+        uint feeProtocol = _computeFeeProtocol(cache.feeAmount);
         params.zeroForOne
-            ? slot0.feeProtocol1 += _computeFeeProtocol(cache.feeAmount)
-            : slot0.feeProtocol0 += _computeFeeProtocol(cache.feeAmount);
+            ? slot0.feeProtocol1 += feeProtocol
+            : slot0.feeProtocol0 += feeProtocol;
 
         amount0 = params.zeroForOne
             ? -cache.amountIn.toInt256()
@@ -251,17 +259,22 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             );
         }
 
-        uint adjusted0Net = _adjusted0() -
+        uint adjusted0Net = _balance0() +
+            constant0 -
             _slot0.feeProtocol0 -
-            (params.zeroForOne ? 0 : cache.feeAmount);
+            (params.zeroForOne ? 0 : feeProtocol);
 
-        uint adjusted1Net = _adjusted1() -
+        uint adjusted1Net = _balance1() +
+            constant1 -
             _slot0.feeProtocol1 -
-            (params.zeroForOne ? cache.feeAmount : 0);
+            (params.zeroForOne ? feeProtocol : 0);
 
         uint adjustedInNet = params.zeroForOne ? adjusted0Net : adjusted1Net;
 
-        require(adjustedInNet >= cache.reserveIn + cache.amountIn);
+        require(
+            adjustedInNet >= cache.reserveIn + cache.amountIn,
+            "Not sufficient input"
+        );
 
         _update(adjusted0Net, adjusted1Net);
 
@@ -273,11 +286,12 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
     ) external override lock noDelegateCall returns (uint amount) {
         uint totalSupply = totalSupply();
         Slot0 memory _slot0 = slot0;
-        uint adjusted0Net = _adjusted0() - _slot0.feeProtocol0;
-        uint adjusted1Net = _adjusted1() - _slot0.feeProtocol1;
+        uint adjusted0Net = _balance0() + constant0 - _slot0.feeProtocol0;
+        uint adjusted1Net = _balance1() + constant1 - _slot0.feeProtocol1;
 
         require(
-            adjusted0Net > _slot0.reserve0 || adjusted1Net > _slot0.reserve1
+            adjusted0Net > _slot0.reserve0 || adjusted1Net > _slot0.reserve1,
+            "Insufficient amount transferred"
         );
 
         amount = PoolMath.computeAmountMint(
@@ -319,29 +333,22 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         uint balance0Net = _balance0() - _slot0.feeProtocol0;
         uint balance1Net = _balance1() - _slot0.feeProtocol1;
 
-        uint feeProtocol0;
-        uint feeProtocol1;
-        (amount0, amount1, feeProtocol0, feeProtocol1) = PoolMath
-            .computeAmountsBurn(
-                amount,
-                supplyLP,
-                _slot0.reserve0,
-                _slot0.reserve1,
-                balance0Net,
-                balance1Net,
-                fee
-            );
+        (amount0, amount1) = PoolMath.computeAmountsBurn(
+            amount,
+            supplyLP,
+            _slot0.reserve0,
+            _slot0.reserve1,
+            balance0Net,
+            balance1Net
+        );
 
         SafeTransfer.transfer(token0, recipient, amount0);
         SafeTransfer.transfer(token1, recipient, amount1);
 
-        slot0.feeProtocol0 += feeProtocol0;
-        slot0.feeProtocol1 += feeProtocol1;
-
         _burn(_msgSender(), amount);
 
-        uint adjusted0Net = balance0Net + constant0 - amount0 - feeProtocol0;
-        uint adjusted1Net = balance1Net + constant1 - amount1 - feeProtocol1;
+        uint adjusted0Net = balance0Net + constant0 - amount0;
+        uint adjusted1Net = balance1Net + constant1 - amount1;
 
         _update(adjusted0Net, adjusted1Net);
 
@@ -361,8 +368,8 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
 
         Slot0 memory _slot0 = slot0;
 
-        uint adjusted0Net = _adjusted0() - _slot0.feeProtocol0;
-        uint adjusted1Net = _adjusted1() - _slot0.feeProtocol1;
+        uint adjusted0Net = _balance0() + constant0 - _slot0.feeProtocol0;
+        uint adjusted1Net = _balance1() + constant1 - _slot0.feeProtocol1;
 
         bool result;
         (result, paid0, paid1) = PoolMath.hasLiquidityGrownAfterFees(
@@ -416,10 +423,13 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         amount0 = amount0Gross - amountFeeTo0;
         amount1 = amount1Gross - amountFeeTo1;
 
-        SafeTransfer.transfer(token0, owner(), amount0);
-        SafeTransfer.transfer(token1, owner(), amount1);
+        SafeTransfer.transfer(token0, recipient, amount0);
+        SafeTransfer.transfer(token1, recipient, amount1);
         SafeTransfer.transfer(token0, feeTo, amountFeeTo0);
         SafeTransfer.transfer(token1, feeTo, amountFeeTo0);
+
+        slot0.feeProtocol0 -= amount0Gross;
+        slot0.feeProtocol1 -= amount1Gross;
 
         emit CollectProtocol(
             recipient,
@@ -437,14 +447,6 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
 
     function _balance1() private view returns (uint) {
         return IERC20(token1).balanceOf(address(this));
-    }
-
-    function _adjusted0() private view returns (uint) {
-        return _balance0() + constant0;
-    }
-
-    function _adjusted1() private view returns (uint) {
-        return _balance1() + constant1;
     }
 
     function _computeFeeProtocol(uint amount) private pure returns (uint) {

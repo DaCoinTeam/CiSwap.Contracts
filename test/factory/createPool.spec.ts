@@ -45,8 +45,7 @@ describe("test create pool", () => {
         const slot0 = await pool.contract.getFunction("slot0").staticCall()
         const token0 = await pool.contract.getFunction("token0").staticCall()
         const token1 = await pool.contract.getFunction("token1").staticCall()
-        const a = (await pool.contract.getFunction("price0X96").staticCall()) * BigInt(1000) >> BigInt(96)
-        console.log(a)
+        //const a = (await pool.contract.getFunction("price0X96").staticCall()) * BigInt(1000) >> BigInt(96)
         expect(
             Number(token0 < token1
                 ? (slot0.reserve1 * BigInt(1000)) / slot0.reserve0
