@@ -1,0 +1,441 @@
+{
+    "contractName": "IPool",
+    "abi": [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "sender",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount0",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount1",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                }
+            ],
+            "name": "Burn",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "sender",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount0",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount1",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "paid0",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "paid1",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                }
+            ],
+            "name": "Flash",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "sender",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount0",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount1",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                }
+            ],
+            "name": "Mint",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "sender",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "int256",
+                    "name": "amount0",
+                    "type": "int256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "int256",
+                    "name": "amount1",
+                    "type": "int256"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                }
+            ],
+            "name": "Swap",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "reserve0",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "reserve1",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Sync",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "burn",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "amount0",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount1",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount0",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount1",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "callback",
+                    "type": "bytes"
+                }
+            ],
+            "name": "flash",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "paid0",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "paid1",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                }
+            ],
+            "name": "mint",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "int256",
+                            "name": "amountSpecified",
+                            "type": "int256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "limitAmountCalculated",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "zeroForOne",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "recipient",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes",
+                            "name": "callback",
+                            "type": "bytes"
+                        }
+                    ],
+                    "internalType": "struct IPoolActions.SwapParams",
+                    "name": "params",
+                    "type": "tuple"
+                }
+            ],
+            "name": "swap",
+            "outputs": [
+                {
+                    "internalType": "int256",
+                    "name": "amount0",
+                    "type": "int256"
+                },
+                {
+                    "internalType": "int256",
+                    "name": "amount1",
+                    "type": "int256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount0\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount1\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"Burn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount0\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount1\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"paid0\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"paid1\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"Flash\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount0\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount1\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"int256\",\"name\":\"amount0\",\"type\":\"int256\"},{\"indexed\":false,\"internalType\":\"int256\",\"name\":\"amount1\",\"type\":\"int256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"Swap\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"reserve0\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"reserve1\",\"type\":\"uint256\"}],\"name\":\"Sync\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amount0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"callback\",\"type\":\"bytes\"}],\"name\":\"flash\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"paid0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"paid1\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"int256\",\"name\":\"amountSpecified\",\"type\":\"int256\"},{\"internalType\":\"uint256\",\"name\":\"limitAmountCalculated\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"callback\",\"type\":\"bytes\"}],\"internalType\":\"struct IPoolActions.SwapParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"swap\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"amount0\",\"type\":\"int256\"},{\"internalType\":\"int256\",\"name\":\"amount1\",\"type\":\"int256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPool.sol\":\"IPool\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPool.sol\":{\"keccak256\":\"0x86f8e2b11e889412049b42dbdce8fae9bcedec12858a6e331d5c354d0d451860\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://ea5180d4295ae6aa9df6913fd527747de21ca7ae525a7b8f3b08457420346438\",\"dweb:/ipfs/QmPbzL9sripWWMcXZQVBvYtVHhVMRASokojKRLVQnaZELC\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPoolActions.sol\":{\"keccak256\":\"0x7ed1e50c08de6a78e99a65b1fa6ee20a17741265a7dbc1ca3d913ec6e08247a9\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://94b3106e7d0bd13cbd17203f5df400c11e97a897a928dcc50ab902cab02e8425\",\"dweb:/ipfs/QmfLHfMSVX7opnD1PpTaX5uiFfRUbZjDfV9LeMV4M3tpNy\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPoolEvents.sol\":{\"keccak256\":\"0xf83aca6dd53fa5235a05d58fc44cb574e435da60adc9eae774d31d4080b3ba81\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://6e153172327f3965c7b68011fda2343a34bbb5bf2c0d193dd4e09923ad47eb41\",\"dweb:/ipfs/QmdXf5evAdVY14m62ydtzzvwx7WZEFkzi2i4ne5GRxBHfP\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPool.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPool.sol",
+        "exportedSymbols": {
+            "IPool": [
+                2158
+            ],
+            "IPoolActions": [
+                2215
+            ],
+            "IPoolEvents": [
+                2272
+            ]
+        },
+        "id": 2159,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 2151,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:13"
+            },
+            {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPoolActions.sol",
+                "file": "./IPoolActions.sol",
+                "id": 2152,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 2159,
+                "sourceUnit": 2216,
+                "src": "65:28:13",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPoolEvents.sol",
+                "file": "./IPoolEvents.sol",
+                "id": 2153,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 2159,
+                "sourceUnit": 2273,
+                "src": "95:27:13",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 2154,
+                            "name": "IPoolActions",
+                            "nameLocations": [
+                                "145:12:13"
+                            ],
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 2215,
+                            "src": "145:12:13"
+                        },
+                        "id": 2155,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "145:12:13"
+                    },
+                    {
+                        "baseName": {
+                            "id": 2156,
+                            "name": "IPoolEvents",
+                            "nameLocations": [
+                                "159:11:13"
+                            ],
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 2272,
+                            "src": "159:11:13"
+                        },
+                        "id": 2157,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "159:11:13"
+                    }
+                ],
+                "canonicalName": "IPool",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "fullyImplemented": false,
+                "id": 2158,
+                "linearizedBaseContracts": [
+                    2158,
+                    2272,
+                    2215
+                ],
+                "name": "IPool",
+                "nameLocation": "136:5:13",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 2159,
+                "src": "126:47:13",
+                "usedErrors": [],
+                "usedEvents": [
+                    2227,
+                    2239,
+                    2251,
+                    2265,
+                    2271
+                ]
+            }
+        ],
+        "src": "37:138:13"
+    },
+    "functionHashes": {
+        "burn(address,uint256)": "9dc29fac",
+        "flash(address,uint256,uint256,bytes)": "490e6cbc",
+        "mint(address)": "6a627842",
+        "swap((int256,uint256,bool,address,bytes))": "25a12ac1"
+    },
+    "gasEstimates": null
+}

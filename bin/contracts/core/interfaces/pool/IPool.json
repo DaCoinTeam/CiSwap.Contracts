@@ -1,0 +1,247 @@
+{
+    "contractName": "IPool",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "burn",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "amount0",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount1",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount0",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount1",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "callback",
+                    "type": "bytes"
+                }
+            ],
+            "name": "flash",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "paid0",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "paid1",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount0",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount1",
+                    "type": "uint256"
+                }
+            ],
+            "name": "mint",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "int256",
+                            "name": "amountSpecified",
+                            "type": "int256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "limitAmountCalculated",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "zeroForOne",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "recipient",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes",
+                            "name": "callback",
+                            "type": "bytes"
+                        }
+                    ],
+                    "internalType": "struct IPoolActions.SwapParams",
+                    "name": "params",
+                    "type": "tuple"
+                }
+            ],
+            "name": "swap",
+            "outputs": [
+                {
+                    "internalType": "int256",
+                    "name": "amount0",
+                    "type": "int256"
+                },
+                {
+                    "internalType": "int256",
+                    "name": "amount1",
+                    "type": "int256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amount0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"callback\",\"type\":\"bytes\"}],\"name\":\"flash\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"paid0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"paid1\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"int256\",\"name\":\"amountSpecified\",\"type\":\"int256\"},{\"internalType\":\"uint256\",\"name\":\"limitAmountCalculated\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"callback\",\"type\":\"bytes\"}],\"internalType\":\"struct IPoolActions.SwapParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"swap\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"amount0\",\"type\":\"int256\"},{\"internalType\":\"int256\",\"name\":\"amount1\",\"type\":\"int256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/pool/IPool.sol\":\"IPool\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/pool/IPool.sol\":{\"keccak256\":\"0xd4c66a436264346f14ab65c1ef8f7b1cd3b4d191ed185a933f3a8760b2b1c347\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://2edbf7c750524fd74a496ff8864f6f950117e3d269f5cc7cde2192f728b41383\",\"dweb:/ipfs/Qmc8msE94gsrhKchs3R3QFHvXX1e4WxhowwYZgqVKcsQ86\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/pool/IPoolActions.sol\":{\"keccak256\":\"0x41c9dd18cbf52cce7e55d31daf11354e2cd6bbed96a0f57e3bdfd9afb6d0c6a0\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://cab2fdefdcc6ade054e87b692e0b2af2c9bb2984ea5afa96af78aee44675fc50\",\"dweb:/ipfs/QmTFb8MDU81YquJ7XSeUMFfjhyCW3pFE1ZgT6iFwJMVfkB\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/pool/IPool.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/pool/IPool.sol",
+        "exportedSymbols": {
+            "IPool": [
+                623
+            ],
+            "IPoolActions": [
+                684
+            ]
+        },
+        "id": 624,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 619,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:5"
+            },
+            {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/pool/IPoolActions.sol",
+                "file": "./IPoolActions.sol",
+                "id": 620,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 624,
+                "sourceUnit": 685,
+                "src": "65:28:5",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 621,
+                            "name": "IPoolActions",
+                            "nameLocations": [
+                                "116:12:5"
+                            ],
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 684,
+                            "src": "116:12:5"
+                        },
+                        "id": 622,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "116:12:5"
+                    }
+                ],
+                "canonicalName": "IPool",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "fullyImplemented": false,
+                "id": 623,
+                "linearizedBaseContracts": [
+                    623,
+                    684
+                ],
+                "name": "IPool",
+                "nameLocation": "107:5:5",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 624,
+                "src": "97:34:5",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:96:5"
+    },
+    "functionHashes": {
+        "burn(address,uint256)": "9dc29fac",
+        "flash(address,uint256,uint256,bytes)": "490e6cbc",
+        "mint(address,uint256,uint256)": "156e29f6",
+        "swap((int256,uint256,bool,address,bytes))": "25a12ac1"
+    },
+    "gasEstimates": null
+}

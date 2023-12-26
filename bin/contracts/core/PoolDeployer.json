@@ -1,0 +1,553 @@
+{
+    "contractName": "PoolDeployer",
+    "abi": [
+        {
+            "inputs": [],
+            "name": "deployParams",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "factory",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint24",
+                    "name": "fee",
+                    "type": "uint24"
+                },
+                {
+                    "components": [
+                        {
+                            "internalType": "address",
+                            "name": "tokenA",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "tokenB",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "amountA",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "amountB",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "basePriceAX96",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "maxPriceAX96",
+                            "type": "uint256"
+                        }
+                    ],
+                    "internalType": "struct IPoolDeployer.BootstrapConfig",
+                    "name": "config",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"deployParams\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"factory\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"basePriceAX96\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxPriceAX96\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolDeployer.BootstrapConfig\",\"name\":\"config\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/PoolDeployer.sol\":\"PoolDeployer\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/Pool.sol\":{\"keccak256\":\"0xf2033fb5911bff4c4d8b60eb3be7f87ac8847a396cc5b80b9470cb6d2bac8791\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://693c6cbad569c5469f0efc745c77e19b5b946f0a51d5985c2ec6e8f81c0bc5af\",\"dweb:/ipfs/QmZyb2ZiNDnyMHQf3fzjy69eY8cbf8jXWaj34vQHc3aMo3\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/PoolDeployer.sol\":{\"keccak256\":\"0xcd01e27542114dcc279287a5c3a33d75de9f2fa763d7aa342900da1a92370edc\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://4af6674306a3e47e8b31931f06254a1a2b95b5696001a624f93b4cbe78513bc3\",\"dweb:/ipfs/QmRDF8kkuxRJ1pr76WAfZNkwzVafkeSCMjEh41YUo77oFa\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol\":{\"keccak256\":\"0xaaa277b7f638aaa4ca5e2c3677afd4d261ad44bab7155619f8f0d53ce18e7c26\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://95190476261cdf09ae3a29377aae1ef112dfc54ba3343baf19377656d2d2ce8a\",\"dweb:/ipfs/QmdCsyis58w9ctyHk1dsrUd2o7tJ5SdrnauJZPYUTrAWiw\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/pool/IPool.sol\":{\"keccak256\":\"0xd4c66a436264346f14ab65c1ef8f7b1cd3b4d191ed185a933f3a8760b2b1c347\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://2edbf7c750524fd74a496ff8864f6f950117e3d269f5cc7cde2192f728b41383\",\"dweb:/ipfs/Qmc8msE94gsrhKchs3R3QFHvXX1e4WxhowwYZgqVKcsQ86\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/pool/IPoolActions.sol\":{\"keccak256\":\"0x41c9dd18cbf52cce7e55d31daf11354e2cd6bbed96a0f57e3bdfd9afb6d0c6a0\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://cab2fdefdcc6ade054e87b692e0b2af2c9bb2984ea5afa96af78aee44675fc50\",\"dweb:/ipfs/QmTFb8MDU81YquJ7XSeUMFfjhyCW3pFE1ZgT6iFwJMVfkB\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/libraries/ExtendMath.sol\":{\"keccak256\":\"0xdd7bec595b4750da8d8aed9cd3f8a2b555ecdfc9b48cf72a195daa5f4361dfcd\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://094b93768d0519fa2b849536e88ed1cf9452d59c633a86ce118baf0ae3f4f0e5\",\"dweb:/ipfs/QmdS2yYQjp1CDFL4NPVkeutJzTsVfHkKSV3DmQKJcpCkdW\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/libraries/Oracle.sol\":{\"keccak256\":\"0x91f5d76b1672aea41ce3ae1b02d2a50b18a6f0238adaaf32bedc68f457470900\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://e790cd07c611fbbfc8b1008e3e05729082428f6b3c97582fb05322acfe4c78ef\",\"dweb:/ipfs/QmRJrBVNZt8xoKS6MhP9mGC7GcEXDGXsXUzKPt6Gc3obkA\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/libraries/PoolMath.sol\":{\"keccak256\":\"0x7365607bdb88a1aef517f369cc28f1b2c008e33ef78ea51c84d4e31d9870dd0c\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://89312c91f05e0d9ca6bff56178b6fb346496e1001820a4f10f5298123ae43ae7\",\"dweb:/ipfs/QmWhTCBLV5Aj49F1BEYEmqaZFTPZte3TCnLiNoXanQS4kh\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/libraries/TokenLib.sol\":{\"keccak256\":\"0x93eb4cc1c74d2b84cbaed5466d59144f4234f7b8e414228eed5fccbed409950a\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://694ec410c4918fd408d70031298d8e8ed1339e8fef9c513e92d5226f6c67b474\",\"dweb:/ipfs/QmRqFUGe6FFANTXrq3TNPGYPGKJBAyk1xWBFD3H6VPQjjZ\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6\",\"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xc6a8ff0ea489379b61faa647490411b80102578440ab9d84e9a957cc12164e70\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0ea104e577e63faea3b69c415637e99e755dcbf64c5833d7140c35a714d6d90c\",\"dweb:/ipfs/Qmau6x4Ns9XdyynRCNNp3RhLqijJjFm7z5fyZazfYFGYdq\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12\",\"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/@openzeppelin/contracts/utils/math/Math.sol\":{\"keccak256\":\"0x005ec64c6313f0555d59e278f9a7a5ab2db5bdc72a027f255a37c327af1ec02d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4ece9f0b9c8daca08c76b6b5405a6446b6f73b3a15fab7ff56e296cbd4a2c875\",\"dweb:/ipfs/QmQyRpyPRL5SQuAgj6SHmbir3foX65FJjbVTTQrA2EFg6L\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol\":{\"keccak256\":\"0xe19a4d5f31d2861e7344e8e535e2feafb913d806d3e2b5fe7782741a2a7094fe\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4aed79c0fa6f0546ed02f2f683e8f77f0fd2ed7eb34d8bbf3d373c9a6d95b13c\",\"dweb:/ipfs/QmWqVz6UAVqmnWU5pqYPt1o6iDEZyPaBraAA3rKfTTSfYj\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/hardhat/console.sol\":{\"keccak256\":\"0x7434453e6d3b7d0e5d0eb7846ffdbc27f0ccf3b163591263739b628074dc103a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://49355f780520494d1d5a0f01858385e51bb5280ce0ecfb960f16995065dca395\",\"dweb:/ipfs/QmSwJ6C5QLz6xKeQZS8wbwjU1KxRFTYfwbGmtzisd5sRW4\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/PoolDeployer.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/PoolDeployer.sol",
+        "exportedSymbols": {
+            "Context": [
+                4405
+            ],
+            "ExtendMath": [
+                785
+            ],
+            "IERC20": [
+                3770
+            ],
+            "IPool": [
+                623
+            ],
+            "IPoolActions": [
+                684
+            ],
+            "IPoolDeployer": [
+                617
+            ],
+            "Math": [
+                5459
+            ],
+            "Oracle": [
+                924
+            ],
+            "Ownable": [
+                3040
+            ],
+            "Pool": [
+                490
+            ],
+            "PoolDeployer": [
+                527
+            ],
+            "PoolMath": [
+                1226
+            ],
+            "SafeCast": [
+                7214
+            ],
+            "TokenLib": [
+                1310
+            ],
+            "console": [
+                15299
+            ]
+        },
+        "id": 528,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 492,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".20"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:2"
+            },
+            {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol",
+                "file": "./interfaces/IPoolDeployer.sol",
+                "id": 493,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 528,
+                "sourceUnit": 618,
+                "src": "65:40:2",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/Pool.sol",
+                "file": "./Pool.sol",
+                "id": 494,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 528,
+                "sourceUnit": 491,
+                "src": "107:20:2",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": true,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 495,
+                            "name": "IPoolDeployer",
+                            "nameLocations": [
+                                "165:13:2"
+                            ],
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 617,
+                            "src": "165:13:2"
+                        },
+                        "id": 496,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "165:13:2"
+                    }
+                ],
+                "canonicalName": "PoolDeployer",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 527,
+                "linearizedBaseContracts": [
+                    527,
+                    617
+                ],
+                "name": "PoolDeployer",
+                "nameLocation": "149:12:2",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "baseFunctions": [
+                            616
+                        ],
+                        "constant": false,
+                        "functionSelector": "f3778fd8",
+                        "id": 500,
+                        "mutability": "mutable",
+                        "name": "deployParams",
+                        "nameLocation": "215:12:2",
+                        "nodeType": "VariableDeclaration",
+                        "overrides": {
+                            "id": 499,
+                            "nodeType": "OverrideSpecifier",
+                            "overrides": [],
+                            "src": "206:8:2"
+                        },
+                        "scope": 527,
+                        "src": "186:41:2",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_DeployParams_$606_storage",
+                            "typeString": "struct IPoolDeployer.DeployParams"
+                        },
+                        "typeName": {
+                            "id": 498,
+                            "nodeType": "UserDefinedTypeName",
+                            "pathNode": {
+                                "id": 497,
+                                "name": "DeployParams",
+                                "nameLocations": [
+                                    "186:12:2"
+                                ],
+                                "nodeType": "IdentifierPath",
+                                "referencedDeclaration": 606,
+                                "src": "186:12:2"
+                            },
+                            "referencedDeclaration": 606,
+                            "src": "186:12:2",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_DeployParams_$606_storage_ptr",
+                                "typeString": "struct IPoolDeployer.DeployParams"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 525,
+                            "nodeType": "Block",
+                            "src": "328:107:2",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 510,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 508,
+                                            "name": "deployParams",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 500,
+                                            "src": "339:12:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_DeployParams_$606_storage",
+                                                "typeString": "struct IPoolDeployer.DeployParams storage ref"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 509,
+                                            "name": "params",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 503,
+                                            "src": "354:6:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_DeployParams_$606_memory_ptr",
+                                                "typeString": "struct IPoolDeployer.DeployParams memory"
+                                            }
+                                        },
+                                        "src": "339:21:2",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_DeployParams_$606_storage",
+                                            "typeString": "struct IPoolDeployer.DeployParams storage ref"
+                                        }
+                                    },
+                                    "id": 511,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "339:21:2"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 520,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 512,
+                                            "name": "pool",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 506,
+                                            "src": "371:4:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "arguments": [
+                                                {
+                                                    "arguments": [],
+                                                    "expression": {
+                                                        "argumentTypes": [],
+                                                        "id": 517,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "NewExpression",
+                                                        "src": "386:8:2",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_function_creation_nonpayable$__$returns$_t_contract$_Pool_$490_$",
+                                                            "typeString": "function () returns (contract Pool)"
+                                                        },
+                                                        "typeName": {
+                                                            "id": 516,
+                                                            "nodeType": "UserDefinedTypeName",
+                                                            "pathNode": {
+                                                                "id": 515,
+                                                                "name": "Pool",
+                                                                "nameLocations": [
+                                                                    "390:4:2"
+                                                                ],
+                                                                "nodeType": "IdentifierPath",
+                                                                "referencedDeclaration": 490,
+                                                                "src": "390:4:2"
+                                                            },
+                                                            "referencedDeclaration": 490,
+                                                            "src": "390:4:2",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_contract$_Pool_$490",
+                                                                "typeString": "contract Pool"
+                                                            }
+                                                        }
+                                                    },
+                                                    "id": 518,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "functionCall",
+                                                    "lValueRequested": false,
+                                                    "nameLocations": [],
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "386:10:2",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_contract$_Pool_$490",
+                                                        "typeString": "contract Pool"
+                                                    }
+                                                }
+                                            ],
+                                            "expression": {
+                                                "argumentTypes": [
+                                                    {
+                                                        "typeIdentifier": "t_contract$_Pool_$490",
+                                                        "typeString": "contract Pool"
+                                                    }
+                                                ],
+                                                "id": 514,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "lValueRequested": false,
+                                                "nodeType": "ElementaryTypeNameExpression",
+                                                "src": "378:7:2",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_address_$",
+                                                    "typeString": "type(address)"
+                                                },
+                                                "typeName": {
+                                                    "id": 513,
+                                                    "name": "address",
+                                                    "nodeType": "ElementaryTypeName",
+                                                    "src": "378:7:2",
+                                                    "typeDescriptions": {}
+                                                }
+                                            },
+                                            "id": 519,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "kind": "typeConversion",
+                                            "lValueRequested": false,
+                                            "nameLocations": [],
+                                            "names": [],
+                                            "nodeType": "FunctionCall",
+                                            "src": "378:19:2",
+                                            "tryCall": false,
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "src": "371:26:2",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "id": 521,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "371:26:2"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 523,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "UnaryOperation",
+                                        "operator": "delete",
+                                        "prefix": true,
+                                        "src": "408:19:2",
+                                        "subExpression": {
+                                            "id": 522,
+                                            "name": "deployParams",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 500,
+                                            "src": "415:12:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_DeployParams_$606_storage",
+                                                "typeString": "struct IPoolDeployer.DeployParams storage ref"
+                                            }
+                                        },
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 524,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "408:19:2"
+                                }
+                            ]
+                        },
+                        "id": 526,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "deploy",
+                        "nameLocation": "245:6:2",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 504,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 503,
+                                    "mutability": "mutable",
+                                    "name": "params",
+                                    "nameLocation": "282:6:2",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 526,
+                                    "src": "262:26:2",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_DeployParams_$606_memory_ptr",
+                                        "typeString": "struct IPoolDeployer.DeployParams"
+                                    },
+                                    "typeName": {
+                                        "id": 502,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 501,
+                                            "name": "DeployParams",
+                                            "nameLocations": [
+                                                "262:12:2"
+                                            ],
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 606,
+                                            "src": "262:12:2"
+                                        },
+                                        "referencedDeclaration": 606,
+                                        "src": "262:12:2",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_DeployParams_$606_storage_ptr",
+                                            "typeString": "struct IPoolDeployer.DeployParams"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "251:44:2"
+                        },
+                        "returnParameters": {
+                            "id": 507,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 506,
+                                    "mutability": "mutable",
+                                    "name": "pool",
+                                    "nameLocation": "322:4:2",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 526,
+                                    "src": "314:12:2",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 505,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "314:7:2",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "313:14:2"
+                        },
+                        "scope": 527,
+                        "src": "236:199:2",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "internal"
+                    }
+                ],
+                "scope": 528,
+                "src": "131:307:2",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:403:2"
+    },
+    "functionHashes": {
+        "deployParams()": "f3778fd8"
+    },
+    "gasEstimates": null
+}

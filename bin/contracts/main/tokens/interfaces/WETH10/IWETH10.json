@@ -1,0 +1,1522 @@
+{
+    "contractName": "IWETH10",
+    "abi": [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "owner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "spender",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Approval",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Transfer",
+            "type": "event"
+        },
+        {
+            "inputs": [],
+            "name": "DOMAIN_SEPARATOR",
+            "outputs": [
+                {
+                    "internalType": "bytes32",
+                    "name": "",
+                    "type": "bytes32"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "owner",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "spender",
+                    "type": "address"
+                }
+            ],
+            "name": "allowance",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "spender",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "approve",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "spender",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "data",
+                    "type": "bytes"
+                }
+            ],
+            "name": "approveAndCall",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
+                }
+            ],
+            "name": "balanceOf",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "deposit",
+            "outputs": [],
+            "stateMutability": "payable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                }
+            ],
+            "name": "depositTo",
+            "outputs": [],
+            "stateMutability": "payable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "data",
+                    "type": "bytes"
+                }
+            ],
+            "name": "depositToAndCall",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "payable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "token",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "flashFee",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "contract IERC3156FlashBorrower",
+                    "name": "receiver",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "token",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "data",
+                    "type": "bytes"
+                }
+            ],
+            "name": "flashLoan",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "flashMinted",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "token",
+                    "type": "address"
+                }
+            ],
+            "name": "maxFlashLoan",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "owner",
+                    "type": "address"
+                }
+            ],
+            "name": "nonces",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "owner",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "spender",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "deadline",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint8",
+                    "name": "v",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "bytes32",
+                    "name": "r",
+                    "type": "bytes32"
+                },
+                {
+                    "internalType": "bytes32",
+                    "name": "s",
+                    "type": "bytes32"
+                }
+            ],
+            "name": "permit",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "totalSupply",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "transfer",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "data",
+                    "type": "bytes"
+                }
+            ],
+            "name": "transferAndCall",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "transferFrom",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "withdraw",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address payable",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "withdrawFrom",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address payable",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "withdrawTo",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"DOMAIN_SEPARATOR\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"approveAndCall\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"depositTo\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"depositToAndCall\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"flashFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC3156FlashBorrower\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"flashLoan\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"flashMinted\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"maxFlashLoan\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"nonces\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"permit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"transferAndCall\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address payable\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"withdrawFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"withdrawTo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Wrapped Ether v10 (WETH10) is an Ether (ETH) ERC-20 wrapper. You can `deposit` ETH and obtain a WETH10 balance which can then be operated as an ERC-20 token. You can `withdraw` ETH from WETH10, which will then burn WETH10 token in your wallet. The amount of WETH10 token in any wallet is always identical to the balance of ETH deposited minus the ETH withdrawn with that specific wallet.\",\"events\":{\"Approval(address,address,uint256)\":{\"details\":\"Emitted when the allowance of a `spender` for an `owner` is set by a call to {approve}. `value` is the new allowance.\"},\"Transfer(address,address,uint256)\":{\"details\":\"Emitted when `value` tokens are moved from one account (`from`) to another (`to`). Note that `value` may be zero.\"}},\"kind\":\"dev\",\"methods\":{\"DOMAIN_SEPARATOR()\":{\"details\":\"Returns the domain separator used in the encoding of the signature for {permit}, as defined by EIP712.\"},\"allowance(address,address)\":{\"details\":\"Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default. This value changes when {approve} or {transferFrom} are called.\"},\"approve(address,uint256)\":{\"details\":\"Sets a `value` amount of tokens as the allowance of `spender` over the caller's tokens. Returns a boolean value indicating whether the operation succeeded. IMPORTANT: Beware that changing an allowance with this method brings the risk that someone may use both the old and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards: https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729 Emits an {Approval} event.\"},\"approveAndCall(address,uint256,bytes)\":{\"details\":\"Sets `value` as allowance of `spender` account over caller account's WETH10 token, after which a call is executed to an ERC677-compliant contract with the `data` parameter. Emits {Approval} event. Returns boolean value indicating whether operation succeeded. For more information on {approveAndCall} format, see https://github.com/ethereum/EIPs/issues/677.\"},\"balanceOf(address)\":{\"details\":\"Returns the value of tokens owned by `account`.\"},\"deposit()\":{\"details\":\"`msg.value` of ETH sent to this contract grants caller account a matching increase in WETH10 token balance. Emits {Transfer} event to reflect WETH10 token mint of `msg.value` from `address(0)` to caller account.\"},\"depositTo(address)\":{\"details\":\"`msg.value` of ETH sent to this contract grants `to` account a matching increase in WETH10 token balance. Emits {Transfer} event to reflect WETH10 token mint of `msg.value` from `address(0)` to `to` account.\"},\"depositToAndCall(address,bytes)\":{\"details\":\"`msg.value` of ETH sent to this contract grants `to` account a matching increase in WETH10 token balance, after which a call is executed to an ERC677-compliant contract with the `data` parameter. Emits {Transfer} event. Returns boolean value indicating whether operation succeeded. For more information on {transferAndCall} format, see https://github.com/ethereum/EIPs/issues/677.\"},\"flashFee(address,uint256)\":{\"details\":\"The fee to be charged for a given loan.\",\"params\":{\"amount\":\"The amount of tokens lent.\",\"token\":\"The loan currency.\"},\"returns\":{\"_0\":\"The amount of `token` to be charged for the loan, on top of the returned principal.\"}},\"flashLoan(address,address,uint256,bytes)\":{\"details\":\"Initiate a flash loan.\",\"params\":{\"amount\":\"The amount of tokens lent.\",\"data\":\"Arbitrary data structure, intended to contain user-defined parameters.\",\"receiver\":\"The receiver of the tokens in the loan, and the receiver of the callback.\",\"token\":\"The loan currency.\"}},\"flashMinted()\":{\"details\":\"Returns current amount of flash-minted WETH10 token.\"},\"maxFlashLoan(address)\":{\"details\":\"The amount of currency available to be lended.\",\"params\":{\"token\":\"The loan currency.\"},\"returns\":{\"_0\":\"The amount of `token` that can be borrowed.\"}},\"nonces(address)\":{\"details\":\"Returns the current ERC2612 nonce for `owner`. This value must be included whenever a signature is generated for {permit}. Every successful call to {permit} increases `owner`'s nonce by one. This prevents a signature from being used multiple times.\"},\"permit(address,address,uint256,uint256,uint8,bytes32,bytes32)\":{\"details\":\"Sets `value` as the allowance of `spender` over `owner`'s tokens, given `owner`'s signed approval. IMPORTANT: The same issues {IERC20-approve} has related to transaction ordering also apply here. Emits an {Approval} event. Requirements: - `owner` cannot be `address(0)`. - `spender` cannot be `address(0)`. - `deadline` must be a timestamp in the future. - `v`, `r` and `s` must be a valid `secp256k1` signature from `owner` over the EIP712-formatted function arguments. - the signature must use `owner`'s current nonce (see {nonces}). For more information on the signature format, see the https://eips.ethereum.org/EIPS/eip-2612#specification[relevant EIP section].\"},\"totalSupply()\":{\"details\":\"Returns the value of tokens in existence.\"},\"transfer(address,uint256)\":{\"details\":\"Moves a `value` amount of tokens from the caller's account to `to`. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.\"},\"transferAndCall(address,uint256,bytes)\":{\"details\":\"Moves `value` WETH10 token from caller's account to account (`to`),  after which a call is executed to an ERC677-compliant contract with the `data` parameter. A transfer to `address(0)` triggers an ETH withdraw matching the sent WETH10 token in favor of caller. Emits {Transfer} event. Returns boolean value indicating whether operation succeeded. Requirements:   - caller account must have at least `value` WETH10 token. For more information on {transferAndCall} format, see https://github.com/ethereum/EIPs/issues/677.\"},\"transferFrom(address,address,uint256)\":{\"details\":\"Moves a `value` amount of tokens from `from` to `to` using the allowance mechanism. `value` is then deducted from the caller's allowance. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.\"},\"withdraw(uint256)\":{\"details\":\"Burn `value` WETH10 token from caller account and withdraw matching ETH to the same. Emits {Transfer} event to reflect WETH10 token burn of `value` to `address(0)` from caller account.  Requirements:   - caller account must have at least `value` balance of WETH10 token.\"},\"withdrawFrom(address,address,uint256)\":{\"details\":\"Burn `value` WETH10 token from account (`from`) and withdraw matching ETH to account (`to`). Emits {Approval} event to reflect reduced allowance `value` for caller account to spend from account (`from`), unless allowance is set to `type(uint256).max` Emits {Transfer} event to reflect WETH10 token burn of `value` to `address(0)` from account (`from`). Requirements:   - `from` account must have at least `value` balance of WETH10 token.   - `from` account must have approved caller to spend at least `value` of WETH10 token, unless `from` and caller are the same account.\"},\"withdrawTo(address,uint256)\":{\"details\":\"Burn `value` WETH10 token from caller account and withdraw matching ETH to account (`to`). Emits {Transfer} event to reflect WETH10 token burn of `value` to `address(0)` from caller account. Requirements:   - caller account must have at least `value` balance of WETH10 token.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/tokens/interfaces/WETH10/IWETH10.sol\":\"IWETH10\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/tokens/interfaces/WETH10/IERC2612.sol\":{\"keccak256\":\"0x7e671b9c1352842b3c952fc56a305085a77706967ca1ac287c117e420b1f8873\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://cf59eeb49df8769d1401e833b9a0b15fe3ba5cedd5677589b00c281c271e4d47\",\"dweb:/ipfs/Qmdxf8VcDG1NFyWMmfPMbqerjVKG1WrVYaG4DB5zCtPUDu\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/tokens/interfaces/WETH10/IERC3156FlashBorrower.sol\":{\"keccak256\":\"0xa577b51d619e58612edfc2d3d0d5a18484d228f1343ecacf8a90fb409ef09c69\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6ef3743cc8883e816c643c2637a473526181e618147266d4198c8efeae961b14\",\"dweb:/ipfs/QmaLT8Akuarsf7tchxP2gbrVoTGkbLxaX2NPuUzbfPtsXo\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/tokens/interfaces/WETH10/IERC3156FlashLender.sol\":{\"keccak256\":\"0x1eadf374b0e1081e7ff6a752092eed87b4de6d9f46bbf0987518df6e16c7f0ee\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://884f2fdb1370fbdfb359781b9da304e5f1ceea8966f78ffe0a8babe56765a434\",\"dweb:/ipfs/QmViRBFhmsHQGfmuYpyX96PzfidyCokCfZaCXgqeeCcz1L\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/tokens/interfaces/WETH10/IWETH10.sol\":{\"keccak256\":\"0x6b5472a026ea0d82517b4edab24334232d15dadf0f00915212ff95fa3b463637\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://74aace879c18363c3364163cb741873f5550d1d4b4f6ebdf719278ed285b79d9\",\"dweb:/ipfs/QmckThPrMwPNRNHbvffmYoRtzpjXDJUxBN6Pi3R6c7Z5NP\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xc6a8ff0ea489379b61faa647490411b80102578440ab9d84e9a957cc12164e70\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0ea104e577e63faea3b69c415637e99e755dcbf64c5833d7140c35a714d6d90c\",\"dweb:/ipfs/Qmau6x4Ns9XdyynRCNNp3RhLqijJjFm7z5fyZazfYFGYdq\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/tokens/interfaces/WETH10/IWETH10.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/tokens/interfaces/WETH10/IWETH10.sol",
+        "exportedSymbols": {
+            "IERC20": [
+                4732
+            ],
+            "IERC2612": [
+                3711
+            ],
+            "IERC3156FlashBorrower": [
+                3730
+            ],
+            "IERC3156FlashLender": [
+                3767
+            ],
+            "IWETH10": [
+                3854
+            ]
+        },
+        "id": 3855,
+        "license": "GPL-3.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 3769,
+                "literals": [
+                    "solidity",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "125:23:21"
+            },
+            {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+                "file": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+                "id": 3770,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 3855,
+                "sourceUnit": 4733,
+                "src": "150:118:21",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/tokens/interfaces/WETH10/IERC2612.sol",
+                "file": "./IERC2612.sol",
+                "id": 3771,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 3855,
+                "sourceUnit": 3712,
+                "src": "269:24:21",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/tokens/interfaces/WETH10/IERC3156FlashLender.sol",
+                "file": "./IERC3156FlashLender.sol",
+                "id": 3772,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 3855,
+                "sourceUnit": 3768,
+                "src": "294:35:21",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 3774,
+                            "name": "IERC20",
+                            "nameLocations": [
+                                "757:6:21"
+                            ],
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 4732,
+                            "src": "757:6:21"
+                        },
+                        "id": 3775,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "757:6:21"
+                    },
+                    {
+                        "baseName": {
+                            "id": 3776,
+                            "name": "IERC2612",
+                            "nameLocations": [
+                                "765:8:21"
+                            ],
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 3711,
+                            "src": "765:8:21"
+                        },
+                        "id": 3777,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "765:8:21"
+                    },
+                    {
+                        "baseName": {
+                            "id": 3778,
+                            "name": "IERC3156FlashLender",
+                            "nameLocations": [
+                                "775:19:21"
+                            ],
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 3767,
+                            "src": "775:19:21"
+                        },
+                        "id": 3779,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "775:19:21"
+                    }
+                ],
+                "canonicalName": "IWETH10",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": {
+                    "id": 3773,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "331:405:21",
+                    "text": "@dev Wrapped Ether v10 (WETH10) is an Ether (ETH) ERC-20 wrapper. You can `deposit` ETH and obtain a WETH10 balance which can then be operated as an ERC-20 token. You can\n `withdraw` ETH from WETH10, which will then burn WETH10 token in your wallet. The amount of WETH10 token in any wallet is always identical to the\n balance of ETH deposited minus the ETH withdrawn with that specific wallet."
+                },
+                "fullyImplemented": false,
+                "id": 3854,
+                "linearizedBaseContracts": [
+                    3854,
+                    3767,
+                    3711,
+                    4732
+                ],
+                "name": "IWETH10",
+                "nameLocation": "746:7:21",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "documentation": {
+                            "id": 3780,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "802:61:21",
+                            "text": "@dev Returns current amount of flash-minted WETH10 token."
+                        },
+                        "functionSelector": "8b28d32f",
+                        "id": 3785,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "flashMinted",
+                        "nameLocation": "877:11:21",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 3781,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "888:2:21"
+                        },
+                        "returnParameters": {
+                            "id": 3784,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3783,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3785,
+                                    "src": "913:7:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 3782,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "913:7:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "912:9:21"
+                        },
+                        "scope": 3854,
+                        "src": "868:54:21",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "documentation": {
+                            "id": 3786,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "928:228:21",
+                            "text": "@dev `msg.value` of ETH sent to this contract grants caller account a matching increase in WETH10 token balance.\n Emits {Transfer} event to reflect WETH10 token mint of `msg.value` from `address(0)` to caller account."
+                        },
+                        "functionSelector": "d0e30db0",
+                        "id": 3789,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "deposit",
+                        "nameLocation": "1170:7:21",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 3787,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1177:2:21"
+                        },
+                        "returnParameters": {
+                            "id": 3788,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1196:0:21"
+                        },
+                        "scope": 3854,
+                        "src": "1161:36:21",
+                        "stateMutability": "payable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "documentation": {
+                            "id": 3790,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "1203:224:21",
+                            "text": "@dev `msg.value` of ETH sent to this contract grants `to` account a matching increase in WETH10 token balance.\n Emits {Transfer} event to reflect WETH10 token mint of `msg.value` from `address(0)` to `to` account."
+                        },
+                        "functionSelector": "b760faf9",
+                        "id": 3795,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "depositTo",
+                        "nameLocation": "1441:9:21",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 3793,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3792,
+                                    "mutability": "mutable",
+                                    "name": "to",
+                                    "nameLocation": "1459:2:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3795,
+                                    "src": "1451:10:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 3791,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1451:7:21",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1450:12:21"
+                        },
+                        "returnParameters": {
+                            "id": 3794,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1479:0:21"
+                        },
+                        "scope": 3854,
+                        "src": "1432:48:21",
+                        "stateMutability": "payable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "documentation": {
+                            "id": 3796,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "1486:303:21",
+                            "text": "@dev Burn `value` WETH10 token from caller account and withdraw matching ETH to the same.\n Emits {Transfer} event to reflect WETH10 token burn of `value` to `address(0)` from caller account. \n Requirements:\n   - caller account must have at least `value` balance of WETH10 token."
+                        },
+                        "functionSelector": "2e1a7d4d",
+                        "id": 3801,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "withdraw",
+                        "nameLocation": "1803:8:21",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 3799,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3798,
+                                    "mutability": "mutable",
+                                    "name": "value",
+                                    "nameLocation": "1820:5:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3801,
+                                    "src": "1812:13:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 3797,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1812:7:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1811:15:21"
+                        },
+                        "returnParameters": {
+                            "id": 3800,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1835:0:21"
+                        },
+                        "scope": 3854,
+                        "src": "1794:42:21",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "documentation": {
+                            "id": 3802,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "1842:308:21",
+                            "text": "@dev Burn `value` WETH10 token from caller account and withdraw matching ETH to account (`to`).\n Emits {Transfer} event to reflect WETH10 token burn of `value` to `address(0)` from caller account.\n Requirements:\n   - caller account must have at least `value` balance of WETH10 token."
+                        },
+                        "functionSelector": "205c2878",
+                        "id": 3809,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "withdrawTo",
+                        "nameLocation": "2164:10:21",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 3807,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3804,
+                                    "mutability": "mutable",
+                                    "name": "to",
+                                    "nameLocation": "2191:2:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3809,
+                                    "src": "2175:18:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address_payable",
+                                        "typeString": "address payable"
+                                    },
+                                    "typeName": {
+                                        "id": 3803,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2175:15:21",
+                                        "stateMutability": "payable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address_payable",
+                                            "typeString": "address payable"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 3806,
+                                    "mutability": "mutable",
+                                    "name": "value",
+                                    "nameLocation": "2203:5:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3809,
+                                    "src": "2195:13:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 3805,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2195:7:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2174:35:21"
+                        },
+                        "returnParameters": {
+                            "id": 3808,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2218:0:21"
+                        },
+                        "scope": 3854,
+                        "src": "2155:64:21",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "documentation": {
+                            "id": 3810,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "2225:629:21",
+                            "text": "@dev Burn `value` WETH10 token from account (`from`) and withdraw matching ETH to account (`to`).\n Emits {Approval} event to reflect reduced allowance `value` for caller account to spend from account (`from`),\n unless allowance is set to `type(uint256).max`\n Emits {Transfer} event to reflect WETH10 token burn of `value` to `address(0)` from account (`from`).\n Requirements:\n   - `from` account must have at least `value` balance of WETH10 token.\n   - `from` account must have approved caller to spend at least `value` of WETH10 token, unless `from` and caller are the same account."
+                        },
+                        "functionSelector": "9555a942",
+                        "id": 3819,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "withdrawFrom",
+                        "nameLocation": "2868:12:21",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 3817,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3812,
+                                    "mutability": "mutable",
+                                    "name": "from",
+                                    "nameLocation": "2889:4:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3819,
+                                    "src": "2881:12:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 3811,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2881:7:21",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 3814,
+                                    "mutability": "mutable",
+                                    "name": "to",
+                                    "nameLocation": "2911:2:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3819,
+                                    "src": "2895:18:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address_payable",
+                                        "typeString": "address payable"
+                                    },
+                                    "typeName": {
+                                        "id": 3813,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2895:15:21",
+                                        "stateMutability": "payable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address_payable",
+                                            "typeString": "address payable"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 3816,
+                                    "mutability": "mutable",
+                                    "name": "value",
+                                    "nameLocation": "2923:5:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3819,
+                                    "src": "2915:13:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 3815,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2915:7:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2880:49:21"
+                        },
+                        "returnParameters": {
+                            "id": 3818,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2938:0:21"
+                        },
+                        "scope": 3854,
+                        "src": "2859:80:21",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "documentation": {
+                            "id": 3820,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "2945:421:21",
+                            "text": "@dev `msg.value` of ETH sent to this contract grants `to` account a matching increase in WETH10 token balance,\n after which a call is executed to an ERC677-compliant contract with the `data` parameter.\n Emits {Transfer} event.\n Returns boolean value indicating whether operation succeeded.\n For more information on {transferAndCall} format, see https://github.com/ethereum/EIPs/issues/677."
+                        },
+                        "functionSelector": "5ddb7d7e",
+                        "id": 3829,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "depositToAndCall",
+                        "nameLocation": "3380:16:21",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 3825,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3822,
+                                    "mutability": "mutable",
+                                    "name": "to",
+                                    "nameLocation": "3405:2:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3829,
+                                    "src": "3397:10:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 3821,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3397:7:21",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 3824,
+                                    "mutability": "mutable",
+                                    "name": "data",
+                                    "nameLocation": "3424:4:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3829,
+                                    "src": "3409:19:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "calldata",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bytes_calldata_ptr",
+                                        "typeString": "bytes"
+                                    },
+                                    "typeName": {
+                                        "id": 3823,
+                                        "name": "bytes",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3409:5:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bytes_storage_ptr",
+                                            "typeString": "bytes"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "3396:33:21"
+                        },
+                        "returnParameters": {
+                            "id": 3828,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3827,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3829,
+                                    "src": "3456:4:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 3826,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3456:4:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "3455:6:21"
+                        },
+                        "scope": 3854,
+                        "src": "3371:91:21",
+                        "stateMutability": "payable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "documentation": {
+                            "id": 3830,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "3468:397:21",
+                            "text": "@dev Sets `value` as allowance of `spender` account over caller account's WETH10 token,\n after which a call is executed to an ERC677-compliant contract with the `data` parameter.\n Emits {Approval} event.\n Returns boolean value indicating whether operation succeeded.\n For more information on {approveAndCall} format, see https://github.com/ethereum/EIPs/issues/677."
+                        },
+                        "functionSelector": "cae9ca51",
+                        "id": 3841,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "approveAndCall",
+                        "nameLocation": "3879:14:21",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 3837,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3832,
+                                    "mutability": "mutable",
+                                    "name": "spender",
+                                    "nameLocation": "3902:7:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3841,
+                                    "src": "3894:15:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 3831,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3894:7:21",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 3834,
+                                    "mutability": "mutable",
+                                    "name": "value",
+                                    "nameLocation": "3919:5:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3841,
+                                    "src": "3911:13:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 3833,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3911:7:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 3836,
+                                    "mutability": "mutable",
+                                    "name": "data",
+                                    "nameLocation": "3941:4:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3841,
+                                    "src": "3926:19:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "calldata",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bytes_calldata_ptr",
+                                        "typeString": "bytes"
+                                    },
+                                    "typeName": {
+                                        "id": 3835,
+                                        "name": "bytes",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3926:5:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bytes_storage_ptr",
+                                            "typeString": "bytes"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "3893:53:21"
+                        },
+                        "returnParameters": {
+                            "id": 3840,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3839,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3841,
+                                    "src": "3965:4:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 3838,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3965:4:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "3964:6:21"
+                        },
+                        "scope": 3854,
+                        "src": "3870:101:21",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "documentation": {
+                            "id": 3842,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "3977:585:21",
+                            "text": "@dev Moves `value` WETH10 token from caller's account to account (`to`), \n after which a call is executed to an ERC677-compliant contract with the `data` parameter.\n A transfer to `address(0)` triggers an ETH withdraw matching the sent WETH10 token in favor of caller.\n Emits {Transfer} event.\n Returns boolean value indicating whether operation succeeded.\n Requirements:\n   - caller account must have at least `value` WETH10 token.\n For more information on {transferAndCall} format, see https://github.com/ethereum/EIPs/issues/677."
+                        },
+                        "functionSelector": "4000aea0",
+                        "id": 3853,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "transferAndCall",
+                        "nameLocation": "4576:15:21",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 3849,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3844,
+                                    "mutability": "mutable",
+                                    "name": "to",
+                                    "nameLocation": "4600:2:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3853,
+                                    "src": "4592:10:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 3843,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "4592:7:21",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 3846,
+                                    "mutability": "mutable",
+                                    "name": "value",
+                                    "nameLocation": "4609:5:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3853,
+                                    "src": "4604:10:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 3845,
+                                        "name": "uint",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "4604:4:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 3848,
+                                    "mutability": "mutable",
+                                    "name": "data",
+                                    "nameLocation": "4631:4:21",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3853,
+                                    "src": "4616:19:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "calldata",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bytes_calldata_ptr",
+                                        "typeString": "bytes"
+                                    },
+                                    "typeName": {
+                                        "id": 3847,
+                                        "name": "bytes",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "4616:5:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bytes_storage_ptr",
+                                            "typeString": "bytes"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "4591:45:21"
+                        },
+                        "returnParameters": {
+                            "id": 3852,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 3851,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 3853,
+                                    "src": "4655:4:21",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 3850,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "4655:4:21",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "4654:6:21"
+                        },
+                        "scope": 3854,
+                        "src": "4567:94:21",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 3855,
+                "src": "736:3927:21",
+                "usedErrors": [],
+                "usedEvents": [
+                    4666,
+                    4675
+                ]
+            }
+        ],
+        "src": "125:4539:21"
+    },
+    "functionHashes": {
+        "DOMAIN_SEPARATOR()": "3644e515",
+        "allowance(address,address)": "dd62ed3e",
+        "approve(address,uint256)": "095ea7b3",
+        "approveAndCall(address,uint256,bytes)": "cae9ca51",
+        "balanceOf(address)": "70a08231",
+        "deposit()": "d0e30db0",
+        "depositTo(address)": "b760faf9",
+        "depositToAndCall(address,bytes)": "5ddb7d7e",
+        "flashFee(address,uint256)": "d9d98ce4",
+        "flashLoan(address,address,uint256,bytes)": "5cffe9de",
+        "flashMinted()": "8b28d32f",
+        "maxFlashLoan(address)": "613255ab",
+        "nonces(address)": "7ecebe00",
+        "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)": "d505accf",
+        "totalSupply()": "18160ddd",
+        "transfer(address,uint256)": "a9059cbb",
+        "transferAndCall(address,uint256,bytes)": "4000aea0",
+        "transferFrom(address,address,uint256)": "23b872dd",
+        "withdraw(uint256)": "2e1a7d4d",
+        "withdrawFrom(address,address,uint256)": "9555a942",
+        "withdrawTo(address,uint256)": "205c2878"
+    },
+    "gasEstimates": null
+}

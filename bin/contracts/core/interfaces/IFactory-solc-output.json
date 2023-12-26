@@ -1,0 +1,1503 @@
+{
+    "contracts": {
+        "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IFactory.sol": {
+            "IFactory": {
+                "abi": [
+                    {
+                        "anonymous": false,
+                        "inputs": [
+                            {
+                                "indexed": true,
+                                "internalType": "uint24",
+                                "name": "fee",
+                                "type": "uint24"
+                            }
+                        ],
+                        "name": "FeeAmountEnabled",
+                        "type": "event"
+                    },
+                    {
+                        "anonymous": false,
+                        "inputs": [
+                            {
+                                "indexed": true,
+                                "internalType": "address",
+                                "name": "sender",
+                                "type": "address"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "address",
+                                        "name": "tokenA",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "address",
+                                        "name": "tokenB",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "amountA",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "amountB",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "basePriceAX64",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "maxPriceBX64",
+                                        "type": "uint256"
+                                    }
+                                ],
+                                "indexed": false,
+                                "internalType": "struct IPoolDeployer.BootstrapConfig",
+                                "name": "config",
+                                "type": "tuple"
+                            },
+                            {
+                                "indexed": false,
+                                "internalType": "address",
+                                "name": "pool",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "PoolCreated",
+                        "type": "event"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint24",
+                                        "name": "fee",
+                                        "type": "uint24"
+                                    },
+                                    {
+                                        "components": [
+                                            {
+                                                "internalType": "address",
+                                                "name": "tokenA",
+                                                "type": "address"
+                                            },
+                                            {
+                                                "internalType": "address",
+                                                "name": "tokenB",
+                                                "type": "address"
+                                            },
+                                            {
+                                                "internalType": "uint256",
+                                                "name": "amountA",
+                                                "type": "uint256"
+                                            },
+                                            {
+                                                "internalType": "uint256",
+                                                "name": "amountB",
+                                                "type": "uint256"
+                                            },
+                                            {
+                                                "internalType": "uint256",
+                                                "name": "basePriceAX64",
+                                                "type": "uint256"
+                                            },
+                                            {
+                                                "internalType": "uint256",
+                                                "name": "maxPriceBX64",
+                                                "type": "uint256"
+                                            }
+                                        ],
+                                        "internalType": "struct IPoolDeployer.BootstrapConfig",
+                                        "name": "config",
+                                        "type": "tuple"
+                                    }
+                                ],
+                                "internalType": "struct IFactory.CreatePoolParams",
+                                "name": "params",
+                                "type": "tuple"
+                            }
+                        ],
+                        "name": "createPool",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "pool",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "uint24",
+                                "name": "fee",
+                                "type": "uint24"
+                            }
+                        ],
+                        "name": "getFeeAmountEnabled",
+                        "outputs": [
+                            {
+                                "internalType": "bool",
+                                "name": "",
+                                "type": "bool"
+                            }
+                        ],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "tokenA",
+                                "type": "address"
+                            },
+                            {
+                                "internalType": "address",
+                                "name": "tokenB",
+                                "type": "address"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "index",
+                                "type": "uint256"
+                            }
+                        ],
+                        "name": "getPool",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "uint256",
+                                "name": "index",
+                                "type": "uint256"
+                            }
+                        ],
+                        "name": "pools",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    }
+                ],
+                "devdoc": {
+                    "kind": "dev",
+                    "methods": {},
+                    "version": 1
+                },
+                "evm": {
+                    "bytecode": {
+                        "functionDebugData": {},
+                        "generatedSources": [],
+                        "linkReferences": {},
+                        "object": "",
+                        "opcodes": "",
+                        "sourceMap": ""
+                    },
+                    "deployedBytecode": {
+                        "functionDebugData": {},
+                        "generatedSources": [],
+                        "immutableReferences": {},
+                        "linkReferences": {},
+                        "object": "",
+                        "opcodes": "",
+                        "sourceMap": ""
+                    },
+                    "gasEstimates": null,
+                    "methodIdentifiers": {
+                        "createPool((uint24,(address,address,uint256,uint256,uint256,uint256)))": "b2222e9e",
+                        "getFeeAmountEnabled(uint24)": "f65443fa",
+                        "getPool(address,address,uint256)": "acf6cc1a",
+                        "pools(uint256)": "ac4afa38"
+                    }
+                },
+                "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"}],\"name\":\"FeeAmountEnabled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"basePriceAX64\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxPriceBX64\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"struct IPoolDeployer.BootstrapConfig\",\"name\":\"config\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"pool\",\"type\":\"address\"}],\"name\":\"PoolCreated\",\"type\":\"event\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"basePriceAX64\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxPriceBX64\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolDeployer.BootstrapConfig\",\"name\":\"config\",\"type\":\"tuple\"}],\"internalType\":\"struct IFactory.CreatePoolParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"createPool\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pool\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"}],\"name\":\"getFeeAmountEnabled\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getPool\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"pools\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IFactory.sol\":\"IFactory\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IFactory.sol\":{\"keccak256\":\"0x00f2b231c2e6f238213f5db02a40d5aab47ed5e73362a10da1f4108407215f94\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://982a4193899850c8d347b0749edb463b3a805ba169e1d3ace5676e94112bb58f\",\"dweb:/ipfs/Qma4rv27U8mEExKMU6imCbLdk1dpckc8X764xkST6kf4Bd\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol\":{\"keccak256\":\"0x134e72feead9802d41e18d3d735b3808860d673ae559b7219d1d3d058fd67471\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://394b4b78ad1f471fb287e64733c8c11e9220a3ba9803d5b13e9d4e55d2fe0511\",\"dweb:/ipfs/QmQT46giveEvTP91ohnKUxHxSha9PqRS7tgUU3WatDW95k\"]}},\"version\":1}",
+                "storageLayout": {
+                    "storage": [],
+                    "types": null
+                },
+                "userdoc": {
+                    "kind": "user",
+                    "methods": {},
+                    "version": 1
+                }
+            }
+        },
+        "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol": {
+            "IPoolDeployer": {
+                "abi": [
+                    {
+                        "inputs": [],
+                        "name": "deployParams",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "factory",
+                                "type": "address"
+                            },
+                            {
+                                "internalType": "uint24",
+                                "name": "fee",
+                                "type": "uint24"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "address",
+                                        "name": "tokenA",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "address",
+                                        "name": "tokenB",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "amountA",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "amountB",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "basePriceAX64",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "maxPriceBX64",
+                                        "type": "uint256"
+                                    }
+                                ],
+                                "internalType": "struct IPoolDeployer.BootstrapConfig",
+                                "name": "config",
+                                "type": "tuple"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    }
+                ],
+                "devdoc": {
+                    "kind": "dev",
+                    "methods": {},
+                    "version": 1
+                },
+                "evm": {
+                    "bytecode": {
+                        "functionDebugData": {},
+                        "generatedSources": [],
+                        "linkReferences": {},
+                        "object": "",
+                        "opcodes": "",
+                        "sourceMap": ""
+                    },
+                    "deployedBytecode": {
+                        "functionDebugData": {},
+                        "generatedSources": [],
+                        "immutableReferences": {},
+                        "linkReferences": {},
+                        "object": "",
+                        "opcodes": "",
+                        "sourceMap": ""
+                    },
+                    "gasEstimates": null,
+                    "methodIdentifiers": {
+                        "deployParams()": "f3778fd8"
+                    }
+                },
+                "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"deployParams\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"factory\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"basePriceAX64\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxPriceBX64\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolDeployer.BootstrapConfig\",\"name\":\"config\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol\":\"IPoolDeployer\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol\":{\"keccak256\":\"0x134e72feead9802d41e18d3d735b3808860d673ae559b7219d1d3d058fd67471\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://394b4b78ad1f471fb287e64733c8c11e9220a3ba9803d5b13e9d4e55d2fe0511\",\"dweb:/ipfs/QmQT46giveEvTP91ohnKUxHxSha9PqRS7tgUU3WatDW95k\"]}},\"version\":1}",
+                "storageLayout": {
+                    "storage": [],
+                    "types": null
+                },
+                "userdoc": {
+                    "kind": "user",
+                    "methods": {},
+                    "version": 1
+                }
+            }
+        }
+    },
+    "sources": {
+        "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IFactory.sol": {
+            "ast": {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IFactory.sol",
+                "exportedSymbols": {
+                    "IFactory": [
+                        55
+                    ],
+                    "IPoolDeployer": [
+                        89
+                    ]
+                },
+                "id": 56,
+                "license": "GPL-3.0",
+                "nodeType": "SourceUnit",
+                "nodes": [
+                    {
+                        "id": 1,
+                        "literals": [
+                            "solidity",
+                            "^",
+                            "0.8",
+                            ".20"
+                        ],
+                        "nodeType": "PragmaDirective",
+                        "src": "37:24:0"
+                    },
+                    {
+                        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol",
+                        "file": "./IPoolDeployer.sol",
+                        "id": 2,
+                        "nameLocation": "-1:-1:-1",
+                        "nodeType": "ImportDirective",
+                        "scope": 56,
+                        "sourceUnit": 90,
+                        "src": "65:29:0",
+                        "symbolAliases": [],
+                        "unitAlias": ""
+                    },
+                    {
+                        "abstract": false,
+                        "baseContracts": [],
+                        "canonicalName": "IFactory",
+                        "contractDependencies": [],
+                        "contractKind": "interface",
+                        "fullyImplemented": false,
+                        "id": 55,
+                        "linearizedBaseContracts": [
+                            55
+                        ],
+                        "name": "IFactory",
+                        "nameLocation": "108:8:0",
+                        "nodeType": "ContractDefinition",
+                        "nodes": [
+                            {
+                                "canonicalName": "IFactory.CreatePoolParams",
+                                "id": 8,
+                                "members": [
+                                    {
+                                        "constant": false,
+                                        "id": 4,
+                                        "mutability": "mutable",
+                                        "name": "fee",
+                                        "nameLocation": "166:3:0",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 8,
+                                        "src": "159:10:0",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint24",
+                                            "typeString": "uint24"
+                                        },
+                                        "typeName": {
+                                            "id": 3,
+                                            "name": "uint24",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "159:6:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint24",
+                                                "typeString": "uint24"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    },
+                                    {
+                                        "constant": false,
+                                        "id": 7,
+                                        "mutability": "mutable",
+                                        "name": "config",
+                                        "nameLocation": "210:6:0",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 8,
+                                        "src": "180:36:0",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_BootstrapConfig_$70_storage_ptr",
+                                            "typeString": "struct IPoolDeployer.BootstrapConfig"
+                                        },
+                                        "typeName": {
+                                            "id": 6,
+                                            "nodeType": "UserDefinedTypeName",
+                                            "pathNode": {
+                                                "id": 5,
+                                                "name": "IPoolDeployer.BootstrapConfig",
+                                                "nameLocations": [
+                                                    "180:13:0",
+                                                    "194:15:0"
+                                                ],
+                                                "nodeType": "IdentifierPath",
+                                                "referencedDeclaration": 70,
+                                                "src": "180:29:0"
+                                            },
+                                            "referencedDeclaration": 70,
+                                            "src": "180:29:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_BootstrapConfig_$70_storage_ptr",
+                                                "typeString": "struct IPoolDeployer.BootstrapConfig"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    }
+                                ],
+                                "name": "CreatePoolParams",
+                                "nameLocation": "131:16:0",
+                                "nodeType": "StructDefinition",
+                                "scope": 55,
+                                "src": "124:100:0",
+                                "visibility": "public"
+                            },
+                            {
+                                "anonymous": false,
+                                "eventSelector": "1f17e6f377d5868060fb453803126244f4e60e4c862eaa32ee28a9fac946ba88",
+                                "id": 12,
+                                "name": "FeeAmountEnabled",
+                                "nameLocation": "238:16:0",
+                                "nodeType": "EventDefinition",
+                                "parameters": {
+                                    "id": 11,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 10,
+                                            "indexed": true,
+                                            "mutability": "mutable",
+                                            "name": "fee",
+                                            "nameLocation": "270:3:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 12,
+                                            "src": "255:18:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint24",
+                                                "typeString": "uint24"
+                                            },
+                                            "typeName": {
+                                                "id": 9,
+                                                "name": "uint24",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "255:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint24",
+                                                    "typeString": "uint24"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "254:20:0"
+                                },
+                                "src": "232:43:0"
+                            },
+                            {
+                                "anonymous": false,
+                                "eventSelector": "9e75797b5e00b4e156c1e86fd03703f61c3f543da9fb2fd4ae58da3a96648740",
+                                "id": 21,
+                                "name": "PoolCreated",
+                                "nameLocation": "289:11:0",
+                                "nodeType": "EventDefinition",
+                                "parameters": {
+                                    "id": 20,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 14,
+                                            "indexed": true,
+                                            "mutability": "mutable",
+                                            "name": "sender",
+                                            "nameLocation": "327:6:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 21,
+                                            "src": "311:22:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 13,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "311:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        {
+                                            "constant": false,
+                                            "id": 17,
+                                            "indexed": false,
+                                            "mutability": "mutable",
+                                            "name": "config",
+                                            "nameLocation": "374:6:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 21,
+                                            "src": "344:36:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_BootstrapConfig_$70_memory_ptr",
+                                                "typeString": "struct IPoolDeployer.BootstrapConfig"
+                                            },
+                                            "typeName": {
+                                                "id": 16,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 15,
+                                                    "name": "IPoolDeployer.BootstrapConfig",
+                                                    "nameLocations": [
+                                                        "344:13:0",
+                                                        "358:15:0"
+                                                    ],
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 70,
+                                                    "src": "344:29:0"
+                                                },
+                                                "referencedDeclaration": 70,
+                                                "src": "344:29:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_BootstrapConfig_$70_storage_ptr",
+                                                    "typeString": "struct IPoolDeployer.BootstrapConfig"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        {
+                                            "constant": false,
+                                            "id": 19,
+                                            "indexed": false,
+                                            "mutability": "mutable",
+                                            "name": "pool",
+                                            "nameLocation": "399:4:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 21,
+                                            "src": "391:12:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 18,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "391:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "300:110:0"
+                                },
+                                "src": "283:128:0"
+                            },
+                            {
+                                "functionSelector": "b2222e9e",
+                                "id": 29,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "createPool",
+                                "nameLocation": "428:10:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 25,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 24,
+                                            "mutability": "mutable",
+                                            "name": "params",
+                                            "nameLocation": "475:6:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 29,
+                                            "src": "449:32:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "calldata",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_CreatePoolParams_$8_calldata_ptr",
+                                                "typeString": "struct IFactory.CreatePoolParams"
+                                            },
+                                            "typeName": {
+                                                "id": 23,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 22,
+                                                    "name": "CreatePoolParams",
+                                                    "nameLocations": [
+                                                        "449:16:0"
+                                                    ],
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 8,
+                                                    "src": "449:16:0"
+                                                },
+                                                "referencedDeclaration": 8,
+                                                "src": "449:16:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_CreatePoolParams_$8_storage_ptr",
+                                                    "typeString": "struct IFactory.CreatePoolParams"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "438:50:0"
+                                },
+                                "returnParameters": {
+                                    "id": 28,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 27,
+                                            "mutability": "mutable",
+                                            "name": "pool",
+                                            "nameLocation": "515:4:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 29,
+                                            "src": "507:12:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 26,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "507:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "506:14:0"
+                                },
+                                "scope": 55,
+                                "src": "419:102:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "acf6cc1a",
+                                "id": 40,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getPool",
+                                "nameLocation": "538:7:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 36,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 31,
+                                            "mutability": "mutable",
+                                            "name": "tokenA",
+                                            "nameLocation": "564:6:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 40,
+                                            "src": "556:14:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 30,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "556:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        {
+                                            "constant": false,
+                                            "id": 33,
+                                            "mutability": "mutable",
+                                            "name": "tokenB",
+                                            "nameLocation": "589:6:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 40,
+                                            "src": "581:14:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 32,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "581:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        {
+                                            "constant": false,
+                                            "id": 35,
+                                            "mutability": "mutable",
+                                            "name": "index",
+                                            "nameLocation": "611:5:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 40,
+                                            "src": "606:10:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 34,
+                                                "name": "uint",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "606:4:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "545:78:0"
+                                },
+                                "returnParameters": {
+                                    "id": 39,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 38,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 40,
+                                            "src": "647:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 37,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "647:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "646:9:0"
+                                },
+                                "scope": 55,
+                                "src": "529:127:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "f65443fa",
+                                "id": 47,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getFeeAmountEnabled",
+                                "nameLocation": "673:19:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 43,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 42,
+                                            "mutability": "mutable",
+                                            "name": "fee",
+                                            "nameLocation": "700:3:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 47,
+                                            "src": "693:10:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint24",
+                                                "typeString": "uint24"
+                                            },
+                                            "typeName": {
+                                                "id": 41,
+                                                "name": "uint24",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "693:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint24",
+                                                    "typeString": "uint24"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "692:12:0"
+                                },
+                                "returnParameters": {
+                                    "id": 46,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 45,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 47,
+                                            "src": "723:4:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bool",
+                                                "typeString": "bool"
+                                            },
+                                            "typeName": {
+                                                "id": 44,
+                                                "name": "bool",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "723:4:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "722:6:0"
+                                },
+                                "scope": 55,
+                                "src": "664:65:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "ac4afa38",
+                                "id": 54,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "pools",
+                                "nameLocation": "746:5:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 50,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 49,
+                                            "mutability": "mutable",
+                                            "name": "index",
+                                            "nameLocation": "760:5:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 54,
+                                            "src": "752:13:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 48,
+                                                "name": "uint256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "752:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "751:15:0"
+                                },
+                                "returnParameters": {
+                                    "id": 53,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 52,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 54,
+                                            "src": "790:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 51,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "790:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "789:9:0"
+                                },
+                                "scope": 55,
+                                "src": "737:62:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            }
+                        ],
+                        "scope": 56,
+                        "src": "98:704:0",
+                        "usedErrors": [],
+                        "usedEvents": [
+                            12,
+                            21
+                        ]
+                    }
+                ],
+                "src": "37:767:0"
+            },
+            "id": 0
+        },
+        "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol": {
+            "ast": {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol",
+                "exportedSymbols": {
+                    "IPoolDeployer": [
+                        89
+                    ]
+                },
+                "id": 90,
+                "license": "GPL-3.0",
+                "nodeType": "SourceUnit",
+                "nodes": [
+                    {
+                        "id": 57,
+                        "literals": [
+                            "solidity",
+                            "^",
+                            "0.8",
+                            ".20"
+                        ],
+                        "nodeType": "PragmaDirective",
+                        "src": "37:24:1"
+                    },
+                    {
+                        "abstract": false,
+                        "baseContracts": [],
+                        "canonicalName": "IPoolDeployer",
+                        "contractDependencies": [],
+                        "contractKind": "interface",
+                        "fullyImplemented": false,
+                        "id": 89,
+                        "linearizedBaseContracts": [
+                            89
+                        ],
+                        "name": "IPoolDeployer",
+                        "nameLocation": "75:13:1",
+                        "nodeType": "ContractDefinition",
+                        "nodes": [
+                            {
+                                "canonicalName": "IPoolDeployer.BootstrapConfig",
+                                "id": 70,
+                                "members": [
+                                    {
+                                        "constant": false,
+                                        "id": 59,
+                                        "mutability": "mutable",
+                                        "name": "tokenA",
+                                        "nameLocation": "138:6:1",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 70,
+                                        "src": "130:14:1",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        },
+                                        "typeName": {
+                                            "id": 58,
+                                            "name": "address",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "130:7:1",
+                                            "stateMutability": "nonpayable",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    },
+                                    {
+                                        "constant": false,
+                                        "id": 61,
+                                        "mutability": "mutable",
+                                        "name": "tokenB",
+                                        "nameLocation": "163:6:1",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 70,
+                                        "src": "155:14:1",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        },
+                                        "typeName": {
+                                            "id": 60,
+                                            "name": "address",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "155:7:1",
+                                            "stateMutability": "nonpayable",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    },
+                                    {
+                                        "constant": false,
+                                        "id": 63,
+                                        "mutability": "mutable",
+                                        "name": "amountA",
+                                        "nameLocation": "185:7:1",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 70,
+                                        "src": "180:12:1",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        },
+                                        "typeName": {
+                                            "id": 62,
+                                            "name": "uint",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "180:4:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    },
+                                    {
+                                        "constant": false,
+                                        "id": 65,
+                                        "mutability": "mutable",
+                                        "name": "amountB",
+                                        "nameLocation": "208:7:1",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 70,
+                                        "src": "203:12:1",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        },
+                                        "typeName": {
+                                            "id": 64,
+                                            "name": "uint",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "203:4:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    },
+                                    {
+                                        "constant": false,
+                                        "id": 67,
+                                        "mutability": "mutable",
+                                        "name": "basePriceAX64",
+                                        "nameLocation": "231:13:1",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 70,
+                                        "src": "226:18:1",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        },
+                                        "typeName": {
+                                            "id": 66,
+                                            "name": "uint",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "226:4:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    },
+                                    {
+                                        "constant": false,
+                                        "id": 69,
+                                        "mutability": "mutable",
+                                        "name": "maxPriceBX64",
+                                        "nameLocation": "260:12:1",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 70,
+                                        "src": "255:17:1",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        },
+                                        "typeName": {
+                                            "id": 68,
+                                            "name": "uint",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "255:4:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    }
+                                ],
+                                "name": "BootstrapConfig",
+                                "nameLocation": "103:15:1",
+                                "nodeType": "StructDefinition",
+                                "scope": 89,
+                                "src": "96:184:1",
+                                "visibility": "public"
+                            },
+                            {
+                                "canonicalName": "IPoolDeployer.DeployParams",
+                                "id": 78,
+                                "members": [
+                                    {
+                                        "constant": false,
+                                        "id": 72,
+                                        "mutability": "mutable",
+                                        "name": "factory",
+                                        "nameLocation": "327:7:1",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 78,
+                                        "src": "319:15:1",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        },
+                                        "typeName": {
+                                            "id": 71,
+                                            "name": "address",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "319:7:1",
+                                            "stateMutability": "nonpayable",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    },
+                                    {
+                                        "constant": false,
+                                        "id": 74,
+                                        "mutability": "mutable",
+                                        "name": "fee",
+                                        "nameLocation": "352:3:1",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 78,
+                                        "src": "345:10:1",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint24",
+                                            "typeString": "uint24"
+                                        },
+                                        "typeName": {
+                                            "id": 73,
+                                            "name": "uint24",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "345:6:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint24",
+                                                "typeString": "uint24"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    },
+                                    {
+                                        "constant": false,
+                                        "id": 77,
+                                        "mutability": "mutable",
+                                        "name": "config",
+                                        "nameLocation": "382:6:1",
+                                        "nodeType": "VariableDeclaration",
+                                        "scope": 78,
+                                        "src": "366:22:1",
+                                        "stateVariable": false,
+                                        "storageLocation": "default",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_BootstrapConfig_$70_storage_ptr",
+                                            "typeString": "struct IPoolDeployer.BootstrapConfig"
+                                        },
+                                        "typeName": {
+                                            "id": 76,
+                                            "nodeType": "UserDefinedTypeName",
+                                            "pathNode": {
+                                                "id": 75,
+                                                "name": "BootstrapConfig",
+                                                "nameLocations": [
+                                                    "366:15:1"
+                                                ],
+                                                "nodeType": "IdentifierPath",
+                                                "referencedDeclaration": 70,
+                                                "src": "366:15:1"
+                                            },
+                                            "referencedDeclaration": 70,
+                                            "src": "366:15:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_BootstrapConfig_$70_storage_ptr",
+                                                "typeString": "struct IPoolDeployer.BootstrapConfig"
+                                            }
+                                        },
+                                        "visibility": "internal"
+                                    }
+                                ],
+                                "name": "DeployParams",
+                                "nameLocation": "295:12:1",
+                                "nodeType": "StructDefinition",
+                                "scope": 89,
+                                "src": "288:108:1",
+                                "visibility": "public"
+                            },
+                            {
+                                "functionSelector": "f3778fd8",
+                                "id": 88,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "deployParams",
+                                "nameLocation": "413:12:1",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 79,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "425:2:1"
+                                },
+                                "returnParameters": {
+                                    "id": 87,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 81,
+                                            "mutability": "mutable",
+                                            "name": "factory",
+                                            "nameLocation": "486:7:1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 88,
+                                            "src": "478:15:1",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 80,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "478:7:1",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        {
+                                            "constant": false,
+                                            "id": 83,
+                                            "mutability": "mutable",
+                                            "name": "fee",
+                                            "nameLocation": "502:3:1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 88,
+                                            "src": "495:10:1",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint24",
+                                                "typeString": "uint24"
+                                            },
+                                            "typeName": {
+                                                "id": 82,
+                                                "name": "uint24",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "495:6:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint24",
+                                                    "typeString": "uint24"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        {
+                                            "constant": false,
+                                            "id": 86,
+                                            "mutability": "mutable",
+                                            "name": "config",
+                                            "nameLocation": "530:6:1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 88,
+                                            "src": "507:29:1",
+                                            "stateVariable": false,
+                                            "storageLocation": "memory",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_BootstrapConfig_$70_memory_ptr",
+                                                "typeString": "struct IPoolDeployer.BootstrapConfig"
+                                            },
+                                            "typeName": {
+                                                "id": 85,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 84,
+                                                    "name": "BootstrapConfig",
+                                                    "nameLocations": [
+                                                        "507:15:1"
+                                                    ],
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 70,
+                                                    "src": "507:15:1"
+                                                },
+                                                "referencedDeclaration": 70,
+                                                "src": "507:15:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_BootstrapConfig_$70_storage_ptr",
+                                                    "typeString": "struct IPoolDeployer.BootstrapConfig"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "477:60:1"
+                                },
+                                "scope": 89,
+                                "src": "404:134:1",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            }
+                        ],
+                        "scope": 90,
+                        "src": "65:476:1",
+                        "usedErrors": [],
+                        "usedEvents": []
+                    }
+                ],
+                "src": "37:506:1"
+            },
+            "id": 1
+        }
+    }
+}

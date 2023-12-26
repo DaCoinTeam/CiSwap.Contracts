@@ -1,0 +1,197 @@
+{
+    "contractName": "IFlashCallee",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "amount0",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount1",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "callback",
+                    "type": "bytes"
+                }
+            ],
+            "name": "flashCall",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"callback\",\"type\":\"bytes\"}],\"name\":\"flashCall\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/callee/IFlashCallee.sol\":\"IFlashCallee\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/callee/IFlashCallee.sol\":{\"keccak256\":\"0xfc096a4e42ec1dfeeb47ce6131175daa3f0c5746673ac35b37b6176481491569\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://5d86528b87a04bcb80c4f4c10caff2cf0666d93884850c92178fb1daa112c6b5\",\"dweb:/ipfs/QmSRE2gxRj8fSYN8z15vMf4LED47CLgzMmeBRgRmtbT2zJ\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/callee/IFlashCallee.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/callee/IFlashCallee.sol",
+        "exportedSymbols": {
+            "IFlashCallee": [
+                2137
+            ]
+        },
+        "id": 2138,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 2127,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:11"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IFlashCallee",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "fullyImplemented": false,
+                "id": 2137,
+                "linearizedBaseContracts": [
+                    2137
+                ],
+                "name": "IFlashCallee",
+                "nameLocation": "75:12:11",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "e83517b5",
+                        "id": 2136,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "flashCall",
+                        "nameLocation": "104:9:11",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 2134,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 2129,
+                                    "mutability": "mutable",
+                                    "name": "amount0",
+                                    "nameLocation": "132:7:11",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 2136,
+                                    "src": "124:15:11",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 2128,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "124:7:11",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 2131,
+                                    "mutability": "mutable",
+                                    "name": "amount1",
+                                    "nameLocation": "158:7:11",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 2136,
+                                    "src": "150:15:11",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 2130,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "150:7:11",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 2133,
+                                    "mutability": "mutable",
+                                    "name": "callback",
+                                    "nameLocation": "191:8:11",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 2136,
+                                    "src": "176:23:11",
+                                    "stateVariable": false,
+                                    "storageLocation": "calldata",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bytes_calldata_ptr",
+                                        "typeString": "bytes"
+                                    },
+                                    "typeName": {
+                                        "id": 2132,
+                                        "name": "bytes",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "176:5:11",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bytes_storage_ptr",
+                                            "typeString": "bytes"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "113:93:11"
+                        },
+                        "returnParameters": {
+                            "id": 2135,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "215:0:11"
+                        },
+                        "scope": 2137,
+                        "src": "95:121:11",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 2138,
+                "src": "65:154:11",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:182:11"
+    },
+    "functionHashes": {
+        "flashCall(uint256,uint256,bytes)": "e83517b5"
+    },
+    "gasEstimates": null
+}
