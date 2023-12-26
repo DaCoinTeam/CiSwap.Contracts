@@ -12,6 +12,7 @@
     "@openzeppelin/contracts": "^5.0.1",
     "i": "^0.3.7",
     "npm": "^10.2.5",
+    "solidity-bytes-utils": "^0.8.0",
     "web3": "^4.3.0"
   }
 }

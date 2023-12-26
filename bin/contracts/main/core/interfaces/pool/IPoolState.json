@@ -1,0 +1,546 @@
+{
+    "contractName": "IPoolState",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "index",
+                    "type": "uint256"
+                }
+            ],
+            "name": "observations",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "uint256",
+                            "name": "blockTimestamp",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "reserve0Cumulative",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "reserve1Cumulative",
+                            "type": "uint256"
+                        }
+                    ],
+                    "internalType": "struct Oracle.Observation",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256[]",
+                    "name": "secondAgos",
+                    "type": "uint256[]"
+                }
+            ],
+            "name": "observe",
+            "outputs": [
+                {
+                    "internalType": "uint256[]",
+                    "name": "reserve0Cumulatives",
+                    "type": "uint256[]"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "reserve1Cumulatives",
+                    "type": "uint256[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "slot0",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "reserve0",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "reserve1",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "observationCardinality",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "unlocked",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"observations\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"blockTimestamp\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserve0Cumulative\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserve1Cumulative\",\"type\":\"uint256\"}],\"internalType\":\"struct Oracle.Observation\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"secondAgos\",\"type\":\"uint256[]\"}],\"name\":\"observe\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"reserve0Cumulatives\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"reserve1Cumulatives\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"slot0\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"reserve0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserve1\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"observationCardinality\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"unlocked\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPoolState.sol\":\"IPoolState\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/libraries/Oracle.sol\":{\"keccak256\":\"0x8abe07f2195daf124b05eacaf8915f1bf695a3bf35f0f47bef1989654174fe45\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://5ea3e590cb7f479f82e71245c072fd0a3a1ad77da9879a05e7347144cb241250\",\"dweb:/ipfs/QmNZsrwye2AebAW9XXvWQ4VGGUzniAesQA9VQ3Fwpn1PLP\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPoolState.sol\":{\"keccak256\":\"0xa2f368b69ff00bc26ee1157de8a310e7c33209782ccca485c583623ac8a74e9c\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://451266b3dc358fef94b088ab68cea7f7127b69c51e4c6961be87fc31c71d400f\",\"dweb:/ipfs/QmYiQFMWfdjndqQfzVu5raAPew3EKJ4hPvsiKV5WZ64x8d\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/@openzeppelin/contracts/utils/math/Math.sol\":{\"keccak256\":\"0x005ec64c6313f0555d59e278f9a7a5ab2db5bdc72a027f255a37c327af1ec02d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4ece9f0b9c8daca08c76b6b5405a6446b6f73b3a15fab7ff56e296cbd4a2c875\",\"dweb:/ipfs/QmQyRpyPRL5SQuAgj6SHmbir3foX65FJjbVTTQrA2EFg6L\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol\":{\"keccak256\":\"0xe19a4d5f31d2861e7344e8e535e2feafb913d806d3e2b5fe7782741a2a7094fe\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4aed79c0fa6f0546ed02f2f683e8f77f0fd2ed7eb34d8bbf3d373c9a6d95b13c\",\"dweb:/ipfs/QmWqVz6UAVqmnWU5pqYPt1o6iDEZyPaBraAA3rKfTTSfYj\"]},\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/node_modules/hardhat/console.sol\":{\"keccak256\":\"0x7434453e6d3b7d0e5d0eb7846ffdbc27f0ccf3b163591263739b628074dc103a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://49355f780520494d1d5a0f01858385e51bb5280ce0ecfb960f16995065dca395\",\"dweb:/ipfs/QmSwJ6C5QLz6xKeQZS8wbwjU1KxRFTYfwbGmtzisd5sRW4\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPoolState.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/pool/IPoolState.sol",
+        "exportedSymbols": {
+            "IPoolState": [
+                467
+            ],
+            "Math": [
+                1521
+            ],
+            "Oracle": [
+                432
+            ],
+            "SafeCast": [
+                3276
+            ],
+            "console": [
+                11361
+            ]
+        },
+        "id": 468,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 434,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:1"
+            },
+            {
+                "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/libraries/Oracle.sol",
+                "file": "../../../../libraries/Oracle.sol",
+                "id": 435,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 468,
+                "sourceUnit": 433,
+                "src": "65:42:1",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IPoolState",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "fullyImplemented": false,
+                "id": 467,
+                "linearizedBaseContracts": [
+                    467
+                ],
+                "name": "IPoolState",
+                "nameLocation": "119:10:1",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "3850c7bd",
+                        "id": 446,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "slot0",
+                        "nameLocation": "146:5:1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 436,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "151:2:1"
+                        },
+                        "returnParameters": {
+                            "id": 445,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 438,
+                                    "mutability": "mutable",
+                                    "name": "reserve0",
+                                    "nameLocation": "209:8:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 446,
+                                    "src": "204:13:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 437,
+                                        "name": "uint",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "204:4:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 440,
+                                    "mutability": "mutable",
+                                    "name": "reserve1",
+                                    "nameLocation": "237:8:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 446,
+                                    "src": "232:13:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 439,
+                                        "name": "uint",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "232:4:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 442,
+                                    "mutability": "mutable",
+                                    "name": "observationCardinality",
+                                    "nameLocation": "265:22:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 446,
+                                    "src": "260:27:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 441,
+                                        "name": "uint",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "260:4:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 444,
+                                    "mutability": "mutable",
+                                    "name": "unlocked",
+                                    "nameLocation": "307:8:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 446,
+                                    "src": "302:13:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 443,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "302:4:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "189:137:1"
+                        },
+                        "scope": 467,
+                        "src": "137:190:1",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "dea96b71",
+                        "id": 458,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "observe",
+                        "nameLocation": "344:7:1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 450,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 449,
+                                    "mutability": "mutable",
+                                    "name": "secondAgos",
+                                    "nameLocation": "378:10:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 458,
+                                    "src": "362:26:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "calldata",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_array$_t_uint256_$dyn_calldata_ptr",
+                                        "typeString": "uint256[]"
+                                    },
+                                    "typeName": {
+                                        "baseType": {
+                                            "id": 447,
+                                            "name": "uint",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "362:4:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "id": 448,
+                                        "nodeType": "ArrayTypeName",
+                                        "src": "362:6:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                                            "typeString": "uint256[]"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "351:44:1"
+                        },
+                        "returnParameters": {
+                            "id": 457,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 453,
+                                    "mutability": "mutable",
+                                    "name": "reserve0Cumulatives",
+                                    "nameLocation": "474:19:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 458,
+                                    "src": "460:33:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                                        "typeString": "uint256[]"
+                                    },
+                                    "typeName": {
+                                        "baseType": {
+                                            "id": 451,
+                                            "name": "uint",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "460:4:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "id": 452,
+                                        "nodeType": "ArrayTypeName",
+                                        "src": "460:6:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                                            "typeString": "uint256[]"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 456,
+                                    "mutability": "mutable",
+                                    "name": "reserve1Cumulatives",
+                                    "nameLocation": "522:19:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 458,
+                                    "src": "508:33:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                                        "typeString": "uint256[]"
+                                    },
+                                    "typeName": {
+                                        "baseType": {
+                                            "id": 454,
+                                            "name": "uint",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "508:4:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "id": 455,
+                                        "nodeType": "ArrayTypeName",
+                                        "src": "508:6:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                                            "typeString": "uint256[]"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "445:107:1"
+                        },
+                        "scope": 467,
+                        "src": "335:218:1",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "252c09d7",
+                        "id": 466,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "observations",
+                        "nameLocation": "570:12:1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 461,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 460,
+                                    "mutability": "mutable",
+                                    "name": "index",
+                                    "nameLocation": "588:5:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 466,
+                                    "src": "583:10:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 459,
+                                        "name": "uint",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "583:4:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "582:12:1"
+                        },
+                        "returnParameters": {
+                            "id": 465,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 464,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 466,
+                                    "src": "613:25:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Observation_$14_memory_ptr",
+                                        "typeString": "struct Oracle.Observation"
+                                    },
+                                    "typeName": {
+                                        "id": 463,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 462,
+                                            "name": "Oracle.Observation",
+                                            "nameLocations": [
+                                                "613:6:1",
+                                                "620:11:1"
+                                            ],
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 14,
+                                            "src": "613:18:1"
+                                        },
+                                        "referencedDeclaration": 14,
+                                        "src": "613:18:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Observation_$14_storage_ptr",
+                                            "typeString": "struct Oracle.Observation"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "612:27:1"
+                        },
+                        "scope": 467,
+                        "src": "561:79:1",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 468,
+                "src": "109:544:1",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:618:1"
+    },
+    "functionHashes": {
+        "observations(uint256)": "252c09d7",
+        "observe(uint256[])": "dea96b71",
+        "slot0()": "3850c7bd"
+    },
+    "gasEstimates": null
+}

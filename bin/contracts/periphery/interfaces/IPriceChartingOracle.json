@@ -1,0 +1,61 @@
+{
+    "contractName": "IPriceChartingOracle",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IPriceChartingOracle.sol\":\"IPriceChartingOracle\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IPriceChartingOracle.sol\":{\"keccak256\":\"0xd48b9c3b09144b2efb8725229edeeb988357c15e8e93569e8cee8986b37eaa06\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://3e834659a8462105bb4dfb4b4a0b8eaaa8e369715d12588d332de5ca5eb59af1\",\"dweb:/ipfs/QmXEHrL7hz8W4KJNnCNW5guTgWQiKoB8poLqySznH35cC2\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IPriceChartingOracle.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IPriceChartingOracle.sol",
+        "exportedSymbols": {
+            "IPriceChartingOracle": [
+                2
+            ]
+        },
+        "id": 3,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:25:0"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IPriceChartingOracle",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "fullyImplemented": true,
+                "id": 2,
+                "linearizedBaseContracts": [
+                    2
+                ],
+                "name": "IPriceChartingOracle",
+                "nameLocation": "76:20:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 3,
+                "src": "66:35:0",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:64:0"
+    },
+    "functionHashes": {},
+    "gasEstimates": null
+}
