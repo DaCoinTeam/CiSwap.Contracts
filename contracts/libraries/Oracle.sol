@@ -104,23 +104,23 @@ library Oracle {
         Observation memory beforeOrAt,
         Observation memory atOrAfter,
         uint target
-    ) private pure returns (Observation memory) {
+    ) private pure returns (uint reserve0Cumulative, uint reserve1Cumulative) {
         require(
             beforeOrAt.blockTimestamp <= target &&
                 target < atOrAfter.blockTimestamp
         );
         uint delta = target - beforeOrAt.blockTimestamp;
         uint entire = atOrAfter.blockTimestamp - beforeOrAt.blockTimestamp;
-        return
-            Observation({
-                blockTimestamp: target,
-                reserve0Cumulative: beforeOrAt.reserve0Cumulative +
-                    (atOrAfter.reserve0Cumulative -
-                        beforeOrAt.reserve0Cumulative).mulDiv(delta, entire),
-                reserve1Cumulative: beforeOrAt.reserve1Cumulative +
-                    (atOrAfter.reserve1Cumulative -
-                        beforeOrAt.reserve1Cumulative).mulDiv(delta, entire)
-            });
+
+        reserve0Cumulative =
+            beforeOrAt.reserve0Cumulative +
+            (atOrAfter.reserve0Cumulative - beforeOrAt.reserve0Cumulative)
+                .mulDiv(delta, entire);
+
+        reserve1Cumulative =
+            beforeOrAt.reserve1Cumulative +
+            (atOrAfter.reserve1Cumulative - beforeOrAt.reserve1Cumulative)
+                .mulDiv(delta, entire);
     }
 
     function _observeSingle(
@@ -143,12 +143,11 @@ library Oracle {
             return (atOrAfter.reserve0Cumulative, atOrAfter.reserve1Cumulative);
         }
 
-        Observation memory interpolate = _interpolate(
+        (reserve0Cumulative, reserve1Cumulative) = _interpolate(
             beforeOrAt,
             atOrAfter,
             target
         );
-        return (interpolate.reserve0Cumulative, interpolate.reserve1Cumulative);
     }
 
     function observe(
