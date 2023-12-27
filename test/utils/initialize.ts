@@ -17,6 +17,24 @@ export const initialize = async (
     const factory = await Factory.deploy()
     const factoryAddress = await factory.getAddress()
 
+    //router
+    const Router = await ethers.getContractFactory("Router")
+    const router = await Router.deploy(factoryAddress, weth10Address)
+    const routerAddress = await router.getAddress()
+
+    //router
+    const Quoter = await ethers.getContractFactory("Quoter")
+    const quoter = await Quoter.deploy(factoryAddress, weth10Address)
+    const quoterAddress = await quoter.getAddress()
+
+    //aggregator
+    const OracleAggregator = await ethers.getContractFactory("Aggregator")
+    const oracleAggregator = await OracleAggregator.deploy(
+        factoryAddress,
+        weth10Address
+    )
+    const oracleAggregatorAddress = await oracleAggregator.getAddress()
+
     //tokens
     const promises: Promise<void>[] = []
     const tokens: {
@@ -49,6 +67,18 @@ export const initialize = async (
             address: weth10Address,
             contract: weth10,
         },
+        oracleAggregator: {
+            address: oracleAggregatorAddress,
+            contract: oracleAggregator,
+        },
+        quoter: {
+            address: quoterAddress,
+            contract: quoter,
+        },
+        router: {
+            address: routerAddress,
+            contract: router,
+        },
         factory: {
             address: factoryAddress,
             contract: factory,
@@ -78,4 +108,16 @@ export interface InitializeResult {
     contract: BaseContract;
     address: Address;
   }[];
+  router: {
+    contract: BaseContract;
+    address: Address;
+  };
+  quoter: {
+    contract: BaseContract;
+    address: Address;
+  };
+  oracleAggregator: {
+    contract: BaseContract;
+    address: Address;
+  };
 }

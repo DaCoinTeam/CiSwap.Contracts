@@ -1,0 +1,61 @@
+{
+    "contractName": "IOracleAggregator",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IOracleAggregator.sol\":\"IOracleAggregator\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IOracleAggregator.sol\":{\"keccak256\":\"0x638f514f3f33c0aa8951e0aa2f22428790f45c11d992d60f166e90ebe4a9b48a\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://4721c84869128d4d06bcf1ea758ae452bde339b761336f597119fd0e3697f3bb\",\"dweb:/ipfs/QmQp2VpKt2JeoCmDTjk25uGr7EQk8Ma9AXf6QqQpBDUM1G\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IOracleAggregator.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IOracleAggregator.sol",
+        "exportedSymbols": {
+            "IOracleAggregator": [
+                4148
+            ]
+        },
+        "id": 4149,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 4147,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:19"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IOracleAggregator",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "fullyImplemented": true,
+                "id": 4148,
+                "linearizedBaseContracts": [
+                    4148
+                ],
+                "name": "IOracleAggregator",
+                "nameLocation": "75:17:19",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 4149,
+                "src": "65:32:19",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:60:19"
+    },
+    "functionHashes": {},
+    "gasEstimates": null
+}

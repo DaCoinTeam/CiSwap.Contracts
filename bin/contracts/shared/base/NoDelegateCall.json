@@ -1,0 +1,439 @@
+{
+    "contractName": "NoDelegateCall",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/shared/base/NoDelegateCall.sol\":\"NoDelegateCall\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/shared/base/NoDelegateCall.sol\":{\"keccak256\":\"0x83d781499596b6fb208bd313b0dc23f08f891b8465b9f854d4f5455008563685\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://6b85b34ed0fcf19ca286795b09e7e3a651c535597d1c39ec8c34131b6cb65f53\",\"dweb:/ipfs/QmUTZcuiFKH5KYAuFoPJDVJdTqHBJNk8pgqcj3qSvE4yj2\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/shared/base/NoDelegateCall.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/shared/base/NoDelegateCall.sol",
+        "exportedSymbols": {
+            "NoDelegateCall": [
+                4588
+            ]
+        },
+        "id": 4589,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 4554,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:26"
+            },
+            {
+                "abstract": true,
+                "baseContracts": [],
+                "canonicalName": "NoDelegateCall",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 4588,
+                "linearizedBaseContracts": [
+                    4588
+                ],
+                "name": "NoDelegateCall",
+                "nameLocation": "83:14:26",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": false,
+                        "id": 4556,
+                        "mutability": "immutable",
+                        "name": "original",
+                        "nameLocation": "131:8:26",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 4588,
+                        "src": "105:34:26",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                        },
+                        "typeName": {
+                            "id": 4555,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "105:7:26",
+                            "stateMutability": "nonpayable",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            }
+                        },
+                        "visibility": "private"
+                    },
+                    {
+                        "body": {
+                            "id": 4566,
+                            "nodeType": "Block",
+                            "src": "162:43:26",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 4564,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 4559,
+                                            "name": "original",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 4556,
+                                            "src": "173:8:26",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "arguments": [
+                                                {
+                                                    "id": 4562,
+                                                    "name": "this",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 4294967268,
+                                                    "src": "192:4:26",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_contract$_NoDelegateCall_$4588",
+                                                        "typeString": "contract NoDelegateCall"
+                                                    }
+                                                }
+                                            ],
+                                            "expression": {
+                                                "argumentTypes": [
+                                                    {
+                                                        "typeIdentifier": "t_contract$_NoDelegateCall_$4588",
+                                                        "typeString": "contract NoDelegateCall"
+                                                    }
+                                                ],
+                                                "id": 4561,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "lValueRequested": false,
+                                                "nodeType": "ElementaryTypeNameExpression",
+                                                "src": "184:7:26",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_address_$",
+                                                    "typeString": "type(address)"
+                                                },
+                                                "typeName": {
+                                                    "id": 4560,
+                                                    "name": "address",
+                                                    "nodeType": "ElementaryTypeName",
+                                                    "src": "184:7:26",
+                                                    "typeDescriptions": {}
+                                                }
+                                            },
+                                            "id": 4563,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "kind": "typeConversion",
+                                            "lValueRequested": false,
+                                            "nameLocations": [],
+                                            "names": [],
+                                            "nodeType": "FunctionCall",
+                                            "src": "184:13:26",
+                                            "tryCall": false,
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "src": "173:24:26",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "id": 4565,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "173:24:26"
+                                }
+                            ]
+                        },
+                        "id": 4567,
+                        "implemented": true,
+                        "kind": "constructor",
+                        "modifiers": [],
+                        "name": "",
+                        "nameLocation": "-1:-1:-1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 4557,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "159:2:26"
+                        },
+                        "returnParameters": {
+                            "id": 4558,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "162:0:26"
+                        },
+                        "scope": 4588,
+                        "src": "148:57:26",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 4579,
+                            "nodeType": "Block",
+                            "src": "258:53:26",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                "id": 4576,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "arguments": [
+                                                        {
+                                                            "id": 4573,
+                                                            "name": "this",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 4294967268,
+                                                            "src": "285:4:26",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_contract$_NoDelegateCall_$4588",
+                                                                "typeString": "contract NoDelegateCall"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "expression": {
+                                                        "argumentTypes": [
+                                                            {
+                                                                "typeIdentifier": "t_contract$_NoDelegateCall_$4588",
+                                                                "typeString": "contract NoDelegateCall"
+                                                            }
+                                                        ],
+                                                        "id": 4572,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": true,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "ElementaryTypeNameExpression",
+                                                        "src": "277:7:26",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_address_$",
+                                                            "typeString": "type(address)"
+                                                        },
+                                                        "typeName": {
+                                                            "id": 4571,
+                                                            "name": "address",
+                                                            "nodeType": "ElementaryTypeName",
+                                                            "src": "277:7:26",
+                                                            "typeDescriptions": {}
+                                                        }
+                                                    },
+                                                    "id": 4574,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "typeConversion",
+                                                    "lValueRequested": false,
+                                                    "nameLocations": [],
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "277:13:26",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "==",
+                                                "rightExpression": {
+                                                    "id": 4575,
+                                                    "name": "original",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 4556,
+                                                    "src": "294:8:26",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "src": "277:25:26",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            ],
+                                            "id": 4570,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                4294967278,
+                                                4294967278
+                                            ],
+                                            "referencedDeclaration": 4294967278,
+                                            "src": "269:7:26",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                                                "typeString": "function (bool) pure"
+                                            }
+                                        },
+                                        "id": 4577,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "269:34:26",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 4578,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "269:34:26"
+                                }
+                            ]
+                        },
+                        "id": 4580,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "checkNotDelegateCall",
+                        "nameLocation": "222:20:26",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 4568,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "242:2:26"
+                        },
+                        "returnParameters": {
+                            "id": 4569,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "258:0:26"
+                        },
+                        "scope": 4588,
+                        "src": "213:98:26",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "private"
+                    },
+                    {
+                        "body": {
+                            "id": 4586,
+                            "nodeType": "Block",
+                            "src": "345:53:26",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [],
+                                        "expression": {
+                                            "argumentTypes": [],
+                                            "id": 4582,
+                                            "name": "checkNotDelegateCall",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 4580,
+                                            "src": "356:20:26",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_internal_view$__$returns$__$",
+                                                "typeString": "function () view"
+                                            }
+                                        },
+                                        "id": 4583,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "356:22:26",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 4584,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "356:22:26"
+                                },
+                                {
+                                    "id": 4585,
+                                    "nodeType": "PlaceholderStatement",
+                                    "src": "389:1:26"
+                                }
+                            ]
+                        },
+                        "id": 4587,
+                        "name": "noDelegateCall",
+                        "nameLocation": "328:14:26",
+                        "nodeType": "ModifierDefinition",
+                        "parameters": {
+                            "id": 4581,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "342:2:26"
+                        },
+                        "src": "319:79:26",
+                        "virtual": false,
+                        "visibility": "internal"
+                    }
+                ],
+                "scope": 4589,
+                "src": "65:336:26",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:366:26"
+    },
+    "functionHashes": {},
+    "gasEstimates": null
+}

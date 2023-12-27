@@ -1,0 +1,204 @@
+{
+    "contractName": "IPeripheryImmutables",
+    "abi": [
+        {
+            "inputs": [],
+            "name": "WETH10",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "factory",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"WETH10\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IPeripheryImmutables.sol\":\"IPeripheryImmutables\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IPeripheryImmutables.sol\":{\"keccak256\":\"0xb133e78b01ad97dde0c9bdddd989f50c3c3574290a168bd9645ebaa36a14f86e\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://b32f8c43d19cb975cc41ae4a79c72c39b033b6458b986a9301776cca8edda3e8\",\"dweb:/ipfs/QmXiFX5HDgj8nepRkSv3VQUHA7VzxMbyGA3LExwEGKV9Xg\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IPeripheryImmutables.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/interfaces/IPeripheryImmutables.sol",
+        "exportedSymbols": {
+            "IPeripheryImmutables": [
+                4161
+            ]
+        },
+        "id": 4162,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 4150,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:20"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IPeripheryImmutables",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "fullyImplemented": false,
+                "id": 4161,
+                "linearizedBaseContracts": [
+                    4161
+                ],
+                "name": "IPeripheryImmutables",
+                "nameLocation": "75:20:20",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "c45a0155",
+                        "id": 4155,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "factory",
+                        "nameLocation": "112:7:20",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 4151,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "119:2:20"
+                        },
+                        "returnParameters": {
+                            "id": 4154,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 4153,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 4155,
+                                    "src": "145:7:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 4152,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "145:7:20",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "144:9:20"
+                        },
+                        "scope": 4161,
+                        "src": "103:51:20",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "3fe96d94",
+                        "id": 4160,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "WETH10",
+                        "nameLocation": "171:6:20",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 4156,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "177:2:20"
+                        },
+                        "returnParameters": {
+                            "id": 4159,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 4158,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 4160,
+                                    "src": "203:7:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 4157,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "203:7:20",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "202:9:20"
+                        },
+                        "scope": 4161,
+                        "src": "162:50:20",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 4162,
+                "src": "65:150:20",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:180:20"
+    },
+    "functionHashes": {
+        "WETH10()": "3fe96d94",
+        "factory()": "c45a0155"
+    },
+    "gasEstimates": null
+}

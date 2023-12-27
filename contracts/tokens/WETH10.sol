@@ -3,8 +3,8 @@
 // Adapted by Ethereum Community 2021
 pragma solidity 0.8.23;
 
-import "./interfaces/WETH10/IWETH10.sol";
-import "./interfaces/WETH10/IERC3156FlashBorrower.sol";
+import "../interfaces/WETH10/IWETH10.sol";
+import "../interfaces/WETH10/IERC3156FlashBorrower.sol";
 
 interface ITransferReceiver {
     function onTokenTransfer(

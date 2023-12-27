@@ -1,0 +1,197 @@
+{
+    "contractName": "ISwapCallee",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "int256",
+                    "name": "amount0Delta",
+                    "type": "int256"
+                },
+                {
+                    "internalType": "int256",
+                    "name": "amount1Delta",
+                    "type": "int256"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "callback",
+                    "type": "bytes"
+                }
+            ],
+            "name": "swapCall",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"int256\",\"name\":\"amount0Delta\",\"type\":\"int256\"},{\"internalType\":\"int256\",\"name\":\"amount1Delta\",\"type\":\"int256\"},{\"internalType\":\"bytes\",\"name\":\"callback\",\"type\":\"bytes\"}],\"name\":\"swapCall\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/callee/ISwapCallee.sol\":\"ISwapCallee\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/callee/ISwapCallee.sol\":{\"keccak256\":\"0xfc147ba4c142c393dfe03c88ec4f503877b6f3fd9cfecdf184028729b6beb95b\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://41cbb944710a65b78c754809aa48c262b17a46d9fa4e466f1609beaca3749e51\",\"dweb:/ipfs/QmPSifkoAjFU6G124nDeEswgfJgba2tbHcnuKWLyt7GEtE\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/callee/ISwapCallee.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/callee/ISwapCallee.sol",
+        "exportedSymbols": {
+            "ISwapCallee": [
+                1397
+            ]
+        },
+        "id": 1398,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1387,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:4"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "ISwapCallee",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "fullyImplemented": false,
+                "id": 1397,
+                "linearizedBaseContracts": [
+                    1397
+                ],
+                "name": "ISwapCallee",
+                "nameLocation": "75:11:4",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "8d4a8419",
+                        "id": 1396,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "swapCall",
+                        "nameLocation": "103:8:4",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 1394,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 1389,
+                                    "mutability": "mutable",
+                                    "name": "amount0Delta",
+                                    "nameLocation": "129:12:4",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 1396,
+                                    "src": "122:19:4",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_int256",
+                                        "typeString": "int256"
+                                    },
+                                    "typeName": {
+                                        "id": 1388,
+                                        "name": "int256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "122:6:4",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_int256",
+                                            "typeString": "int256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 1391,
+                                    "mutability": "mutable",
+                                    "name": "amount1Delta",
+                                    "nameLocation": "159:12:4",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 1396,
+                                    "src": "152:19:4",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_int256",
+                                        "typeString": "int256"
+                                    },
+                                    "typeName": {
+                                        "id": 1390,
+                                        "name": "int256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "152:6:4",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_int256",
+                                            "typeString": "int256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 1393,
+                                    "mutability": "mutable",
+                                    "name": "callback",
+                                    "nameLocation": "197:8:4",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 1396,
+                                    "src": "182:23:4",
+                                    "stateVariable": false,
+                                    "storageLocation": "calldata",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bytes_calldata_ptr",
+                                        "typeString": "bytes"
+                                    },
+                                    "typeName": {
+                                        "id": 1392,
+                                        "name": "bytes",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "182:5:4",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bytes_storage_ptr",
+                                            "typeString": "bytes"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "111:101:4"
+                        },
+                        "returnParameters": {
+                            "id": 1395,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "221:0:4"
+                        },
+                        "scope": 1397,
+                        "src": "94:128:4",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 1398,
+                "src": "65:160:4",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:190:4"
+    },
+    "functionHashes": {
+        "swapCall(int256,int256,bytes)": "8d4a8419"
+    },
+    "gasEstimates": null
+}

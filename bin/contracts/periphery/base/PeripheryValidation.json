@@ -1,0 +1,219 @@
+{
+    "contractName": "PeripheryValidation",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/base/PeripheryValidation.sol\":\"PeripheryValidation\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/base/PeripheryValidation.sol\":{\"keccak256\":\"0xf8f731de0d3d25d84e145fcb766aeea6a30487f04603c911fb198de6772a7789\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://17097b53485b057088c25ec1bf36fb84ff4344b4e7859264a1a9aeca7b3585d9\",\"dweb:/ipfs/QmVcWPNmDkJLoVqisTYK5CkAPXvXDMm9th1qjGn2Xdfuja\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/base/PeripheryValidation.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/periphery/base/PeripheryValidation.sol",
+        "exportedSymbols": {
+            "PeripheryValidation": [
+                4145
+            ]
+        },
+        "id": 4146,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 4131,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:18"
+            },
+            {
+                "abstract": true,
+                "baseContracts": [],
+                "canonicalName": "PeripheryValidation",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 4145,
+                "linearizedBaseContracts": [
+                    4145
+                ],
+                "name": "PeripheryValidation",
+                "nameLocation": "83:19:18",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "body": {
+                            "id": 4143,
+                            "nodeType": "Block",
+                            "src": "150:67:18",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 4139,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "id": 4136,
+                                                    "name": "deadline",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 4133,
+                                                    "src": "169:8:18",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint32",
+                                                        "typeString": "uint32"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": ">=",
+                                                "rightExpression": {
+                                                    "expression": {
+                                                        "id": 4137,
+                                                        "name": "block",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 4294967292,
+                                                        "src": "181:5:18",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_block",
+                                                            "typeString": "block"
+                                                        }
+                                                    },
+                                                    "id": 4138,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "187:9:18",
+                                                    "memberName": "timestamp",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "181:15:18",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "src": "169:27:18",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            ],
+                                            "id": 4135,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                4294967278,
+                                                4294967278
+                                            ],
+                                            "referencedDeclaration": 4294967278,
+                                            "src": "161:7:18",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                                                "typeString": "function (bool) pure"
+                                            }
+                                        },
+                                        "id": 4140,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "161:36:18",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 4141,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "161:36:18"
+                                },
+                                {
+                                    "id": 4142,
+                                    "nodeType": "PlaceholderStatement",
+                                    "src": "208:1:18"
+                                }
+                            ]
+                        },
+                        "id": 4144,
+                        "name": "checkDeadline",
+                        "nameLocation": "119:13:18",
+                        "nodeType": "ModifierDefinition",
+                        "parameters": {
+                            "id": 4134,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 4133,
+                                    "mutability": "mutable",
+                                    "name": "deadline",
+                                    "nameLocation": "140:8:18",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 4144,
+                                    "src": "133:15:18",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint32",
+                                        "typeString": "uint32"
+                                    },
+                                    "typeName": {
+                                        "id": 4132,
+                                        "name": "uint32",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "133:6:18",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint32",
+                                            "typeString": "uint32"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "132:17:18"
+                        },
+                        "src": "110:107:18",
+                        "virtual": false,
+                        "visibility": "internal"
+                    }
+                ],
+                "scope": 4146,
+                "src": "65:155:18",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:185:18"
+    },
+    "functionHashes": {},
+    "gasEstimates": null
+}

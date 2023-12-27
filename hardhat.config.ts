@@ -19,9 +19,9 @@ const config: HardhatUserConfig = {
     //     enabled: true,
     //     gasPrice: 25,
     // },
-    mocha: {
-        parallel: true
-    }
+    // mocha: {
+    //     parallel: true
+    // }
 }
 
 export default config

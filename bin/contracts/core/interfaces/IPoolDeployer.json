@@ -71,15 +71,15 @@
         "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol",
         "exportedSymbols": {
             "IPoolDeployer": [
-                617
+                1373
             ]
         },
-        "id": 618,
+        "id": 1374,
         "license": "GPL-3.0",
         "nodeType": "SourceUnit",
         "nodes": [
             {
-                "id": 585,
+                "id": 1341,
                 "literals": [
                     "solidity",
                     "^",
@@ -87,7 +87,7 @@
                     ".20"
                 ],
                 "nodeType": "PragmaDirective",
-                "src": "37:24:4"
+                "src": "37:24:2"
             },
             {
                 "abstract": false,
@@ -96,27 +96,27 @@
                 "contractDependencies": [],
                 "contractKind": "interface",
                 "fullyImplemented": false,
-                "id": 617,
+                "id": 1373,
                 "linearizedBaseContracts": [
-                    617
+                    1373
                 ],
                 "name": "IPoolDeployer",
-                "nameLocation": "75:13:4",
+                "nameLocation": "75:13:2",
                 "nodeType": "ContractDefinition",
                 "nodes": [
                     {
                         "canonicalName": "IPoolDeployer.BootstrapConfig",
-                        "id": 598,
+                        "id": 1354,
                         "members": [
                             {
                                 "constant": false,
-                                "id": 587,
+                                "id": 1343,
                                 "mutability": "mutable",
                                 "name": "tokenA",
-                                "nameLocation": "138:6:4",
+                                "nameLocation": "138:6:2",
                                 "nodeType": "VariableDeclaration",
-                                "scope": 598,
-                                "src": "130:14:4",
+                                "scope": 1354,
+                                "src": "130:14:2",
                                 "stateVariable": false,
                                 "storageLocation": "default",
                                 "typeDescriptions": {
@@ -124,10 +124,10 @@
                                     "typeString": "address"
                                 },
                                 "typeName": {
-                                    "id": 586,
+                                    "id": 1342,
                                     "name": "address",
                                     "nodeType": "ElementaryTypeName",
-                                    "src": "130:7:4",
+                                    "src": "130:7:2",
                                     "stateMutability": "nonpayable",
                                     "typeDescriptions": {
                                         "typeIdentifier": "t_address",
@@ -138,13 +138,13 @@
                             },
                             {
                                 "constant": false,
-                                "id": 589,
+                                "id": 1345,
                                 "mutability": "mutable",
                                 "name": "tokenB",
-                                "nameLocation": "163:6:4",
+                                "nameLocation": "163:6:2",
                                 "nodeType": "VariableDeclaration",
-                                "scope": 598,
-                                "src": "155:14:4",
+                                "scope": 1354,
+                                "src": "155:14:2",
                                 "stateVariable": false,
                                 "storageLocation": "default",
                                 "typeDescriptions": {
@@ -152,10 +152,10 @@
                                     "typeString": "address"
                                 },
                                 "typeName": {
-                                    "id": 588,
+                                    "id": 1344,
                                     "name": "address",
                                     "nodeType": "ElementaryTypeName",
-                                    "src": "155:7:4",
+                                    "src": "155:7:2",
                                     "stateMutability": "nonpayable",
                                     "typeDescriptions": {
                                         "typeIdentifier": "t_address",
@@ -166,13 +166,13 @@
                             },
                             {
                                 "constant": false,
-                                "id": 591,
+                                "id": 1347,
                                 "mutability": "mutable",
                                 "name": "amountA",
-                                "nameLocation": "185:7:4",
+                                "nameLocation": "185:7:2",
                                 "nodeType": "VariableDeclaration",
-                                "scope": 598,
-                                "src": "180:12:4",
+                                "scope": 1354,
+                                "src": "180:12:2",
                                 "stateVariable": false,
                                 "storageLocation": "default",
                                 "typeDescriptions": {
@@ -180,10 +180,10 @@
                                     "typeString": "uint256"
                                 },
                                 "typeName": {
-                                    "id": 590,
+                                    "id": 1346,
                                     "name": "uint",
                                     "nodeType": "ElementaryTypeName",
-                                    "src": "180:4:4",
+                                    "src": "180:4:2",
                                     "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
                                         "typeString": "uint256"
@@ -193,13 +193,13 @@
                             },
                             {
                                 "constant": false,
-                                "id": 593,
+                                "id": 1349,
                                 "mutability": "mutable",
                                 "name": "amountB",
-                                "nameLocation": "208:7:4",
+                                "nameLocation": "208:7:2",
                                 "nodeType": "VariableDeclaration",
-                                "scope": 598,
-                                "src": "203:12:4",
+                                "scope": 1354,
+                                "src": "203:12:2",
                                 "stateVariable": false,
                                 "storageLocation": "default",
                                 "typeDescriptions": {
@@ -207,10 +207,10 @@
                                     "typeString": "uint256"
                                 },
                                 "typeName": {
-                                    "id": 592,
+                                    "id": 1348,
                                     "name": "uint",
                                     "nodeType": "ElementaryTypeName",
-                                    "src": "203:4:4",
+                                    "src": "203:4:2",
                                     "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
                                         "typeString": "uint256"
@@ -220,13 +220,13 @@
                             },
                             {
                                 "constant": false,
-                                "id": 595,
+                                "id": 1351,
                                 "mutability": "mutable",
                                 "name": "basePriceAX96",
-                                "nameLocation": "231:13:4",
+                                "nameLocation": "231:13:2",
                                 "nodeType": "VariableDeclaration",
-                                "scope": 598,
-                                "src": "226:18:4",
+                                "scope": 1354,
+                                "src": "226:18:2",
                                 "stateVariable": false,
                                 "storageLocation": "default",
                                 "typeDescriptions": {
@@ -234,10 +234,10 @@
                                     "typeString": "uint256"
                                 },
                                 "typeName": {
-                                    "id": 594,
+                                    "id": 1350,
                                     "name": "uint",
                                     "nodeType": "ElementaryTypeName",
-                                    "src": "226:4:4",
+                                    "src": "226:4:2",
                                     "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
                                         "typeString": "uint256"
@@ -247,13 +247,13 @@
                             },
                             {
                                 "constant": false,
-                                "id": 597,
+                                "id": 1353,
                                 "mutability": "mutable",
                                 "name": "maxPriceAX96",
-                                "nameLocation": "260:12:4",
+                                "nameLocation": "260:12:2",
                                 "nodeType": "VariableDeclaration",
-                                "scope": 598,
-                                "src": "255:17:4",
+                                "scope": 1354,
+                                "src": "255:17:2",
                                 "stateVariable": false,
                                 "storageLocation": "default",
                                 "typeDescriptions": {
@@ -261,10 +261,10 @@
                                     "typeString": "uint256"
                                 },
                                 "typeName": {
-                                    "id": 596,
+                                    "id": 1352,
                                     "name": "uint",
                                     "nodeType": "ElementaryTypeName",
-                                    "src": "255:4:4",
+                                    "src": "255:4:2",
                                     "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
                                         "typeString": "uint256"
@@ -274,25 +274,25 @@
                             }
                         ],
                         "name": "BootstrapConfig",
-                        "nameLocation": "103:15:4",
+                        "nameLocation": "103:15:2",
                         "nodeType": "StructDefinition",
-                        "scope": 617,
-                        "src": "96:184:4",
+                        "scope": 1373,
+                        "src": "96:184:2",
                         "visibility": "public"
                     },
                     {
                         "canonicalName": "IPoolDeployer.DeployParams",
-                        "id": 606,
+                        "id": 1362,
                         "members": [
                             {
                                 "constant": false,
-                                "id": 600,
+                                "id": 1356,
                                 "mutability": "mutable",
                                 "name": "factory",
-                                "nameLocation": "327:7:4",
+                                "nameLocation": "327:7:2",
                                 "nodeType": "VariableDeclaration",
-                                "scope": 606,
-                                "src": "319:15:4",
+                                "scope": 1362,
+                                "src": "319:15:2",
                                 "stateVariable": false,
                                 "storageLocation": "default",
                                 "typeDescriptions": {
@@ -300,10 +300,10 @@
                                     "typeString": "address"
                                 },
                                 "typeName": {
-                                    "id": 599,
+                                    "id": 1355,
                                     "name": "address",
                                     "nodeType": "ElementaryTypeName",
-                                    "src": "319:7:4",
+                                    "src": "319:7:2",
                                     "stateMutability": "nonpayable",
                                     "typeDescriptions": {
                                         "typeIdentifier": "t_address",
@@ -314,13 +314,13 @@
                             },
                             {
                                 "constant": false,
-                                "id": 602,
+                                "id": 1358,
                                 "mutability": "mutable",
                                 "name": "fee",
-                                "nameLocation": "352:3:4",
+                                "nameLocation": "352:3:2",
                                 "nodeType": "VariableDeclaration",
-                                "scope": 606,
-                                "src": "345:10:4",
+                                "scope": 1362,
+                                "src": "345:10:2",
                                 "stateVariable": false,
                                 "storageLocation": "default",
                                 "typeDescriptions": {
@@ -328,10 +328,10 @@
                                     "typeString": "uint24"
                                 },
                                 "typeName": {
-                                    "id": 601,
+                                    "id": 1357,
                                     "name": "uint24",
                                     "nodeType": "ElementaryTypeName",
-                                    "src": "345:6:4",
+                                    "src": "345:6:2",
                                     "typeDescriptions": {
                                         "typeIdentifier": "t_uint24",
                                         "typeString": "uint24"
@@ -341,36 +341,36 @@
                             },
                             {
                                 "constant": false,
-                                "id": 605,
+                                "id": 1361,
                                 "mutability": "mutable",
                                 "name": "config",
-                                "nameLocation": "382:6:4",
+                                "nameLocation": "382:6:2",
                                 "nodeType": "VariableDeclaration",
-                                "scope": 606,
-                                "src": "366:22:4",
+                                "scope": 1362,
+                                "src": "366:22:2",
                                 "stateVariable": false,
                                 "storageLocation": "default",
                                 "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_BootstrapConfig_$598_storage_ptr",
+                                    "typeIdentifier": "t_struct$_BootstrapConfig_$1354_storage_ptr",
                                     "typeString": "struct IPoolDeployer.BootstrapConfig"
                                 },
                                 "typeName": {
-                                    "id": 604,
+                                    "id": 1360,
                                     "nodeType": "UserDefinedTypeName",
                                     "pathNode": {
-                                        "id": 603,
+                                        "id": 1359,
                                         "name": "BootstrapConfig",
                                         "nameLocations": [
-                                            "366:15:4"
+                                            "366:15:2"
                                         ],
                                         "nodeType": "IdentifierPath",
-                                        "referencedDeclaration": 598,
-                                        "src": "366:15:4"
+                                        "referencedDeclaration": 1354,
+                                        "src": "366:15:2"
                                     },
-                                    "referencedDeclaration": 598,
-                                    "src": "366:15:4",
+                                    "referencedDeclaration": 1354,
+                                    "src": "366:15:2",
                                     "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_BootstrapConfig_$598_storage_ptr",
+                                        "typeIdentifier": "t_struct$_BootstrapConfig_$1354_storage_ptr",
                                         "typeString": "struct IPoolDeployer.BootstrapConfig"
                                     }
                                 },
@@ -378,40 +378,40 @@
                             }
                         ],
                         "name": "DeployParams",
-                        "nameLocation": "295:12:4",
+                        "nameLocation": "295:12:2",
                         "nodeType": "StructDefinition",
-                        "scope": 617,
-                        "src": "288:108:4",
+                        "scope": 1373,
+                        "src": "288:108:2",
                         "visibility": "public"
                     },
                     {
                         "functionSelector": "f3778fd8",
-                        "id": 616,
+                        "id": 1372,
                         "implemented": false,
                         "kind": "function",
                         "modifiers": [],
                         "name": "deployParams",
-                        "nameLocation": "413:12:4",
+                        "nameLocation": "413:12:2",
                         "nodeType": "FunctionDefinition",
                         "parameters": {
-                            "id": 607,
+                            "id": 1363,
                             "nodeType": "ParameterList",
                             "parameters": [],
-                            "src": "425:2:4"
+                            "src": "425:2:2"
                         },
                         "returnParameters": {
-                            "id": 615,
+                            "id": 1371,
                             "nodeType": "ParameterList",
                             "parameters": [
                                 {
                                     "constant": false,
-                                    "id": 609,
+                                    "id": 1365,
                                     "mutability": "mutable",
                                     "name": "factory",
-                                    "nameLocation": "486:7:4",
+                                    "nameLocation": "486:7:2",
                                     "nodeType": "VariableDeclaration",
-                                    "scope": 616,
-                                    "src": "478:15:4",
+                                    "scope": 1372,
+                                    "src": "478:15:2",
                                     "stateVariable": false,
                                     "storageLocation": "default",
                                     "typeDescriptions": {
@@ -419,10 +419,10 @@
                                         "typeString": "address"
                                     },
                                     "typeName": {
-                                        "id": 608,
+                                        "id": 1364,
                                         "name": "address",
                                         "nodeType": "ElementaryTypeName",
-                                        "src": "478:7:4",
+                                        "src": "478:7:2",
                                         "stateMutability": "nonpayable",
                                         "typeDescriptions": {
                                             "typeIdentifier": "t_address",
@@ -433,13 +433,13 @@
                                 },
                                 {
                                     "constant": false,
-                                    "id": 611,
+                                    "id": 1367,
                                     "mutability": "mutable",
                                     "name": "fee",
-                                    "nameLocation": "502:3:4",
+                                    "nameLocation": "502:3:2",
                                     "nodeType": "VariableDeclaration",
-                                    "scope": 616,
-                                    "src": "495:10:4",
+                                    "scope": 1372,
+                                    "src": "495:10:2",
                                     "stateVariable": false,
                                     "storageLocation": "default",
                                     "typeDescriptions": {
@@ -447,10 +447,10 @@
                                         "typeString": "uint24"
                                     },
                                     "typeName": {
-                                        "id": 610,
+                                        "id": 1366,
                                         "name": "uint24",
                                         "nodeType": "ElementaryTypeName",
-                                        "src": "495:6:4",
+                                        "src": "495:6:2",
                                         "typeDescriptions": {
                                             "typeIdentifier": "t_uint24",
                                             "typeString": "uint24"
@@ -460,58 +460,58 @@
                                 },
                                 {
                                     "constant": false,
-                                    "id": 614,
+                                    "id": 1370,
                                     "mutability": "mutable",
                                     "name": "config",
-                                    "nameLocation": "530:6:4",
+                                    "nameLocation": "530:6:2",
                                     "nodeType": "VariableDeclaration",
-                                    "scope": 616,
-                                    "src": "507:29:4",
+                                    "scope": 1372,
+                                    "src": "507:29:2",
                                     "stateVariable": false,
                                     "storageLocation": "memory",
                                     "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_BootstrapConfig_$598_memory_ptr",
+                                        "typeIdentifier": "t_struct$_BootstrapConfig_$1354_memory_ptr",
                                         "typeString": "struct IPoolDeployer.BootstrapConfig"
                                     },
                                     "typeName": {
-                                        "id": 613,
+                                        "id": 1369,
                                         "nodeType": "UserDefinedTypeName",
                                         "pathNode": {
-                                            "id": 612,
+                                            "id": 1368,
                                             "name": "BootstrapConfig",
                                             "nameLocations": [
-                                                "507:15:4"
+                                                "507:15:2"
                                             ],
                                             "nodeType": "IdentifierPath",
-                                            "referencedDeclaration": 598,
-                                            "src": "507:15:4"
+                                            "referencedDeclaration": 1354,
+                                            "src": "507:15:2"
                                         },
-                                        "referencedDeclaration": 598,
-                                        "src": "507:15:4",
+                                        "referencedDeclaration": 1354,
+                                        "src": "507:15:2",
                                         "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_BootstrapConfig_$598_storage_ptr",
+                                            "typeIdentifier": "t_struct$_BootstrapConfig_$1354_storage_ptr",
                                             "typeString": "struct IPoolDeployer.BootstrapConfig"
                                         }
                                     },
                                     "visibility": "internal"
                                 }
                             ],
-                            "src": "477:60:4"
+                            "src": "477:60:2"
                         },
-                        "scope": 617,
-                        "src": "404:134:4",
+                        "scope": 1373,
+                        "src": "404:134:2",
                         "stateMutability": "view",
                         "virtual": false,
                         "visibility": "external"
                     }
                 ],
-                "scope": 618,
-                "src": "65:476:4",
+                "scope": 1374,
+                "src": "65:476:2",
                 "usedErrors": [],
                 "usedEvents": []
             }
         ],
-        "src": "37:506:4"
+        "src": "37:506:2"
     },
     "functionHashes": {
         "deployParams()": "f3778fd8"
