@@ -68,13 +68,11 @@ library Oracle {
         returns (Observation memory beforeOrAt, Observation memory atOrAfter)
     {
         Observation memory first = observations[0];
-        if (observations.length == 1) {
-            return (first, first);
-        }
-
         Observation memory last = observations[cardinality - 1];
+
         require(target >= first.blockTimestamp);
-        if (target >= last.blockTimestamp) return (last, last);
+        if (observations.length == 1 || target >= last.blockTimestamp)
+            return (last, last);
 
         uint l = 0;
         uint r = cardinality - 1;
