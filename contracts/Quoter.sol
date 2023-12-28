@@ -21,6 +21,8 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
     using Path for bytes;
     using SafeCast for *;
 
+    uint private constant MAX = type(uint).max;
+
     constructor(
         address _factory,
         address _WETH10
