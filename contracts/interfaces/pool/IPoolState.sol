@@ -13,6 +13,8 @@ interface IPoolState {
 
     function protocolFees() external returns (uint token0, uint token1);
 
+    function constants() external returns (uint token0, uint token1);
+
     function observe(
         uint[] calldata secondAgos
     )

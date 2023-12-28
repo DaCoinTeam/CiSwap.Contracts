@@ -10,10 +10,6 @@ interface IPoolImmutables {
 
     function fee() external view returns (uint24);
 
-    function constant0() external view returns (uint);
-
-    function constant1() external view returns (uint);
-
     function config()
         external
         view

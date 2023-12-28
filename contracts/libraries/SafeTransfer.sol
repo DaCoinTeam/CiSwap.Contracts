@@ -18,6 +18,6 @@ library SafeTransfer {
         address to,
         uint256 amount
     ) internal {
-        return IERC20(token).safeTransferFrom(from, to, amount);
+        IERC20(token).safeTransferFrom(from, to, amount);
     }
 }
