@@ -322,17 +322,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
                 balance0NetPlusConstant0,
                 balance1NetPlusConstant1
             );
-        console.log(
-            "bl inc %s %s",
-            balance0NetPlusConstant0 - _slot0.reserve0,
-            balance1NetPlusConstant1 - _slot0.reserve1
-        );
-        console.log(
-            "constant inc %s %s",
-            constant0Increment,
-            constant1Increment
-        );
-        console.log("amount  %s", amount);
+
         _mint(recipient, amount);
 
         uint balance0NetPlusConstant0Updated = balance0NetPlusConstant0;
@@ -389,6 +379,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
                 balance0Net,
                 balance1Net
             );
+
         SafeTransfer.transfer(token0, recipient, amount0);
         SafeTransfer.transfer(token1, recipient, amount1);
 
@@ -411,8 +402,6 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             constants.token1 -= constant1Decrement;
             balance1NetPlusConstant1Updated -= constant1Decrement;
         }
-        console.log("a0mout %s a1mount %s", amount0, amount1);
-        console.log("cd0 %s cd1 %s", constant0Decrement, constant1Decrement);
         _update(
             balance0NetPlusConstant0Updated,
             balance1NetPlusConstant1Updated
