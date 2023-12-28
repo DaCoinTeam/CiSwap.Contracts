@@ -18,15 +18,6 @@ contract Aggregator is IAggregator, Context, PeripheryPoolManagement {
         address _WETH10
     ) PeripheryImmutables(_factory, _WETH10) {}
 
-    struct AggregatePriceX96Current {
-        address tokenIn;
-        address tokenOut;
-        uint32 indexPool;
-        bool zeroForOne;
-        address pool;
-        uint24 fee;
-    }
-
     function _getReserves(
         address pool,
         uint secondOffset,
@@ -56,11 +47,20 @@ contract Aggregator is IAggregator, Context, PeripheryPoolManagement {
         }
     }
 
+    struct AggregatePriceX96Current {
+        address tokenIn;
+        address tokenOut;
+        uint32 indexPool;
+        bool zeroForOne;
+        address pool;
+        uint24 fee;
+    }
+
     function aggregatePriceX96(
         uint secondOffset,
         uint16 numberOfSnapshots,
         bytes memory path
-    ) external override view returns (uint[] memory priceX96s) {
+    ) external view override returns (uint[] memory priceX96s) {
         priceX96s = new uint[](numberOfSnapshots);
         bool first = true;
         AggregatePriceX96Current memory current;
@@ -127,7 +127,7 @@ contract Aggregator is IAggregator, Context, PeripheryPoolManagement {
         address tokenA,
         address tokenB,
         uint32 indexPool
-    ) external override view returns (uint[] memory liquidities) {
+    ) external view override returns (uint[] memory liquidities) {
         liquidities = new uint[](numberOfSnapshots);
 
         for (uint16 i = 0; i < numberOfSnapshots; i++) {
