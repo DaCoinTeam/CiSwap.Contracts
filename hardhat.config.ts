@@ -3,6 +3,7 @@ import { HardhatUserConfig } from "hardhat/config"
 import "@nomicfoundation/hardhat-toolbox"
 
 import "hardhat-gas-reporter"
+import "hardhat-contract-sizer"
 
 const config: HardhatUserConfig = {
     solidity: {
@@ -10,15 +11,15 @@ const config: HardhatUserConfig = {
         settings: {
             optimizer: {
                 enabled: true,
-                runs: 2000,
+                runs: 500,
             },
         },
     },
-    // gasReporter: {
-    //     currency: "ETH",
-    //     enabled: true,
-    //     gasPrice: 25,
-    // },
+    gasReporter: {
+        currency: "ETH",
+        enabled: true,
+        gasPrice: 25,
+    },
     // mocha: {
     //     parallel: true
     // }

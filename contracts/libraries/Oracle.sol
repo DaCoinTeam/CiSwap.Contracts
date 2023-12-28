@@ -52,7 +52,6 @@ library Oracle {
     ) internal returns (uint cardinalityUpdated) {
         Observation memory last = self[cardinality - 1];
         if (time == last.blockTimestamp) {
-            self[cardinality - 1] = _transform(last, time, reserve0, reserve1);
             return cardinality;
         }
         self.push(_transform(last, time, reserve0, reserve1));
@@ -73,30 +72,29 @@ library Oracle {
         Observation memory first = observations[0];
         Observation memory last = observations[cardinality - 1];
 
+        require(target >= first.blockTimestamp, "Invalid timestamp");
         if (target >= last.blockTimestamp) return (last, last);
 
-        if (target >= first.blockTimestamp) {
-            uint l = 0;
-            uint r = cardinality - 1;
+        uint l = 0;
+        uint r = cardinality - 1;
 
-            uint i;
+        uint i;
 
-            while (true) {
-                i = Math.average(l, r);
+        while (true) {
+            i = Math.average(l, r);
 
-                beforeOrAt = observations[i];
-                if (beforeOrAt.blockTimestamp > target) {
-                    r = i - 1;
-                    continue;
-                }
-
-                atOrAfter = observations[i + 1];
-                if (atOrAfter.blockTimestamp <= target) {
-                    l = i + 1;
-                    continue;
-                }
-                break;
+            beforeOrAt = observations[i];
+            if (beforeOrAt.blockTimestamp > target) {
+                r = i - 1;
+                continue;
             }
+
+            atOrAfter = observations[i + 1];
+            if (atOrAfter.blockTimestamp <= target) {
+                l = i + 1;
+                continue;
+            }
+            break;
         }
     }
 
@@ -137,9 +135,7 @@ library Oracle {
             Observation memory atOrAfter
         ) = _binarySearch(observations, target, cardinality);
         if (beforeOrAt.blockTimestamp == atOrAfter.blockTimestamp) {
-            if (atOrAfter.blockTimestamp != 0) {
-                atOrAfter = _transform(atOrAfter, time, reserve0, reserve1);
-            }
+            atOrAfter = _transform(atOrAfter, time, reserve0, reserve1);
             return (atOrAfter.reserve0Cumulative, atOrAfter.reserve1Cumulative);
         }
 

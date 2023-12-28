@@ -11,6 +11,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.1",
     "bigint-isqrt": "^0.3.2",
+    "hardhat-contract-sizer": "^2.10.0",
     "i": "^0.3.7",
     "npm": "^10.2.5",
     "solidity-bytes-utils": "^0.8.0",

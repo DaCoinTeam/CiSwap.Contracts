@@ -97,11 +97,11 @@ describe("test router", () => {
     })
 
     it("should exact output successful", async () => {
-        await _initialize.tokens[3].contract
+        await _initialize.tokens[1].contract
             .getFunction("approve")
             .send(_initialize.router.address, BigInt(10e20))
-        for (let i = 0; i < 10; i++) {
-            time.increase(15 * 60)
+        for (let i = 0; i < 20; i++) {
+            await time.increase(30 * 60)
             await _initialize.router.contract.getFunction("exactOutput").send({
                 amountOut: BigInt(10e17),
                 amountInMax: BigInt(10e19),
@@ -110,51 +110,49 @@ describe("test router", () => {
                     [
                         "address",
                         "uint32",
+                        "address"
+                    ],
+                    [
+                        _initialize.tokens[0].address,
+                        0,
+                        _initialize.tokens[1].address
+                    ]
+                ),
+                deadline:
+          BigInt(Date.now()) / BigInt(1000) + BigInt(60 * 60 * 24 * 2 * 60),
+            })
+        }
+
+        const values = await _initialize.oracleAggregator.contract
+            .getFunction("aggregatePriceX96")
+            .staticCall(
+                BigInt(60 * 60),
+                BigInt(10),
+                ethers.solidityPacked(
+                    [
                         "address",
                         "uint32",
-                        "address",
-                        "uint32",
-                        "address",
+                        "address"
                     ],
                     [
                         _initialize.tokens[0].address,
                         0,
                         _initialize.tokens[1].address,
-                        0,
-                        _initialize.tokens[2].address,
-                        0,
-                        _initialize.tokens[3].address,
                     ]
-                ),
-                deadline: BigInt(Date.now()) / BigInt(1000) + BigInt(60 * 60 * 24 * 2 * 60),
-            })
-        }
-
-        const values = await _initialize.oracleAggregator.contract.getFunction("aggregatePriceX96").staticCall(
-            BigInt(60 * 60),
-            BigInt(30),
-            ethers.solidityPacked(
-                [
-                    "address",
-                    "uint32",
-                    "address",
-                    "uint32",
-                    "address",
-                    "uint32",
-                    "address",
-                ],
-                [
-                    _initialize.tokens[0].address,
-                    0,
-                    _initialize.tokens[1].address,
-                    0,
-                    _initialize.tokens[2].address,
-                    0,
-                    _initialize.tokens[3].address,
-                ]
+                )
             )
-        )
-        console.log(values.map(value => value * BigInt(1000) >> BigInt(96)))
+        console.log(values.map((value) => (value * BigInt(1000)) >> BigInt(96)))
+
+        const values2 = await _initialize.oracleAggregator.contract
+            .getFunction("aggregateLiquidity")
+            .staticCall(
+                BigInt(60 * 60),
+                BigInt(7),
+                _initialize.tokens[0].address,
+                _initialize.tokens[1].address,
+                0
+            )
+        console.log(values2)
 
         // test next price
         time.increase(24 * 60 * 60)
@@ -166,24 +164,16 @@ describe("test router", () => {
                 [
                     "address",
                     "uint32",
-                    "address",
-                    "uint32",
-                    "address",
-                    "uint32",
-                    "address",
+                    "address"
                 ],
                 [
                     _initialize.tokens[0].address,
                     0,
-                    _initialize.tokens[1].address,
-                    0,
-                    _initialize.tokens[2].address,
-                    0,
-                    _initialize.tokens[3].address,
+                    _initialize.tokens[1].address
                 ]
             ),
-            deadline: BigInt(Date.now()) / BigInt(1000) + BigInt(60 * 60 * 24 * 2 * 60),
+            deadline:
+        BigInt(Date.now()) / BigInt(1000) + BigInt(60 * 60 * 24 * 2 * 60),
         })
-
     })
 })

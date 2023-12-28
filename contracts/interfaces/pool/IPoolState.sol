@@ -8,10 +8,10 @@ interface IPoolState {
             uint reserve0,
             uint reserve1,
             uint observationCardinality,
-            bool unlocked,
-            uint feeProtocol0,
-            uint feeProtocol1
+            bool unlocked
         );
+
+    function protocolFees() external returns (uint token0, uint token1);
 
     function observe(
         uint[] calldata secondAgos

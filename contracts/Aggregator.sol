@@ -27,11 +27,40 @@ contract Aggregator is IAggregator, Context, PeripheryPoolManagement {
         uint24 fee;
     }
 
+    function _getReserves(
+        address pool,
+        uint secondOffset,
+        uint16 i
+    ) private view returns (bool exist, uint reserve0, uint reserve1) {
+        require(i > 0);
+        uint[] memory observeParams = new uint[](2);
+        (observeParams[0], observeParams[1]) = (
+            (i - 1) * secondOffset,
+            (i + 1) * secondOffset
+        );
+        (
+            uint[] memory reserve0Cumulatives,
+            uint[] memory reserve1Cumulatives
+        ) = IPool(pool).observe(observeParams);
+
+        exist = reserve0Cumulatives[0] > 0 || reserve1Cumulatives[0] > 0;
+
+        if (exist) {
+            uint timeDelta = 2 * secondOffset;
+            reserve0 =
+                (reserve0Cumulatives[0] - reserve0Cumulatives[1]) /
+                timeDelta;
+            reserve1 =
+                (reserve1Cumulatives[0] - reserve1Cumulatives[1]) /
+                timeDelta;
+        }
+    }
+
     function aggregatePriceX96(
         uint secondOffset,
         uint16 numberOfSnapshots,
         bytes memory path
-    ) external view returns (uint[] memory priceX96s) {
+    ) external override view returns (uint[] memory priceX96s) {
         priceX96s = new uint[](numberOfSnapshots);
         bool first = true;
         AggregatePriceX96Current memory current;
@@ -62,24 +91,17 @@ contract Aggregator is IAggregator, Context, PeripheryPoolManagement {
                             1 << 96
                         );
                     } else {
-                        uint[] memory observeParams = new uint[](2);
-                        (observeParams[0], observeParams[1]) = (
-                            (i - 1) * secondOffset,
-                            (i + 1) * secondOffset
-                        );
                         (
-                            uint[] memory reserve0Cumulatives,
-                            uint[] memory reserve1Cumulatives
-                        ) = IPool(current.pool).observe(observeParams);
-                        if (reserve0Cumulatives[0] == 0) {
+                            bool exist,
+                            uint reserve0,
+                            uint reserve1
+                        ) = _getReserves(current.pool, secondOffset, i);
+
+                        if (!exist) {
                             priceX96s[i] = 0;
                             break;
                         }
-                        uint timeDelta = 2 * secondOffset;
-                        uint reserve0 = (reserve0Cumulatives[0] -
-                            reserve0Cumulatives[1]) / timeDelta;
-                        uint reserve1 = (reserve1Cumulatives[0] -
-                            reserve1Cumulatives[1]) / timeDelta;
+
                         priceX96s[i] = priceX96s[i].mulDiv(
                             PoolMath.computePriceX96(
                                 reserve0,
@@ -96,6 +118,32 @@ contract Aggregator is IAggregator, Context, PeripheryPoolManagement {
                 continue;
             }
             break;
+        }
+    }
+
+    function aggregateLiquidity(
+        uint secondOffset,
+        uint16 numberOfSnapshots,
+        address tokenA,
+        address tokenB,
+        uint32 indexPool
+    ) external override view returns (uint[] memory liquidities) {
+        liquidities = new uint[](numberOfSnapshots);
+
+        for (uint16 i = 0; i < numberOfSnapshots; i++) {
+            address pool = _getPool(tokenA, tokenB, indexPool);
+            if (i == 0) {
+                liquidities[0] = IPool(pool).liquidity();
+                continue;
+            }
+            (bool exist, uint reserve0, uint reserve1) = _getReserves(
+                pool,
+                secondOffset,
+                i
+            );
+            liquidities[i] = exist
+                ? PoolMath.computeLiquidity(reserve0, reserve1)
+                : 0;
         }
     }
 }
