@@ -51,7 +51,7 @@
 //                 recipient: _initialize.signers[0].address,
 //                 callback: "0x",
 //             })
-//         ).to.be.rejectedWith("Not sufficient input")
+//         ).to.be.rejectedWith("Insufficient input")
 
 //         await _initialize.tokens[0].contract
 //             .getFunction("transfer")

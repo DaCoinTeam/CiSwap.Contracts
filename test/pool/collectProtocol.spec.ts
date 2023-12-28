@@ -62,6 +62,6 @@
 //         await pool.contract.getFunction("collectProtocol").send(_initialize.signers[1].address, BigInt("9999999999999999999999999999999"), BigInt("9999999999999999999999999999999"))
 //         // const slot0 = await pool.contract.getFunction("slot0").staticCall()
 //         const balance0After = await _initialize.tokens[0].contract.getFunction("balanceOf").staticCall(_initialize.signers[1].address)
-//         expect(BigInt(balance0After) - BigInt(balance0Before)).to.be.eq(res[1])
+//         expect(BigInt(balance0After) - BigInt(balance0Before)).to.be.eq(res[0])
 //     })
 // })

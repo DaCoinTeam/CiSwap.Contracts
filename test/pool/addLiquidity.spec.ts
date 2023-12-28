@@ -73,8 +73,8 @@
 //         const burn1 = await pool.contract
 //             .getFunction("burn")
 //             .staticCall(_initialize.signers[0].address, mitable)
-//         expect(BigInt(10e19)).to.be.eq(BigInt(burn1[0]))
-//         expect(BigInt(0)).to.be.eq(BigInt(burn1[1]))
+//         expect(BigInt(10e19)).to.be.eq(BigInt(burn1[1]))
+//         expect(BigInt(0)).to.be.eq(BigInt(burn1[0]))
 //         await pool.contract
 //             .getFunction("burn")
 //             .send(_initialize.signers[0].address, mitable)

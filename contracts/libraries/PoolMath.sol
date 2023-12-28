@@ -135,13 +135,13 @@ library PoolMath {
         uint totalSupply,
         uint reserve0,
         uint reserve1,
-        uint adjusted0Net,
-        uint adjusted1Net
+        uint adjusted0,
+        uint adjusted1
     ) internal pure returns (uint amount) {
         uint liquidityBefore = PoolMath.computeLiquidity(reserve0, reserve1);
         uint liquidityAfter = PoolMath.computeLiquidity(
-            adjusted0Net,
-            adjusted1Net
+            adjusted0,
+            adjusted1
         );
         require(liquidityAfter > liquidityBefore);
         amount = (liquidityAfter - liquidityBefore).mulDiv(
@@ -176,14 +176,14 @@ library PoolMath {
     function hasLiquidityGrownAfterFees(
         uint reserve0,
         uint reserve1,
-        uint adjusted0Net,
-        uint adjusted1Net,
+        uint adjusted0,
+        uint adjusted1,
         uint24 fee
     ) internal pure returns (bool) {
         uint liquidityBefore = PoolMath.computeLiquidity(reserve0, reserve1);
         uint liquidityAfterGross = PoolMath.computeLiquidity(
-            adjusted0Net,
-            adjusted1Net
+            adjusted0,
+            adjusted1
         );
         uint liquidityAfter = liquidityAfterGross.computePercentageOf(
             10e4 - fee
