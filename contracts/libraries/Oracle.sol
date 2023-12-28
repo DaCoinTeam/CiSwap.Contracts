@@ -67,12 +67,12 @@ library Oracle {
         pure
         returns (Observation memory beforeOrAt, Observation memory atOrAfter)
     {
-        require(observations.length >= 2);
+        require(observations.length > 1);
 
         Observation memory first = observations[0];
         Observation memory last = observations[cardinality - 1];
 
-        require(target >= first.blockTimestamp, "Invalid timestamp");
+        require(target >= first.blockTimestamp);
         if (target >= last.blockTimestamp) return (last, last);
 
         uint l = 0;
@@ -129,7 +129,21 @@ library Oracle {
         uint cardinality,
         uint secondAgo
     ) private pure returns (uint reserve0Cumulative, uint reserve1Cumulative) {
+        Observation memory first = observations[0];
         uint target = time - secondAgo;
+        require(target >= first.blockTimestamp, "Invalid target timestamp");
+        if (observations.length == 1) {
+            first = _transform(
+                first,
+                target,
+                reserve0,
+                reserve1
+            );
+            return (
+                first.reserve0Cumulative,
+                first.reserve1Cumulative
+            );
+        }
         (
             Observation memory beforeOrAt,
             Observation memory atOrAfter
