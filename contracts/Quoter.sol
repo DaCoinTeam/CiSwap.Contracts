@@ -26,6 +26,21 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
         address _WETH10
     ) PeripheryImmutables(_factory, _WETH10) {}
 
+    function quoteAddLiquidity(
+        address tokenA,
+        address tokenB,
+        uint32 indexPool,
+        uint amount0,
+        uint amount1
+    ) external returns (uint) {}
+
+    function quoteRemoveLiquidity(
+        address tokenA,
+        address tokenB,
+        uint32 indexPool,
+        uint amount
+    ) external returns (uint) {}
+
     function swapCall(
         int256 amount0Delta,
         int256 amount1Delta,
@@ -163,13 +178,6 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
     function _parseRevertReason(
         bytes memory reason
     ) private pure returns (uint) {
-        if (reason.length != 32) {
-            if (reason.length < 68) revert("Unexpected error");
-            assembly {
-                reason := add(reason, 0x04)
-            }
-            revert(abi.decode(reason, (string)));
-        }
-        return abi.decode(reason, (uint));
+        return reason.length != 32 ? 0 : abi.decode(reason, (uint));
     }
 }

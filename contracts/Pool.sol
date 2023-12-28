@@ -252,17 +252,17 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             cache.amountOut
         );
 
-        uint feeAmount = _computeFeeProtocol(cache.feeAmount);
-        params.zeroForOne
-            ? protocolFees.token1 += feeAmount
-            : protocolFees.token0 += feeAmount;
-
         amount0 = params.zeroForOne
             ? -cache.amountIn.toInt256()
             : cache.amountOut.toInt256();
         amount1 = params.zeroForOne
             ? cache.amountOut.toInt256()
             : -cache.amountIn.toInt256();
+
+        uint feeAmount = _computeFeeProtocol(cache.feeAmount);
+        params.zeroForOne
+            ? protocolFees.token1 += feeAmount
+            : protocolFees.token0 += feeAmount;
 
         if (params.callback.length > 0) {
             ISwapCallee(_msgSender()).swapCall(
@@ -271,18 +271,15 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
                 params.callback
             );
         }
+        uint balance0NetPlusConstant0 = _balance0NetPlusConstant0();
+        uint balance1NetPlusConstant1 = _balance1NetPlusConstant1();
 
-        uint balance0NetPlusConstant0 = _balance0NetPlusConstant0() -
-            (params.zeroForOne ? 0 : feeAmount);
-        uint balance1NetPlusConstant1 = _balance1NetPlusConstant1() -
-            (params.zeroForOne ? feeAmount : 0);
-
-        uint adjustedIn = params.zeroForOne
+        uint balanceInNetPlusConstantIn = params.zeroForOne
             ? balance0NetPlusConstant0
             : balance1NetPlusConstant1;
 
         require(
-            adjustedIn >= cache.reserveIn + cache.amountIn,
+            balanceInNetPlusConstantIn >= cache.reserveIn + cache.amountIn,
             "Insufficient amount input"
         );
         console.log(
@@ -292,7 +289,14 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             address(this)
         );
 
-        _update(balance0NetPlusConstant0, balance1NetPlusConstant1);
+        uint balance0NetPlusConstant0SubtractFee = balance0NetPlusConstant0 -
+            (params.zeroForOne ? 0 : feeAmount);
+        uint balance1NetPlusConstant1SubtractFee = balance1NetPlusConstant1 -
+            (params.zeroForOne ? feeAmount : 0);
+        _update(
+            balance0NetPlusConstant0SubtractFee,
+            balance1NetPlusConstant1SubtractFee
+        );
 
         emit Swap(_msgSender(), amount0, amount1, params.recipient);
     }
@@ -410,6 +414,15 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         emit Burn(_msgSender(), amount, amount0, amount1, recipient);
     }
 
+    struct FlashStateAfterCallback {
+        uint feeAmount0;
+        uint feeAmount1;
+        uint balance0NetPlusConstant0;
+        uint balance1NetPlusConstant1;
+        uint balance0NetPlusConstant0SubtractFee;
+        uint balance1NetPlusConstant1SubtractFee;
+    }
+
     function flash(
         address recipient,
         uint amount0,
@@ -423,20 +436,22 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
 
         Slot0 memory _slot0 = slot0;
 
-        uint balance0NetPlusConstant0 = _balance0NetPlusConstant0();
-        uint balance1NetPlusConstant1 = _balance1NetPlusConstant1();
+        FlashStateAfterCallback memory state;
+
+        state.balance0NetPlusConstant0 = _balance0NetPlusConstant0();
+        state.balance1NetPlusConstant1 = _balance1NetPlusConstant1();
 
         bool result = PoolMath.hasLiquidityGrownAfterFees(
             _slot0.reserve0,
             _slot0.reserve1,
-            balance0NetPlusConstant0,
-            balance1NetPlusConstant1,
+            state.balance0NetPlusConstant0,
+            state.balance1NetPlusConstant1,
             fee
         );
         require(result, "Insufficient amounts paid");
 
-        paid0 = balance0NetPlusConstant0 - (_slot0.reserve0 - amount0);
-        paid1 = balance1NetPlusConstant1 - (_slot0.reserve1 - amount1);
+        paid0 = state.balance0NetPlusConstant0 - (_slot0.reserve0 - amount0);
+        paid1 = state.balance1NetPlusConstant1 - (_slot0.reserve1 - amount1);
 
         uint feeAmount0 = _computeFeeProtocol(paid0);
         uint feeAmount1 = _computeFeeProtocol(paid1);
@@ -444,9 +459,14 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         protocolFees.token0 += feeAmount0;
         protocolFees.token1 += feeAmount1;
 
+        state.balance0NetPlusConstant0SubtractFee = state.balance0NetPlusConstant0 -
+            feeAmount0;
+        state.balance1NetPlusConstant1SubtractFee = state.balance1NetPlusConstant1 -
+            feeAmount1;
+
         _update(
-            balance0NetPlusConstant0 - feeAmount0,
-            balance1NetPlusConstant1 - feeAmount1
+            state.balance0NetPlusConstant0SubtractFee,
+            state.balance1NetPlusConstant1SubtractFee
         );
 
         emit Flash(_msgSender(), amount0, amount1, paid0, paid1, recipient);
