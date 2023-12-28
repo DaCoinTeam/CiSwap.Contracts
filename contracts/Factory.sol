@@ -15,6 +15,10 @@ contract Factory is IFactory, Ownable, PoolDeployer {
     mapping(address => mapping(address => address[])) public override getPool;
     address[] public override pools;
 
+    function allPools() external view returns (address[] memory) {
+        return pools;
+    }
+
     constructor() Ownable(_msgSender()) {
         getFeeAmountEnabled[250] = true;
         emit FeeAmountEnabled(250);
@@ -31,11 +35,11 @@ contract Factory is IFactory, Ownable, PoolDeployer {
     function createPool(
         CreatePoolParams calldata params
     ) external override returns (address pool) {
-        require(params.config.tokenA != params.config.tokenB);
+        require(params.config.tokenA != params.config.tokenB, "Same tokens");
 
-        require(params.config.basePriceAX96 < params.config.maxPriceAX96);
+        require(params.config.basePriceAX96 < params.config.maxPriceAX96, "Max less base");
 
-        require(getFeeAmountEnabled[params.fee]);
+        require(getFeeAmountEnabled[params.fee], "Fee not enabled");
 
         pool = deploy(
             DeployParams({

@@ -1,27 +1,37 @@
-import { ethers } from "hardhat";
+import { ethers } from "hardhat"
+import { extractAbi } from "./exact"
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+    await extractAbi()
+    const factory = await ethers.deployContract("Factory", [])
+    await factory.waitForDeployment()
+    const factoryAddress = await factory.getAddress()
+    console.log(`Factory ${factoryAddress}`)
 
-  const lockedAmount = ethers.parseEther("0.001");
+    const weth10 = await ethers.deployContract("WETH10", ["Wrapped KLAY", "WKLAY"])
+    await weth10.waitForDeployment()
+    const weth10Address = await weth10.getAddress()
+    console.log(`WETH10 ${weth10Address}`)
 
-  const lock = await ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
+    const router = await ethers.deployContract("Router", [factoryAddress, weth10Address])
+    await router.waitForDeployment()
+    const routerAddress = await router.getAddress()
+    console.log(`Router ${routerAddress}`)
 
-  await lock.waitForDeployment();
+    const quoter = await ethers.deployContract("Quoter", [factoryAddress, weth10Address])
+    await quoter.waitForDeployment()
+    const quoterAddress = await quoter.getAddress()
+    console.log(`Quoter ${quoterAddress}`)
 
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
-  );
+    const aggregator = await ethers.deployContract("Aggregator", [factoryAddress, weth10Address])
+    await aggregator.waitForDeployment()
+    const aggregatorddress = await aggregator.getAddress()
+    console.log(`Aggregator ${aggregatorddress}`)
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+    console.error(error)
+    process.exitCode = 1
+})
+
+//npx hardhat run --network baobap deploy/main.ts

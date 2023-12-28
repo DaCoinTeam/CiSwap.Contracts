@@ -31,6 +31,8 @@ interface IFactory {
 
     function pools(uint index) external view returns (address);
 
+    function allPools() external view returns (address[] memory);
+
     function feeTo() external view returns (address);
     function setFeeTo(address account) external;
 }
