@@ -16,7 +16,9 @@ interface IPoolActions {
         SwapParams calldata params
     ) external returns (int256 amount0, int256 amount1);
 
-    function mint(address recipient) external returns (uint amount);
+    function mint(
+        address recipient
+    ) external returns (uint amount);
 
     function burn(
         address recipient,

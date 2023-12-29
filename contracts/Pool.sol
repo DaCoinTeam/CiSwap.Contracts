@@ -16,6 +16,8 @@ import "./base/NoDelegateCall.sol";
 import "./interfaces/pool/IPool.sol";
 import "./interfaces/callee/ISwapCallee.sol";
 import "./interfaces/callee/IFlashCallee.sol";
+import "./interfaces/callee/IMintCallee.sol";
+import "./interfaces/callee/IBurnCallee.sol";
 
 contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
     using Oracle for Oracle.Observation[];
@@ -305,8 +307,8 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         address recipient
     ) external override lock noDelegateCall returns (uint amount) {
         uint _totalSupply = totalSupply();
-
         Slot0 memory _slot0 = slot0;
+
         uint balance0NetPlusConstant0 = _balance0NetPlusConstant0();
         uint balance1NetPlusConstant1 = _balance1NetPlusConstant1();
 
@@ -414,7 +416,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         emit Burn(_msgSender(), amount, amount0, amount1, recipient);
     }
 
-    struct FlashStateAfterCallback {
+    struct FlashPostCallbackState {
         uint feeAmount0;
         uint feeAmount1;
         uint balance0NetPlusConstant0;
@@ -436,7 +438,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
 
         Slot0 memory _slot0 = slot0;
 
-        FlashStateAfterCallback memory state;
+        FlashPostCallbackState memory state;
 
         state.balance0NetPlusConstant0 = _balance0NetPlusConstant0();
         state.balance1NetPlusConstant1 = _balance1NetPlusConstant1();
@@ -459,9 +461,11 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         protocolFees.token0 += feeAmount0;
         protocolFees.token1 += feeAmount1;
 
-        state.balance0NetPlusConstant0SubtractFee = state.balance0NetPlusConstant0 -
+        state.balance0NetPlusConstant0SubtractFee =
+            state.balance0NetPlusConstant0 -
             feeAmount0;
-        state.balance1NetPlusConstant1SubtractFee = state.balance1NetPlusConstant1 -
+        state.balance1NetPlusConstant1SubtractFee =
+            state.balance1NetPlusConstant1 -
             feeAmount1;
 
         _update(
