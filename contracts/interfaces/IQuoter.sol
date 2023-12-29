@@ -3,26 +3,26 @@ pragma solidity ^0.8.23;
 
 interface IQuoter {
     function quoteExactInput(
-        bytes memory path,
-        uint amountIn
+        uint amountIn,
+        bytes memory path
     ) external returns (uint amountOut);
 
     function quoteExactInputSingle(
+        uint amountIn,
         address tokenIn,
         address tokenOut,
-        uint32 indexPool,
-        uint amountIn
+        uint32 indexPool
     ) external returns (uint amountOut);
 
     function quoteExactOutput(
-        bytes memory path,
-        uint amountOut
+        uint amountOut,
+        bytes memory path
     ) external returns (uint amountIn);
 
     function quoteExactOutputSingle(
+        uint amountOut,
         address tokenIn,
         address tokenOut,
-        uint32 indexPool,
-        uint amountOut
+        uint32 indexPool
     ) external returns (uint amountIn);
 }

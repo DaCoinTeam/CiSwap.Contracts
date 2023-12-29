@@ -37,10 +37,10 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
     ) external returns (uint) {}
 
     function quoteRemoveLiquidity(
+        uint amount,
         address tokenA,
         address tokenB,
-        uint32 indexPool,
-        uint amount
+        uint32 indexPool
     ) external returns (uint) {}
 
     function swapCall(
@@ -80,8 +80,8 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
     }
 
     function quoteExactInput(
-        bytes memory path,
-        uint amountIn
+        uint amountIn,
+        bytes memory path
     ) external override returns (uint amountOut) {
         while (true) {
             bool hasMultiplePools = path.hasMultiplePools();
@@ -90,10 +90,10 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
                 .decodeFirstPool();
 
             amountIn = quoteExactInputSingle(
+                amountIn,
                 tokenIn,
                 tokenOut,
-                indexPool,
-                amountIn
+                indexPool
             );
 
             if (hasMultiplePools) {
@@ -105,10 +105,10 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
     }
 
     function quoteExactInputSingle(
+        uint amountIn,
         address tokenIn,
         address tokenOut,
-        uint32 indexPool,
-        uint amountIn
+        uint32 indexPool
     ) public override returns (uint amountOut) {
         bool zeroForOne = tokenIn < tokenOut;
 
@@ -130,8 +130,8 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
     }
 
     function quoteExactOutput(
-        bytes memory path,
-        uint amountOut
+        uint amountOut,
+        bytes memory path
     ) external override returns (uint amountIn) {
         while (true) {
             bool hasMultiplePools = path.hasMultiplePools();
@@ -140,10 +140,10 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
                 .decodeFirstPool();
 
             amountOut = quoteExactOutputSingle(
+                amountOut,
                 tokenIn,
                 tokenOut,
-                indexPool,
-                amountOut
+                indexPool
             );
 
             if (hasMultiplePools) {
@@ -155,10 +155,10 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
     }
 
     function quoteExactOutputSingle(
+        uint amountOut,
         address tokenIn,
         address tokenOut,
-        uint32 indexPool,
-        uint amountOut
+        uint32 indexPool
     ) public override returns (uint amountIn) {
         bool zeroForOne = tokenIn < tokenOut;
         address pool = _getPool(tokenIn, tokenOut, indexPool);
