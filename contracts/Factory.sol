@@ -4,13 +4,17 @@ pragma solidity ^0.8.23;
 import "./interfaces/IFactory.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./interfaces/IPoolDeployer.sol";
+import "@openzeppelin/contracts/utils/math/SafeCast.sol";
 import "./base/PoolDeployer.sol";
 import "./interfaces/pool/IPool.sol";
 import "./libraries/TokenLib.sol";
 import "./libraries/SafeTransfer.sol";
 
 contract Factory is IFactory, Ownable, PoolDeployer {
+    using SafeCast for *;
+
     address public override feeTo;
+
     mapping(uint24 => bool) public override getFeeAmountEnabled;
     mapping(address => mapping(address => address[])) public override getPool;
     address[] public override pools;
@@ -37,7 +41,10 @@ contract Factory is IFactory, Ownable, PoolDeployer {
     ) external override returns (address pool) {
         require(params.config.tokenA != params.config.tokenB, "Same tokens");
 
-        require(params.config.basePriceAX96 < params.config.maxPriceAX96, "Max less base");
+        require(
+            params.config.basePriceAX96 < params.config.maxPriceAX96,
+            "Max less base"
+        );
 
         require(getFeeAmountEnabled[params.fee], "Fee not enabled");
 
@@ -63,10 +70,13 @@ contract Factory is IFactory, Ownable, PoolDeployer {
         SafeTransfer.transferFrom(token0, _msgSender(), pool, amount0);
         SafeTransfer.transferFrom(token1, _msgSender(), pool, amount1);
         Ownable(pool).transferOwnership(_msgSender());
-        IPool(pool).initialize();
 
         getPool[token0][token1].push(pool);
         getPool[token1][token0].push(pool);
+
+        uint32 indexPool = getPool[token0][token1].length.toUint32();
+
+        IPool(pool).initialize(indexPool);
 
         emit PoolCreated(_msgSender(), params.config, pool);
     }

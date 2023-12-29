@@ -10,6 +10,8 @@ interface IPoolImmutables {
 
     function fee() external view returns (uint24);
 
+    function indexPool() external view returns (uint32);
+
     function config()
         external
         view

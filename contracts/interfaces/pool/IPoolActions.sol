@@ -10,7 +10,7 @@ interface IPoolActions {
         bytes callback;
     }
 
-    function initialize() external;
+    function initialize(uint32 indexPool) external;
 
     function swap(
         SwapParams calldata params

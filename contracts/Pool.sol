@@ -31,6 +31,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
 
     address public immutable override token0;
     address public immutable override token1;
+    uint32 public override indexPool;
 
     IPoolDeployer.BootstrapConfig public override config;
 
@@ -156,7 +157,9 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         return PoolMath.computeLiquidity(_slot0.reserve0, _slot0.reserve1);
     }
 
-    function initialize() external override onlyFactory {
+    function initialize(uint32 _indexPool) external override onlyFactory {
+        indexPool = _indexPool;
+
         uint balance0NetWithConstant = _balance0NetWithConstant();
         uint balance1NetWithConstant = _balance1NetWithConstant();
 
