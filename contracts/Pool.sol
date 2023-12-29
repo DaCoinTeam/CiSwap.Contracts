@@ -157,21 +157,21 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
     }
 
     function initialize() external override onlyFactory {
-        uint balance0NetPlusConstant0 = _balance0NetPlusConstant0();
-        uint balance1NetPlusConstant1 = _balance1NetPlusConstant1();
+        uint balance0NetWithConstant = _balance0NetWithConstant();
+        uint balance1NetWithConstant = _balance1NetWithConstant();
 
         uint observationCardinality = observations.initialize(block.timestamp);
 
         slot0 = Slot0({
-            reserve0: balance0NetPlusConstant0,
-            reserve1: balance1NetPlusConstant1,
+            reserve0: balance0NetWithConstant,
+            reserve1: balance1NetWithConstant,
             observationCardinality: observationCardinality,
             unlocked: true
         });
 
         uint liquidityLock = PoolMath.computeLiquidity(
-            balance0NetPlusConstant0,
-            balance1NetPlusConstant1
+            balance0NetWithConstant,
+            balance1NetWithConstant
         );
 
         _mint(address(this), liquidityLock);
@@ -262,6 +262,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             : -cache.amountIn.toInt256();
 
         uint feeAmount = _computeFeeProtocol(cache.feeAmount);
+        console.log("fee %s", feeAmount);
         params.zeroForOne
             ? protocolFees.token1 += feeAmount
             : protocolFees.token0 += feeAmount;
@@ -273,12 +274,12 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
                 params.callback
             );
         }
-        uint balance0NetPlusConstant0 = _balance0NetPlusConstant0();
-        uint balance1NetPlusConstant1 = _balance1NetPlusConstant1();
+        uint balance0NetWithConstant = _balance0NetWithConstant();
+        uint balance1NetWithConstant = _balance1NetWithConstant();
 
         uint balanceInNetPlusConstantIn = params.zeroForOne
-            ? balance0NetPlusConstant0
-            : balance1NetPlusConstant1;
+            ? balance0NetWithConstant
+            : balance1NetWithConstant;
 
         require(
             balanceInNetPlusConstantIn >= cache.reserveIn + cache.amountIn,
@@ -291,13 +292,18 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
             address(this)
         );
 
-        uint balance0NetPlusConstant0SubtractFee = balance0NetPlusConstant0 -
-            (params.zeroForOne ? 0 : feeAmount);
-        uint balance1NetPlusConstant1SubtractFee = balance1NetPlusConstant1 -
-            (params.zeroForOne ? feeAmount : 0);
+        uint balance0NetWithConstantAfterFee = balance0NetWithConstant;
+        uint balance1NetWithConstantAfterFee = balance1NetWithConstant;
+        if (params.zeroForOne) {
+            balance1NetWithConstantAfterFee -= feeAmount;
+        }
+        if (params.zeroForOne) {
+            balance0NetWithConstantAfterFee -= feeAmount;
+        }
+
         _update(
-            balance0NetPlusConstant0SubtractFee,
-            balance1NetPlusConstant1SubtractFee
+            balance0NetWithConstantAfterFee,
+            balance1NetWithConstantAfterFee
         );
 
         emit Swap(_msgSender(), amount0, amount1, params.recipient);
@@ -309,12 +315,12 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         uint _totalSupply = totalSupply();
         Slot0 memory _slot0 = slot0;
 
-        uint balance0NetPlusConstant0 = _balance0NetPlusConstant0();
-        uint balance1NetPlusConstant1 = _balance1NetPlusConstant1();
+        uint balance0NetWithConstant = _balance0NetWithConstant();
+        uint balance1NetWithConstant = _balance1NetWithConstant();
 
         require(
-            balance0NetPlusConstant0 > _slot0.reserve0 ||
-                balance1NetPlusConstant1 > _slot0.reserve1,
+            balance0NetWithConstant > _slot0.reserve0 ||
+                balance1NetWithConstant > _slot0.reserve1,
             "Insufficient amount transferred"
         );
 
@@ -325,33 +331,30 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
                 _totalSupply,
                 _slot0.reserve0,
                 _slot0.reserve1,
-                balance0NetPlusConstant0,
-                balance1NetPlusConstant1
+                balance0NetWithConstant,
+                balance1NetWithConstant
             );
 
         _mint(recipient, amount);
 
-        uint balance0NetPlusConstant0Updated = balance0NetPlusConstant0;
-        uint balance1NetPlusConstant1Updated = balance1NetPlusConstant1;
+        uint balance0NetWithConstantUpdated = balance0NetWithConstant;
+        uint balance1NetWithConstantUpdated = balance1NetWithConstant;
         if (constant0Increment > 0) {
             constants.token0 += constant0Increment;
-            balance0NetPlusConstant0Updated += constant0Increment;
+            balance0NetWithConstantUpdated += constant0Increment;
         }
         if (constant1Increment > 0) {
             constants.token1 += constant1Increment;
-            balance1NetPlusConstant1Updated += constant1Increment;
+            balance1NetWithConstantUpdated += constant1Increment;
         }
 
-        _update(
-            balance0NetPlusConstant0Updated,
-            balance1NetPlusConstant1Updated
-        );
+        _update(balance0NetWithConstantUpdated, balance1NetWithConstantUpdated);
 
         emit Mint(
             _msgSender(),
             amount,
-            balance0NetPlusConstant0 - _slot0.reserve0,
-            balance1NetPlusConstant1 - _slot0.reserve1,
+            balance0NetWithConstant - _slot0.reserve0,
+            balance1NetWithConstant - _slot0.reserve1,
             recipient
         );
     }
@@ -391,27 +394,20 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
 
         _burn(_msgSender(), amount);
 
-        uint balance0NetPlusConstant0 = balance0Net +
-            constants.token0 -
-            amount0;
-        uint balance1NetPlusConstant1 = balance1Net +
-            constants.token1 -
-            amount1;
+        uint balance0NetWithConstant = balance0Net + constants.token0 - amount0;
+        uint balance1NetWithConstant = balance1Net + constants.token1 - amount1;
 
-        uint balance0NetPlusConstant0Updated = balance0NetPlusConstant0;
-        uint balance1NetPlusConstant1Updated = balance1NetPlusConstant1;
+        uint balance0NetWithConstantUpdated = balance0NetWithConstant;
+        uint balance1NetWithConstantUpdated = balance1NetWithConstant;
         if (constant0Decrement > 0) {
             constants.token0 -= constant0Decrement;
-            balance0NetPlusConstant0Updated -= constant0Decrement;
+            balance0NetWithConstantUpdated -= constant0Decrement;
         }
         if (constant1Decrement > 0) {
             constants.token1 -= constant1Decrement;
-            balance1NetPlusConstant1Updated -= constant1Decrement;
+            balance1NetWithConstantUpdated -= constant1Decrement;
         }
-        _update(
-            balance0NetPlusConstant0Updated,
-            balance1NetPlusConstant1Updated
-        );
+        _update(balance0NetWithConstantUpdated, balance1NetWithConstantUpdated);
 
         emit Burn(_msgSender(), amount, amount0, amount1, recipient);
     }
@@ -419,10 +415,10 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
     struct FlashPostCallbackState {
         uint feeAmount0;
         uint feeAmount1;
-        uint balance0NetPlusConstant0;
-        uint balance1NetPlusConstant1;
-        uint balance0NetPlusConstant0SubtractFee;
-        uint balance1NetPlusConstant1SubtractFee;
+        uint balance0NetWithConstant;
+        uint balance1NetWithConstant;
+        uint balance0NetWithConstantAfterFee;
+        uint balance1NetWithConstantAfterFee;
     }
 
     function flash(
@@ -440,20 +436,20 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
 
         FlashPostCallbackState memory state;
 
-        state.balance0NetPlusConstant0 = _balance0NetPlusConstant0();
-        state.balance1NetPlusConstant1 = _balance1NetPlusConstant1();
+        state.balance0NetWithConstant = _balance0NetWithConstant();
+        state.balance1NetWithConstant = _balance1NetWithConstant();
 
         bool result = PoolMath.hasLiquidityGrownAfterFees(
             _slot0.reserve0,
             _slot0.reserve1,
-            state.balance0NetPlusConstant0,
-            state.balance1NetPlusConstant1,
+            state.balance0NetWithConstant,
+            state.balance1NetWithConstant,
             fee
         );
         require(result, "Insufficient amounts paid");
 
-        paid0 = state.balance0NetPlusConstant0 - (_slot0.reserve0 - amount0);
-        paid1 = state.balance1NetPlusConstant1 - (_slot0.reserve1 - amount1);
+        paid0 = state.balance0NetWithConstant - (_slot0.reserve0 - amount0);
+        paid1 = state.balance1NetWithConstant - (_slot0.reserve1 - amount1);
 
         uint feeAmount0 = _computeFeeProtocol(paid0);
         uint feeAmount1 = _computeFeeProtocol(paid1);
@@ -461,16 +457,16 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         protocolFees.token0 += feeAmount0;
         protocolFees.token1 += feeAmount1;
 
-        state.balance0NetPlusConstant0SubtractFee =
-            state.balance0NetPlusConstant0 -
+        state.balance0NetWithConstantAfterFee =
+            state.balance0NetWithConstant -
             feeAmount0;
-        state.balance1NetPlusConstant1SubtractFee =
-            state.balance1NetPlusConstant1 -
+        state.balance1NetWithConstantAfterFee =
+            state.balance1NetWithConstant -
             feeAmount1;
 
         _update(
-            state.balance0NetPlusConstant0SubtractFee,
-            state.balance1NetPlusConstant1SubtractFee
+            state.balance0NetWithConstantAfterFee,
+            state.balance1NetWithConstantAfterFee
         );
 
         emit Flash(_msgSender(), amount0, amount1, paid0, paid1, recipient);
@@ -541,11 +537,11 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
         return _balance1() - protocolFees.token1;
     }
 
-    function _balance0NetPlusConstant0() private view returns (uint) {
+    function _balance0NetWithConstant() private view returns (uint) {
         return _balance0Net() + constants.token0;
     }
 
-    function _balance1NetPlusConstant1() private view returns (uint) {
+    function _balance1NetWithConstant() private view returns (uint) {
         return _balance1Net() + constants.token1;
     }
 
