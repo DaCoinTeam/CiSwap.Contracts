@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/math/SafeCast.sol";
+import "@openzeppelin/contracts/utils/Multicall.sol";
 import "./libraries/ExtendMath.sol";
 import "./libraries/SafeTransfer.sol";
 import "./libraries/TokenLib.sol";
@@ -19,7 +20,7 @@ import "./interfaces/callee/IFlashCallee.sol";
 import "./interfaces/callee/IMintCallee.sol";
 import "./interfaces/callee/IBurnCallee.sol";
 
-contract Pool is IPool, Ownable, ERC20, NoDelegateCall {
+contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
     using Oracle for Oracle.Observation[];
     using SafeCast for *;
     using ExtendMath for uint;
