@@ -74,7 +74,7 @@ contract Factory is IFactory, Ownable, PoolDeployer {
         getPool[token0][token1].push(pool);
         getPool[token1][token0].push(pool);
 
-        uint32 indexPool = getPool[token0][token1].length.toUint32();
+        uint32 indexPool = getPool[token0][token1].length.toUint32() - 1;
 
         IPool(pool).initialize(indexPool);
 

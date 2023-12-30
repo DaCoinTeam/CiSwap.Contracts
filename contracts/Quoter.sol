@@ -16,8 +16,9 @@ import "@openzeppelin/contracts/utils/math/SignedMath.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 import "./libraries/Path.sol";
 import "./base/PeripheryPoolManagement.sol";
+import "@openzeppelin/contracts/utils/Multicall.sol";
 
-contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement {
+contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement, Multicall {
     using Path for bytes;
     using SafeCast for *;
 

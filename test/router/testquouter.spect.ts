@@ -101,16 +101,28 @@ describe("test quoteExactOutput", () => {
             await _initialize.quoter.contract
                 .getFunction("quoteExactOutput")
                 .staticCall(
+                    BigInt(10e17),
                     ethers.solidityPacked(
                         ["address", "uint32", "address"],
-                        [
-                            _initialize.tokens[0].address,
-                            0,
-                            _initialize.tokens[1].address
-                        ]
-                    ),
-                    BigInt(10e20)
+                        [_initialize.tokens[0].address, 0, _initialize.tokens[1].address]
+                    )
                 )
+        )
+        await _initialize.tokens[1].contract
+            .getFunction("approve")
+            .send(_initialize.router.address, BigInt(10e20))
+        console.log(
+            await _initialize.router.contract.getFunction("exactOutput").staticCall({
+                amountOut: BigInt(10e17),
+                amountInMax: BigInt(10e19),
+                recipient: _initialize.signers[0].address,
+                path: ethers.solidityPacked(
+                    ["address", "uint32", "address"],
+                    [_initialize.tokens[0].address, 0, _initialize.tokens[1].address]
+                ),
+                deadline:
+          BigInt(Date.now()) / BigInt(1000) + BigInt(60 * 60 * 24 * 2 * 60),
+            })
         )
     })
 })

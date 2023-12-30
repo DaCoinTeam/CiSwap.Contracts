@@ -29,7 +29,7 @@ const config: HardhatUserConfig = {
     },
     gasReporter: {
         currency: "ETH",
-        enabled: false,
+        enabled: true,
         gasPrice: 25,
     },
     // mocha: {
