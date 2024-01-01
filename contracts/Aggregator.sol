@@ -33,7 +33,8 @@ contract Aggregator is IAggregator, Context, PeripheryPoolManagement {
             uint[] memory reserve0Cumulatives,
             uint[] memory reserve1Cumulatives
         ) = IPool(pool).observe(observeParams);
-
+        console.log("test %s", reserve0Cumulatives[0]);
+         console.log("test %s", reserve0Cumulatives[1]);
         exist = reserve0Cumulatives[0] > 0 || reserve1Cumulatives[0] > 0;
 
         if (exist) {
@@ -85,8 +86,8 @@ contract Aggregator is IAggregator, Context, PeripheryPoolManagement {
                         priceX96s[i] = priceX96s[i].mulDiv(
                             (
                                 current.zeroForOne
-                                    ? IPool(current.pool).price1X96()
-                                    : IPool(current.pool).price0X96()
+                                    ? IPool(current.pool).price0X96()
+                                    : IPool(current.pool).price1X96()
                             ),
                             1 << 96
                         );
@@ -107,7 +108,7 @@ contract Aggregator is IAggregator, Context, PeripheryPoolManagement {
                                 reserve0,
                                 reserve1,
                                 current.fee,
-                                !current.zeroForOne
+                                current.zeroForOne
                             ),
                             1 << 96
                         );

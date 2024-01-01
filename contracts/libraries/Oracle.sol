@@ -136,7 +136,7 @@ library Oracle {
             Observation memory atOrAfter
         ) = _binarySearch(observations, target, cardinality);
         if (beforeOrAt.blockTimestamp == atOrAfter.blockTimestamp) {
-            atOrAfter = _transform(atOrAfter, time, reserve0, reserve1);
+            atOrAfter = _transform(atOrAfter, target, reserve0, reserve1);
             return (atOrAfter.reserve0Cumulative, atOrAfter.reserve1Cumulative);
         }
 
