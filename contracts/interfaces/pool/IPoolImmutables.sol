@@ -21,6 +21,6 @@ interface IPoolImmutables {
             uint amountA,
             uint amountB,
             uint basePrice,
-            uint maxPriceA
+            uint priceAMax
         );
 }

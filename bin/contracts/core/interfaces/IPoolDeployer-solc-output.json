@@ -41,7 +41,7 @@
                                     },
                                     {
                                         "internalType": "uint256",
-                                        "name": "basePriceAX64",
+                                        "name": "priceABaseX64",
                                         "type": "uint256"
                                     },
                                     {
@@ -87,7 +87,7 @@
                         "deployParams()": "f3778fd8"
                     }
                 },
-                "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"deployParams\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"factory\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"basePriceAX64\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxPriceBX64\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolDeployer.BootstrapConfig\",\"name\":\"config\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol\":\"IPoolDeployer\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol\":{\"keccak256\":\"0x134e72feead9802d41e18d3d735b3808860d673ae559b7219d1d3d058fd67471\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://394b4b78ad1f471fb287e64733c8c11e9220a3ba9803d5b13e9d4e55d2fe0511\",\"dweb:/ipfs/QmQT46giveEvTP91ohnKUxHxSha9PqRS7tgUU3WatDW95k\"]}},\"version\":1}",
+                "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"deployParams\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"factory\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"priceABaseX64\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxPriceBX64\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolDeployer.BootstrapConfig\",\"name\":\"config\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol\":\"IPoolDeployer\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/core/interfaces/IPoolDeployer.sol\":{\"keccak256\":\"0x134e72feead9802d41e18d3d735b3808860d673ae559b7219d1d3d058fd67471\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://394b4b78ad1f471fb287e64733c8c11e9220a3ba9803d5b13e9d4e55d2fe0511\",\"dweb:/ipfs/QmQT46giveEvTP91ohnKUxHxSha9PqRS7tgUU3WatDW95k\"]}},\"version\":1}",
                 "storageLayout": {
                     "storage": [],
                     "types": null
@@ -257,7 +257,7 @@
                                         "constant": false,
                                         "id": 11,
                                         "mutability": "mutable",
-                                        "name": "basePriceAX64",
+                                        "name": "priceABaseX64",
                                         "nameLocation": "231:13:0",
                                         "nodeType": "VariableDeclaration",
                                         "scope": 14,

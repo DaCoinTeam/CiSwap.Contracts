@@ -42,7 +42,7 @@ contract Factory is IFactory, Ownable, PoolDeployer {
         require(params.config.tokenA != params.config.tokenB, "Same tokens");
 
         require(
-            params.config.basePriceAX96 < params.config.maxPriceAX96,
+            params.config.priceABaseX96 < params.config.priceAMaxX96,
             "Max less base"
         );
 

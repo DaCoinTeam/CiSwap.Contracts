@@ -258,7 +258,7 @@
                                             },
                                             {
                                                 "id": 30,
-                                                "name": "maxPriceAX96",
+                                                "name": "priceAMaxX96",
                                                 "nodeType": "Identifier",
                                                 "overloadedDeclarations": [],
                                                 "referencedDeclaration": 16,
@@ -282,7 +282,7 @@
                                             ],
                                             "expression": {
                                                 "id": 25,
-                                                "name": "basePriceAX96",
+                                                "name": "priceABaseX96",
                                                 "nodeType": "Identifier",
                                                 "overloadedDeclarations": [],
                                                 "referencedDeclaration": 14,
@@ -894,7 +894,7 @@
                                     "constant": false,
                                     "id": 14,
                                     "mutability": "mutable",
-                                    "name": "basePriceAX96",
+                                    "name": "priceABaseX96",
                                     "nameLocation": "507:13:0",
                                     "nodeType": "VariableDeclaration",
                                     "scope": 73,
@@ -921,7 +921,7 @@
                                     "constant": false,
                                     "id": 16,
                                     "mutability": "mutable",
-                                    "name": "maxPriceAX96",
+                                    "name": "priceAMaxX96",
                                     "nameLocation": "536:12:0",
                                     "nodeType": "VariableDeclaration",
                                     "scope": 73,
@@ -1243,7 +1243,7 @@
                                                 "operator": "*",
                                                 "rightExpression": {
                                                     "id": 102,
-                                                    "name": "basePriceAX96",
+                                                    "name": "priceABaseX96",
                                                     "nodeType": "Identifier",
                                                     "overloadedDeclarations": [],
                                                     "referencedDeclaration": 75,
@@ -1481,7 +1481,7 @@
                                     "constant": false,
                                     "id": 75,
                                     "mutability": "mutable",
-                                    "name": "basePriceAX96",
+                                    "name": "priceABaseX96",
                                     "nameLocation": "1078:13:0",
                                     "nodeType": "VariableDeclaration",
                                     "scope": 118,
@@ -1659,7 +1659,7 @@
                                             "arguments": [
                                                 {
                                                     "id": 135,
-                                                    "name": "basePriceAX96",
+                                                    "name": "priceABaseX96",
                                                     "nodeType": "Identifier",
                                                     "overloadedDeclarations": [],
                                                     "referencedDeclaration": 120,
@@ -1671,7 +1671,7 @@
                                                 },
                                                 {
                                                     "id": 136,
-                                                    "name": "maxPriceAX96",
+                                                    "name": "priceAMaxX96",
                                                     "nodeType": "Identifier",
                                                     "overloadedDeclarations": [],
                                                     "referencedDeclaration": 122,
@@ -1771,7 +1771,7 @@
                                             "arguments": [
                                                 {
                                                     "id": 143,
-                                                    "name": "basePriceAX96",
+                                                    "name": "priceABaseX96",
                                                     "nodeType": "Identifier",
                                                     "overloadedDeclarations": [],
                                                     "referencedDeclaration": 120,
@@ -1891,7 +1891,7 @@
                                     "constant": false,
                                     "id": 120,
                                     "mutability": "mutable",
-                                    "name": "basePriceAX96",
+                                    "name": "priceABaseX96",
                                     "nameLocation": "1508:13:0",
                                     "nodeType": "VariableDeclaration",
                                     "scope": 151,
@@ -1918,7 +1918,7 @@
                                     "constant": false,
                                     "id": 122,
                                     "mutability": "mutable",
-                                    "name": "maxPriceAX96",
+                                    "name": "priceAMaxX96",
                                     "nameLocation": "1537:12:0",
                                     "nodeType": "VariableDeclaration",
                                     "scope": 151,

@@ -18,17 +18,17 @@ async function main() {
     // const routerAddress = await router.getAddress()
     // console.log(`Router ${routerAddress}`)
 
-    // const quoter = await ethers.deployContract("Quoter",  [factoryAddress, weth10Address])
-    // await quoter.waitForDeployment()
-    // const quoterAddress = await quoter.getAddress()
-    // console.log(`Quoter ${quoterAddress}`)
+    const quoter = await ethers.deployContract("Quoter", ["0xE5F516A66a1E8cb6552B9fA4a6c69d193e061dC6", "0x39a836BC29E027552093713F8F287816B10DE8D9"])
+    await quoter.waitForDeployment()
+    const quoterAddress = await quoter.getAddress()
+    console.log(`Quoter ${quoterAddress}`)
     // // "0xCdA9529071c813f3E2220c20338f0EF015C4F2cf"
     // // export const KLAYTN_TESTNET_CONTRACT_WETH10 =
     // //   "0xc146A3b4691230248b340e6f26f1dA8d48073f26"
-    const aggregator = await ethers.deployContract("Aggregator", ["0xE5F516A66a1E8cb6552B9fA4a6c69d193e061dC6", "0x39a836BC29E027552093713F8F287816B10DE8D9"])
-    await aggregator.waitForDeployment()
-    const aggregatorddress = await aggregator.getAddress()
-    console.log(`Aggregator ${aggregatorddress}`)
+    // const aggregator = await ethers.deployContract("Aggregator", ["0xE5F516A66a1E8cb6552B9fA4a6c69d193e061dC6", "0x39a836BC29E027552093713F8F287816B10DE8D9"])
+    // await aggregator.waitForDeployment()
+    // const aggregatorddress = await aggregator.getAddress()
+    // console.log(`Aggregator ${aggregatorddress}`)
 }
 
 main().catch((error) => {

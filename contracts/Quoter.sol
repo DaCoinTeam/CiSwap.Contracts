@@ -18,9 +18,16 @@ import "./libraries/Path.sol";
 import "./base/PeripheryPoolManagement.sol";
 import "@openzeppelin/contracts/utils/Multicall.sol";
 
-contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement, Multicall {
+contract Quoter is
+    IQuoter,
+    ISwapCallee,
+    Context,
+    PeripheryPoolManagement,
+    Multicall
+{
     using Path for bytes;
     using SafeCast for *;
+    using Math for uint;
 
     uint private constant MAX = type(uint).max;
 
@@ -182,5 +189,30 @@ contract Quoter is IQuoter, ISwapCallee, Context, PeripheryPoolManagement, Multi
         bytes memory reason
     ) private pure returns (uint) {
         return reason.length != 32 ? 0 : abi.decode(reason, (uint));
+    }
+
+    function quotePriceX96(
+        bytes memory path
+    ) external view override returns (uint priceX96) {
+        priceX96 = 1 << 96;
+        while (true) {
+            bool hasMultiplePools = path.hasMultiplePools();
+
+            (address tokenIn, address tokenOut, uint32 indexPool) = path
+                .decodeFirstPool();
+            bool zeroForOne = tokenIn < tokenOut;
+            address pool = _getPool(tokenIn, tokenOut, indexPool);
+
+            priceX96 = priceX96.mulDiv(
+                zeroForOne ? IPool(pool).price0X96() : IPool(pool).price1X96(),
+                1 << 96
+            );
+
+            if (hasMultiplePools) {
+                path = path.skipToken();
+            } else {
+                return priceX96;
+            }
+        }
     }
 }

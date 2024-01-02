@@ -39,12 +39,12 @@
                         },
                         {
                             "internalType": "uint256",
-                            "name": "basePriceAX96",
+                            "name": "priceABaseX96",
                             "type": "uint256"
                         },
                         {
                             "internalType": "uint256",
-                            "name": "maxPriceAX96",
+                            "name": "priceAMaxX96",
                             "type": "uint256"
                         }
                     ],
@@ -57,7 +57,7 @@
             "type": "function"
         }
     ],
-    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"deployParams\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"factory\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"basePriceAX96\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxPriceAX96\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolDeployer.BootstrapConfig\",\"name\":\"config\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/IPoolDeployer.sol\":\"IPoolDeployer\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/IPoolDeployer.sol\":{\"keccak256\":\"0xaaa277b7f638aaa4ca5e2c3677afd4d261ad44bab7155619f8f0d53ce18e7c26\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://95190476261cdf09ae3a29377aae1ef112dfc54ba3343baf19377656d2d2ce8a\",\"dweb:/ipfs/QmdCsyis58w9ctyHk1dsrUd2o7tJ5SdrnauJZPYUTrAWiw\"]}},\"version\":1}",
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"deployParams\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"factory\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"priceABaseX96\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"priceAMaxX96\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolDeployer.BootstrapConfig\",\"name\":\"config\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/IPoolDeployer.sol\":\"IPoolDeployer\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/main/core/interfaces/IPoolDeployer.sol\":{\"keccak256\":\"0xaaa277b7f638aaa4ca5e2c3677afd4d261ad44bab7155619f8f0d53ce18e7c26\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://95190476261cdf09ae3a29377aae1ef112dfc54ba3343baf19377656d2d2ce8a\",\"dweb:/ipfs/QmdCsyis58w9ctyHk1dsrUd2o7tJ5SdrnauJZPYUTrAWiw\"]}},\"version\":1}",
     "bytecode": "",
     "deployedBytecode": "",
     "sourceMap": "",
@@ -222,7 +222,7 @@
                                 "constant": false,
                                 "id": 2103,
                                 "mutability": "mutable",
-                                "name": "basePriceAX96",
+                                "name": "priceABaseX96",
                                 "nameLocation": "231:13:10",
                                 "nodeType": "VariableDeclaration",
                                 "scope": 2106,
@@ -249,7 +249,7 @@
                                 "constant": false,
                                 "id": 2105,
                                 "mutability": "mutable",
-                                "name": "maxPriceAX96",
+                                "name": "priceAMaxX96",
                                 "nameLocation": "260:12:10",
                                 "nodeType": "VariableDeclaration",
                                 "scope": 2106,

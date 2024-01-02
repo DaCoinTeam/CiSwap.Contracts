@@ -39,10 +39,10 @@ export const setup = async (
                     tokenB: pool.token1.address,
                     amountA: pool.token0.amount,
                     amountB: pool.token1.amount,
-                    basePriceAX96:
+                    priceABaseX96:
             BigInt((pool.prices.base0X96 * 1000).toFixed()) *
             (BigInt(1) << BigInt(96)) / BigInt(1000),
-                    maxPriceAX96:
+                    priceAMaxX96:
             BigInt((pool.prices.max0X96 * 1000).toFixed()) *
             (BigInt(1) << BigInt(96))  / BigInt(1000),
                 },

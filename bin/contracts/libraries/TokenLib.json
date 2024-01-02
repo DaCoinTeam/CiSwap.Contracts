@@ -4,8 +4,8 @@
     "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/libraries/TokenLib.sol\":\"TokenLib\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/libraries/TokenLib.sol\":{\"keccak256\":\"0x93eb4cc1c74d2b84cbaed5466d59144f4234f7b8e414228eed5fccbed409950a\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://694ec410c4918fd408d70031298d8e8ed1339e8fef9c513e92d5226f6c67b474\",\"dweb:/ipfs/QmRqFUGe6FFANTXrq3TNPGYPGKJBAyk1xWBFD3H6VPQjjZ\"]}},\"version\":1}",
     "bytecode": "60556032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f80fdfea26469706673582212207dfd3d931a3b1bea65c31b4f21f7a64855d884412c2c489bd34fdac94ec1c37264736f6c63430008170033",
     "deployedBytecode": "730000000000000000000000000000000000000000301460806040525f80fdfea26469706673582212207dfd3d931a3b1bea65c31b4f21f7a64855d884412c2c489bd34fdac94ec1c37264736f6c63430008170033",
-    "sourceMap": "65:308:5:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;65:308:5;;;;;;;;;;;;;;;;;",
-    "deployedSourceMap": "65:308:5:-:0;;;;;;;;",
+    "sourceMap": "65:308:25:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;65:308:25;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "65:308:25:-:0;;;;;;;;",
     "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/libraries/TokenLib.sol",
     "compiler": {
         "name": "solc",
@@ -15,15 +15,15 @@
         "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/libraries/TokenLib.sol",
         "exportedSymbols": {
             "TokenLib": [
-                886
+                4605
             ]
         },
-        "id": 887,
+        "id": 4606,
         "license": "GPL-3.0",
         "nodeType": "SourceUnit",
         "nodes": [
             {
-                "id": 853,
+                "id": 4572,
                 "literals": [
                     "solidity",
                     "^",
@@ -31,7 +31,7 @@
                     ".23"
                 ],
                 "nodeType": "PragmaDirective",
-                "src": "37:24:5"
+                "src": "37:24:25"
             },
             {
                 "abstract": false,
@@ -40,23 +40,23 @@
                 "contractDependencies": [],
                 "contractKind": "library",
                 "fullyImplemented": true,
-                "id": 886,
+                "id": 4605,
                 "linearizedBaseContracts": [
-                    886
+                    4605
                 ],
                 "name": "TokenLib",
-                "nameLocation": "73:8:5",
+                "nameLocation": "73:8:25",
                 "nodeType": "ContractDefinition",
                 "nodes": [
                     {
                         "body": {
-                            "id": 884,
+                            "id": 4603,
                             "nodeType": "Block",
-                            "src": "233:137:5",
+                            "src": "233:137:25",
                             "statements": [
                                 {
                                     "expression": {
-                                        "id": 882,
+                                        "id": 4601,
                                         "isConstant": false,
                                         "isLValue": false,
                                         "isPure": false,
@@ -64,50 +64,50 @@
                                         "leftHandSide": {
                                             "components": [
                                                 {
-                                                    "id": 866,
+                                                    "id": 4585,
                                                     "name": "token0",
                                                     "nodeType": "Identifier",
                                                     "overloadedDeclarations": [],
-                                                    "referencedDeclaration": 860,
-                                                    "src": "245:6:5",
+                                                    "referencedDeclaration": 4579,
+                                                    "src": "245:6:25",
                                                     "typeDescriptions": {
                                                         "typeIdentifier": "t_address",
                                                         "typeString": "address"
                                                     }
                                                 },
                                                 {
-                                                    "id": 867,
+                                                    "id": 4586,
                                                     "name": "token1",
                                                     "nodeType": "Identifier",
                                                     "overloadedDeclarations": [],
-                                                    "referencedDeclaration": 862,
-                                                    "src": "253:6:5",
+                                                    "referencedDeclaration": 4581,
+                                                    "src": "253:6:25",
                                                     "typeDescriptions": {
                                                         "typeIdentifier": "t_address",
                                                         "typeString": "address"
                                                     }
                                                 },
                                                 {
-                                                    "id": 868,
+                                                    "id": 4587,
                                                     "name": "order",
                                                     "nodeType": "Identifier",
                                                     "overloadedDeclarations": [],
-                                                    "referencedDeclaration": 864,
-                                                    "src": "261:5:5",
+                                                    "referencedDeclaration": 4583,
+                                                    "src": "261:5:25",
                                                     "typeDescriptions": {
                                                         "typeIdentifier": "t_bool",
                                                         "typeString": "bool"
                                                     }
                                                 }
                                             ],
-                                            "id": 869,
+                                            "id": 4588,
                                             "isConstant": false,
                                             "isInlineArray": false,
                                             "isLValue": true,
                                             "isPure": false,
                                             "lValueRequested": true,
                                             "nodeType": "TupleExpression",
-                                            "src": "244:23:5",
+                                            "src": "244:23:25",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_tuple$_t_address_$_t_address_$_t_bool_$",
                                                 "typeString": "tuple(address,address,bool)"
@@ -121,18 +121,18 @@
                                                     "typeIdentifier": "t_address",
                                                     "typeString": "address"
                                                 },
-                                                "id": 872,
+                                                "id": 4591,
                                                 "isConstant": false,
                                                 "isLValue": false,
                                                 "isPure": false,
                                                 "lValueRequested": false,
                                                 "leftExpression": {
-                                                    "id": 870,
+                                                    "id": 4589,
                                                     "name": "tokenA",
                                                     "nodeType": "Identifier",
                                                     "overloadedDeclarations": [],
-                                                    "referencedDeclaration": 855,
-                                                    "src": "270:6:5",
+                                                    "referencedDeclaration": 4574,
+                                                    "src": "270:6:25",
                                                     "typeDescriptions": {
                                                         "typeIdentifier": "t_address",
                                                         "typeString": "address"
@@ -141,18 +141,18 @@
                                                 "nodeType": "BinaryOperation",
                                                 "operator": "<",
                                                 "rightExpression": {
-                                                    "id": 871,
+                                                    "id": 4590,
                                                     "name": "tokenB",
                                                     "nodeType": "Identifier",
                                                     "overloadedDeclarations": [],
-                                                    "referencedDeclaration": 857,
-                                                    "src": "279:6:5",
+                                                    "referencedDeclaration": 4576,
+                                                    "src": "279:6:25",
                                                     "typeDescriptions": {
                                                         "typeIdentifier": "t_address",
                                                         "typeString": "address"
                                                     }
                                                 },
-                                                "src": "270:15:5",
+                                                "src": "270:15:25",
                                                 "typeDescriptions": {
                                                     "typeIdentifier": "t_bool",
                                                     "typeString": "bool"
@@ -161,24 +161,24 @@
                                             "falseExpression": {
                                                 "components": [
                                                     {
-                                                        "id": 877,
+                                                        "id": 4596,
                                                         "name": "tokenB",
                                                         "nodeType": "Identifier",
                                                         "overloadedDeclarations": [],
-                                                        "referencedDeclaration": 857,
-                                                        "src": "340:6:5",
+                                                        "referencedDeclaration": 4576,
+                                                        "src": "340:6:25",
                                                         "typeDescriptions": {
                                                             "typeIdentifier": "t_address",
                                                             "typeString": "address"
                                                         }
                                                     },
                                                     {
-                                                        "id": 878,
+                                                        "id": 4597,
                                                         "name": "tokenA",
                                                         "nodeType": "Identifier",
                                                         "overloadedDeclarations": [],
-                                                        "referencedDeclaration": 855,
-                                                        "src": "348:6:5",
+                                                        "referencedDeclaration": 4574,
+                                                        "src": "348:6:25",
                                                         "typeDescriptions": {
                                                             "typeIdentifier": "t_address",
                                                             "typeString": "address"
@@ -186,14 +186,14 @@
                                                     },
                                                     {
                                                         "hexValue": "66616c7365",
-                                                        "id": 879,
+                                                        "id": 4598,
                                                         "isConstant": false,
                                                         "isLValue": false,
                                                         "isPure": true,
                                                         "kind": "bool",
                                                         "lValueRequested": false,
                                                         "nodeType": "Literal",
-                                                        "src": "356:5:5",
+                                                        "src": "356:5:25",
                                                         "typeDescriptions": {
                                                             "typeIdentifier": "t_bool",
                                                             "typeString": "bool"
@@ -201,47 +201,47 @@
                                                         "value": "false"
                                                     }
                                                 ],
-                                                "id": 880,
+                                                "id": 4599,
                                                 "isConstant": false,
                                                 "isInlineArray": false,
                                                 "isLValue": false,
                                                 "isPure": false,
                                                 "lValueRequested": false,
                                                 "nodeType": "TupleExpression",
-                                                "src": "339:23:5",
+                                                "src": "339:23:25",
                                                 "typeDescriptions": {
                                                     "typeIdentifier": "t_tuple$_t_address_$_t_address_$_t_bool_$",
                                                     "typeString": "tuple(address,address,bool)"
                                                 }
                                             },
-                                            "id": 881,
+                                            "id": 4600,
                                             "isConstant": false,
                                             "isLValue": false,
                                             "isPure": false,
                                             "lValueRequested": false,
                                             "nodeType": "Conditional",
-                                            "src": "270:92:5",
+                                            "src": "270:92:25",
                                             "trueExpression": {
                                                 "components": [
                                                     {
-                                                        "id": 873,
+                                                        "id": 4592,
                                                         "name": "tokenA",
                                                         "nodeType": "Identifier",
                                                         "overloadedDeclarations": [],
-                                                        "referencedDeclaration": 855,
-                                                        "src": "302:6:5",
+                                                        "referencedDeclaration": 4574,
+                                                        "src": "302:6:25",
                                                         "typeDescriptions": {
                                                             "typeIdentifier": "t_address",
                                                             "typeString": "address"
                                                         }
                                                     },
                                                     {
-                                                        "id": 874,
+                                                        "id": 4593,
                                                         "name": "tokenB",
                                                         "nodeType": "Identifier",
                                                         "overloadedDeclarations": [],
-                                                        "referencedDeclaration": 857,
-                                                        "src": "310:6:5",
+                                                        "referencedDeclaration": 4576,
+                                                        "src": "310:6:25",
                                                         "typeDescriptions": {
                                                             "typeIdentifier": "t_address",
                                                             "typeString": "address"
@@ -249,14 +249,14 @@
                                                     },
                                                     {
                                                         "hexValue": "74727565",
-                                                        "id": 875,
+                                                        "id": 4594,
                                                         "isConstant": false,
                                                         "isLValue": false,
                                                         "isPure": true,
                                                         "kind": "bool",
                                                         "lValueRequested": false,
                                                         "nodeType": "Literal",
-                                                        "src": "318:4:5",
+                                                        "src": "318:4:25",
                                                         "typeDescriptions": {
                                                             "typeIdentifier": "t_bool",
                                                             "typeString": "bool"
@@ -264,14 +264,14 @@
                                                         "value": "true"
                                                     }
                                                 ],
-                                                "id": 876,
+                                                "id": 4595,
                                                 "isConstant": false,
                                                 "isInlineArray": false,
                                                 "isLValue": false,
                                                 "isPure": false,
                                                 "lValueRequested": false,
                                                 "nodeType": "TupleExpression",
-                                                "src": "301:22:5",
+                                                "src": "301:22:25",
                                                 "typeDescriptions": {
                                                     "typeIdentifier": "t_tuple$_t_address_$_t_address_$_t_bool_$",
                                                     "typeString": "tuple(address,address,bool)"
@@ -282,38 +282,38 @@
                                                 "typeString": "tuple(address,address,bool)"
                                             }
                                         },
-                                        "src": "244:118:5",
+                                        "src": "244:118:25",
                                         "typeDescriptions": {
                                             "typeIdentifier": "t_tuple$__$",
                                             "typeString": "tuple()"
                                         }
                                     },
-                                    "id": 883,
+                                    "id": 4602,
                                     "nodeType": "ExpressionStatement",
-                                    "src": "244:118:5"
+                                    "src": "244:118:25"
                                 }
                             ]
                         },
-                        "id": 885,
+                        "id": 4604,
                         "implemented": true,
                         "kind": "function",
                         "modifiers": [],
                         "name": "sortTokens",
-                        "nameLocation": "98:10:5",
+                        "nameLocation": "98:10:25",
                         "nodeType": "FunctionDefinition",
                         "parameters": {
-                            "id": 858,
+                            "id": 4577,
                             "nodeType": "ParameterList",
                             "parameters": [
                                 {
                                     "constant": false,
-                                    "id": 855,
+                                    "id": 4574,
                                     "mutability": "mutable",
                                     "name": "tokenA",
-                                    "nameLocation": "127:6:5",
+                                    "nameLocation": "127:6:25",
                                     "nodeType": "VariableDeclaration",
-                                    "scope": 885,
-                                    "src": "119:14:5",
+                                    "scope": 4604,
+                                    "src": "119:14:25",
                                     "stateVariable": false,
                                     "storageLocation": "default",
                                     "typeDescriptions": {
@@ -321,10 +321,10 @@
                                         "typeString": "address"
                                     },
                                     "typeName": {
-                                        "id": 854,
+                                        "id": 4573,
                                         "name": "address",
                                         "nodeType": "ElementaryTypeName",
-                                        "src": "119:7:5",
+                                        "src": "119:7:25",
                                         "stateMutability": "nonpayable",
                                         "typeDescriptions": {
                                             "typeIdentifier": "t_address",
@@ -335,13 +335,13 @@
                                 },
                                 {
                                     "constant": false,
-                                    "id": 857,
+                                    "id": 4576,
                                     "mutability": "mutable",
                                     "name": "tokenB",
-                                    "nameLocation": "152:6:5",
+                                    "nameLocation": "152:6:25",
                                     "nodeType": "VariableDeclaration",
-                                    "scope": 885,
-                                    "src": "144:14:5",
+                                    "scope": 4604,
+                                    "src": "144:14:25",
                                     "stateVariable": false,
                                     "storageLocation": "default",
                                     "typeDescriptions": {
@@ -349,10 +349,10 @@
                                         "typeString": "address"
                                     },
                                     "typeName": {
-                                        "id": 856,
+                                        "id": 4575,
                                         "name": "address",
                                         "nodeType": "ElementaryTypeName",
-                                        "src": "144:7:5",
+                                        "src": "144:7:25",
                                         "stateMutability": "nonpayable",
                                         "typeDescriptions": {
                                             "typeIdentifier": "t_address",
@@ -362,21 +362,21 @@
                                     "visibility": "internal"
                                 }
                             ],
-                            "src": "108:57:5"
+                            "src": "108:57:25"
                         },
                         "returnParameters": {
-                            "id": 865,
+                            "id": 4584,
                             "nodeType": "ParameterList",
                             "parameters": [
                                 {
                                     "constant": false,
-                                    "id": 860,
+                                    "id": 4579,
                                     "mutability": "mutable",
                                     "name": "token0",
-                                    "nameLocation": "197:6:5",
+                                    "nameLocation": "197:6:25",
                                     "nodeType": "VariableDeclaration",
-                                    "scope": 885,
-                                    "src": "189:14:5",
+                                    "scope": 4604,
+                                    "src": "189:14:25",
                                     "stateVariable": false,
                                     "storageLocation": "default",
                                     "typeDescriptions": {
@@ -384,10 +384,10 @@
                                         "typeString": "address"
                                     },
                                     "typeName": {
-                                        "id": 859,
+                                        "id": 4578,
                                         "name": "address",
                                         "nodeType": "ElementaryTypeName",
-                                        "src": "189:7:5",
+                                        "src": "189:7:25",
                                         "stateMutability": "nonpayable",
                                         "typeDescriptions": {
                                             "typeIdentifier": "t_address",
@@ -398,13 +398,13 @@
                                 },
                                 {
                                     "constant": false,
-                                    "id": 862,
+                                    "id": 4581,
                                     "mutability": "mutable",
                                     "name": "token1",
-                                    "nameLocation": "213:6:5",
+                                    "nameLocation": "213:6:25",
                                     "nodeType": "VariableDeclaration",
-                                    "scope": 885,
-                                    "src": "205:14:5",
+                                    "scope": 4604,
+                                    "src": "205:14:25",
                                     "stateVariable": false,
                                     "storageLocation": "default",
                                     "typeDescriptions": {
@@ -412,10 +412,10 @@
                                         "typeString": "address"
                                     },
                                     "typeName": {
-                                        "id": 861,
+                                        "id": 4580,
                                         "name": "address",
                                         "nodeType": "ElementaryTypeName",
-                                        "src": "205:7:5",
+                                        "src": "205:7:25",
                                         "stateMutability": "nonpayable",
                                         "typeDescriptions": {
                                             "typeIdentifier": "t_address",
@@ -426,13 +426,13 @@
                                 },
                                 {
                                     "constant": false,
-                                    "id": 864,
+                                    "id": 4583,
                                     "mutability": "mutable",
                                     "name": "order",
-                                    "nameLocation": "226:5:5",
+                                    "nameLocation": "226:5:25",
                                     "nodeType": "VariableDeclaration",
-                                    "scope": 885,
-                                    "src": "221:10:5",
+                                    "scope": 4604,
+                                    "src": "221:10:25",
                                     "stateVariable": false,
                                     "storageLocation": "default",
                                     "typeDescriptions": {
@@ -440,10 +440,10 @@
                                         "typeString": "bool"
                                     },
                                     "typeName": {
-                                        "id": 863,
+                                        "id": 4582,
                                         "name": "bool",
                                         "nodeType": "ElementaryTypeName",
-                                        "src": "221:4:5",
+                                        "src": "221:4:25",
                                         "typeDescriptions": {
                                             "typeIdentifier": "t_bool",
                                             "typeString": "bool"
@@ -452,22 +452,22 @@
                                     "visibility": "internal"
                                 }
                             ],
-                            "src": "188:44:5"
+                            "src": "188:44:25"
                         },
-                        "scope": 886,
-                        "src": "89:281:5",
+                        "scope": 4605,
+                        "src": "89:281:25",
                         "stateMutability": "pure",
                         "virtual": false,
                         "visibility": "internal"
                     }
                 ],
-                "scope": 887,
-                "src": "65:308:5",
+                "scope": 4606,
+                "src": "65:308:25",
                 "usedErrors": [],
                 "usedEvents": []
             }
         ],
-        "src": "37:338:5"
+        "src": "37:338:25"
     },
     "functionHashes": {},
     "gasEstimates": {

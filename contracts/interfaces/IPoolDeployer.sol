@@ -7,8 +7,8 @@ interface IPoolDeployer {
         address tokenB;
         uint amountA;
         uint amountB;
-        uint basePriceAX96;
-        uint maxPriceAX96;
+        uint priceABaseX96;
+        uint priceAMaxX96;
     }
 
     struct DeployParams {

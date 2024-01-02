@@ -25,4 +25,8 @@ interface IQuoter {
         address tokenOut,
         uint32 indexPool
     ) external returns (uint amountIn);
+
+     function quotePriceX96(
+        bytes memory path
+    ) external returns (uint priceX96);
 }

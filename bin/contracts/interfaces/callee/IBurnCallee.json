@@ -1,0 +1,165 @@
+{
+    "contractName": "IBurnCallee",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "callback",
+                    "type": "bytes"
+                }
+            ],
+            "name": "burnCall",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"callback\",\"type\":\"bytes\"}],\"name\":\"burnCall\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/interfaces/callee/IBurnCallee.sol\":\"IBurnCallee\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/interfaces/callee/IBurnCallee.sol\":{\"keccak256\":\"0x94036c5995d4cb09f9241c2195743c9a5cf1f485ac59d0b40ffe0b77a787ab5d\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://89fc0c2b4a5a503d5cbee826c7bc640fd835dc75986c31ce397691b714739b02\",\"dweb:/ipfs/QmSX5JK9UJbjeJh5z6aEnvsXoneXemoV3A2UeBPt4kvgox\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/interfaces/callee/IBurnCallee.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/interfaces/callee/IBurnCallee.sol",
+        "exportedSymbols": {
+            "IBurnCallee": [
+                2772
+            ]
+        },
+        "id": 2773,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 2764,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:10"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IBurnCallee",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "fullyImplemented": false,
+                "id": 2772,
+                "linearizedBaseContracts": [
+                    2772
+                ],
+                "name": "IBurnCallee",
+                "nameLocation": "75:11:10",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "c8057e6f",
+                        "id": 2771,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "burnCall",
+                        "nameLocation": "103:8:10",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 2769,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 2766,
+                                    "mutability": "mutable",
+                                    "name": "amount",
+                                    "nameLocation": "120:6:10",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 2771,
+                                    "src": "112:14:10",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 2765,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "112:7:10",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 2768,
+                                    "mutability": "mutable",
+                                    "name": "callback",
+                                    "nameLocation": "143:8:10",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 2771,
+                                    "src": "128:23:10",
+                                    "stateVariable": false,
+                                    "storageLocation": "calldata",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bytes_calldata_ptr",
+                                        "typeString": "bytes"
+                                    },
+                                    "typeName": {
+                                        "id": 2767,
+                                        "name": "bytes",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "128:5:10",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bytes_storage_ptr",
+                                            "typeString": "bytes"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "111:41:10"
+                        },
+                        "returnParameters": {
+                            "id": 2770,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "161:0:10"
+                        },
+                        "scope": 2772,
+                        "src": "94:68:10",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 2773,
+                "src": "65:100:10",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:130:10"
+    },
+    "functionHashes": {
+        "burnCall(uint256,bytes)": "c8057e6f"
+    },
+    "gasEstimates": null
+}

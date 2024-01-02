@@ -1,0 +1,133 @@
+{
+    "contractName": "IMintCallee",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "bytes",
+                    "name": "callback",
+                    "type": "bytes"
+                }
+            ],
+            "name": "mintCall",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"callback\",\"type\":\"bytes\"}],\"name\":\"mintCall\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/interfaces/callee/IMintCallee.sol\":\"IMintCallee\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/interfaces/callee/IMintCallee.sol\":{\"keccak256\":\"0xd649db2e11543b31130f0545fa731579b8f257264a6079315f902f6b2307eaaa\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://f2056b3b1e6ca301faf8227271d52ed86be21d37f8882bcc05eec40195b23170\",\"dweb:/ipfs/QmNR757r4aNXoKXzPecqMNggqd6TKqNADA9cc6y7axi3nc\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/interfaces/callee/IMintCallee.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.23+commit.f704f362"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/tucuo/OneDrive/Desktop/CiSwap.Contracts/contracts/interfaces/callee/IMintCallee.sol",
+        "exportedSymbols": {
+            "IMintCallee": [
+                2792
+            ]
+        },
+        "id": 2793,
+        "license": "GPL-3.0",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 2786,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".23"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "37:24:12"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IMintCallee",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "fullyImplemented": false,
+                "id": 2792,
+                "linearizedBaseContracts": [
+                    2792
+                ],
+                "name": "IMintCallee",
+                "nameLocation": "75:11:12",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "dccc40c1",
+                        "id": 2791,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "mintCall",
+                        "nameLocation": "103:8:12",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 2789,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 2788,
+                                    "mutability": "mutable",
+                                    "name": "callback",
+                                    "nameLocation": "137:8:12",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 2791,
+                                    "src": "122:23:12",
+                                    "stateVariable": false,
+                                    "storageLocation": "calldata",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bytes_calldata_ptr",
+                                        "typeString": "bytes"
+                                    },
+                                    "typeName": {
+                                        "id": 2787,
+                                        "name": "bytes",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "122:5:12",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bytes_storage_ptr",
+                                            "typeString": "bytes"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "111:41:12"
+                        },
+                        "returnParameters": {
+                            "id": 2790,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "161:0:12"
+                        },
+                        "scope": 2792,
+                        "src": "94:68:12",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 2793,
+                "src": "65:100:12",
+                "usedErrors": [],
+                "usedEvents": []
+            }
+        ],
+        "src": "37:130:12"
+    },
+    "functionHashes": {
+        "mintCall(bytes)": "dccc40c1"
+    },
+    "gasEstimates": null
+}

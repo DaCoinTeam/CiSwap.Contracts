@@ -11,11 +11,11 @@ library PoolMath {
     using ExtendMath for uint;
 
     function _computeConstantA(
-        uint basePriceAX96,
-        uint maxPriceAX96,
+        uint priceABaseX96,
+        uint priceAMaxX96,
         uint amountA
     ) private pure returns (uint) {
-        uint priceRatioX96 = basePriceAX96.mulDiv(1 << 96, maxPriceAX96);
+        uint priceRatioX96 = priceABaseX96.mulDiv(1 << 96, priceAMaxX96);
 
         uint sqrtPriceRatioX48 = priceRatioX96.sqrt();
         uint numerator = sqrtPriceRatioX48 * amountA;
@@ -29,14 +29,14 @@ library PoolMath {
     }
 
     function _computeConstantB(
-        uint basePriceAX96,
+        uint priceABaseX96,
         uint constantA,
         uint amountA,
         uint amountB
     ) private pure returns (uint) {
         uint denominator = 1 << 96;
         (bool flag, uint numerator) = Math.trySub(
-            (amountA + constantA) * basePriceAX96,
+            (amountA + constantA) * priceABaseX96,
             denominator * amountB
         );
         require(flag);
@@ -44,14 +44,14 @@ library PoolMath {
     }
 
     function computeConstants(
-        uint basePriceAX96,
-        uint maxPriceAX96,
+        uint priceABaseX96,
+        uint priceAMaxX96,
         uint amountA,
         uint amountB
     ) internal pure returns (uint constantA, uint constantB) {
-        constantA = _computeConstantA(basePriceAX96, maxPriceAX96, amountA);
+        constantA = _computeConstantA(priceABaseX96, priceAMaxX96, amountA);
         constantB = _computeConstantB(
-            basePriceAX96,
+            priceABaseX96,
             constantA,
             amountA,
             amountB

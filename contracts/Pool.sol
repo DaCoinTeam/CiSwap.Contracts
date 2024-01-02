@@ -70,8 +70,8 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
         );
 
         (uint constantA, uint constantB) = PoolMath.computeConstants(
-            config.basePriceAX96,
-            config.maxPriceAX96,
+            config.priceABaseX96,
+            config.priceAMaxX96,
             config.amountA,
             config.amountB
         );
