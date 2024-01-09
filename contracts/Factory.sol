@@ -69,7 +69,6 @@ contract Factory is IFactory, Ownable, PoolDeployer {
 
         SafeTransfer.transferFrom(token0, _msgSender(), pool, amount0);
         SafeTransfer.transferFrom(token1, _msgSender(), pool, amount1);
-        Ownable(pool).transferOwnership(_msgSender());
 
         getPool[token0][token1].push(pool);
         getPool[token1][token0].push(pool);

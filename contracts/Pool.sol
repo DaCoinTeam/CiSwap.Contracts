@@ -330,13 +330,15 @@ contract Pool is IPool, Context, ERC20, NoDelegateCall, Multicall {
             "Insufficient amount transferred"
         );
 
-        PoolMath.MintAmountsAndConstantIncrements memory result = PoolMath
-            .computeMintAmountsAndConstantIncrements(
-                _totalSupply,
-                _slot0.reserve0,
-                _slot0.reserve1,
-                balance0NetWithConstant,
-                balance1NetWithConstant
+        PoolMath.ComputeMintAmountsAndConstantIncrementsResult
+            memory result = PoolMath.computeMintAmountsAndConstantIncrements(
+                PoolMath.ComputeMintAmountsAndConstantIncrementsParams({
+                    totalSupply: _totalSupply,
+                    reserve0Before: _slot0.reserve0,
+                    reserve1Before: _slot0.reserve1,
+                    reserve0After: balance0NetWithConstant,
+                    reserve1After: balance1NetWithConstant
+                })
             );
 
         amount = result.amount;
@@ -381,14 +383,16 @@ contract Pool is IPool, Context, ERC20, NoDelegateCall, Multicall {
         uint balance0Net = _balance0Net();
         uint balance1Net = _balance1Net();
 
-        PoolMath.BurnAmountsAndConstantDecrements memory result = PoolMath
-            .computeBurnAmountsAndConstantDecrements(
-                amount,
-                _totalSupply,
-                _slot0.reserve0,
-                _slot0.reserve1,
-                balance0Net,
-                balance1Net
+        PoolMath.ComputeBurnAmountsAndConstantDecrementsResult
+            memory result = PoolMath.computeBurnAmountsAndConstantDecrements(
+                PoolMath.ComputeBurnAmountsAndConstantDecrementsParams({
+                    amount: amount,
+                    totalSupply: _totalSupply,
+                    reserve0: _slot0.reserve0,
+                    reserve1: _slot0.reserve1,
+                    balance0Net: balance0Net,
+                    balance1Net: balance1Net
+                })
             );
 
         amount0 = result.amount0;
@@ -499,12 +503,7 @@ contract Pool is IPool, Context, ERC20, NoDelegateCall, Multicall {
         protocolFees.token0 -= amount0;
         protocolFees.token1 -= amount1;
 
-        emit CollectProtocol(
-            _msgSender(),
-            amount0,
-            amount1,
-            feeTo
-        );
+        emit CollectProtocol(_msgSender(), amount0, amount1, feeTo);
     }
 
     function _balance0() private view returns (uint) {

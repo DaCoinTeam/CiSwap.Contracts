@@ -48,7 +48,7 @@ export const setup = async (
                 },
             })
         const createPoolReceipt = await createPoolResponse.wait()
-        const poolAddress = createPoolReceipt?.logs[0].address as Address
+        const poolAddress = createPoolReceipt?.logs[2].address as Address
         const poolContract = await ethers.getContractAt("Pool", poolAddress)
 
         pools.push({

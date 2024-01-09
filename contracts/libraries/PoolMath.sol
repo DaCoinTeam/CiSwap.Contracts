@@ -152,7 +152,15 @@ library PoolMath {
         return liquidityAfter >= liquidityBefore;
     }
 
-    struct MintAmountsAndConstantIncrements {
+    struct ComputeMintAmountsAndConstantIncrementsParams {
+        uint totalSupply;
+        uint reserve0Before;
+        uint reserve1Before;
+        uint reserve0After;
+        uint reserve1After;
+    }
+
+    struct ComputeMintAmountsAndConstantIncrementsResult {
         uint amount;
         uint amountLock;
         uint constant0Increment;
@@ -160,47 +168,52 @@ library PoolMath {
     }
 
     function computeMintAmountsAndConstantIncrements(
-        uint totalSupply,
-        uint reserve0Before,
-        uint reserve1Before,
-        uint reserve0After,
-        uint reserve1After
+        ComputeMintAmountsAndConstantIncrementsParams memory params
     )
         internal
         pure
-        returns (
-            MintAmountsAndConstantIncrements memory result
-        )
+        returns (ComputeMintAmountsAndConstantIncrementsResult memory result)
     {
         uint liquidityBefore = PoolMath.computeLiquidity(
-            reserve0Before,
-            reserve1Before
+            params.reserve0Before,
+            params.reserve1Before
         );
         uint liquidityAfter = PoolMath.computeLiquidity(
-            reserve0After,
-            reserve1After
+            params.reserve0After,
+            params.reserve1After
         );
         require(liquidityAfter > liquidityBefore);
         result.amount = (liquidityAfter - liquidityBefore).mulDiv(
-            totalSupply,
+            params.totalSupply,
             liquidityBefore
         );
-        uint ratioX96Before = reserve0Before.mulDiv(1 << 96, reserve1Before);
-        uint ratioX96After = (reserve0After).mulDiv(1 << 96, reserve1After);
 
-        uint reserve0Last = reserve0After;
-        uint reserve1Last = reserve1After;
+        uint ratioX96Before = params.reserve0Before.mulDiv(
+            1 << 96,
+            params.reserve1Before
+        );
+        uint ratioX96After = (params.reserve0After).mulDiv(
+            1 << 96,
+            params.reserve1After
+        );
+
+        uint reserve0Last = params.reserve0After;
+        uint reserve1Last = params.reserve1After;
 
         if (ratioX96Before < ratioX96After) {
             result.constant1Increment =
-                (reserve0After * reserve1Before).divRoundingUp(reserve0Before) -
-                reserve1After;
+                (params.reserve0After * params.reserve1Before).divRoundingUp(
+                    params.reserve0Before
+                ) -
+                params.reserve1After;
             reserve1Last += result.constant1Increment;
         }
         if (ratioX96Before > ratioX96After) {
             result.constant0Increment =
-                (reserve1After * reserve0Before).divRoundingUp(reserve1Before) -
-                reserve0After;
+                (params.reserve1After * params.reserve0Before).divRoundingUp(
+                    params.reserve1Before
+                ) -
+                params.reserve0After;
             reserve0Last += result.constant0Increment;
         }
 
@@ -210,12 +223,21 @@ library PoolMath {
             reserve1Last
         );
         result.amountLock = (liquidityLast - liquidityAfter).mulDivRoundingUp(
-            totalSupply,
+            params.totalSupply + result.amount,
             liquidityAfter
         );
     }
 
-    struct BurnAmountsAndConstantDecrements {
+    struct ComputeBurnAmountsAndConstantDecrementsParams {
+        uint amount;
+        uint totalSupply;
+        uint reserve0;
+        uint reserve1;
+        uint balance0Net;
+        uint balance1Net;
+    }
+
+    struct ComputeBurnAmountsAndConstantDecrementsResult {
         uint amount0;
         uint amount1;
         uint amountLock;
@@ -224,36 +246,42 @@ library PoolMath {
     }
 
     function computeBurnAmountsAndConstantDecrements(
-        uint amount,
-        uint totalSupply,
-        uint reserve0,
-        uint reserve1,
-        uint balance0Net,
-        uint balance1Net
-    ) internal pure returns (BurnAmountsAndConstantDecrements memory result) {
-        result.amount0 = reserve0.mulDiv(amount, totalSupply);
-        result.amount1 = reserve1.mulDiv(amount, totalSupply);
-        uint kLast = (reserve0 - result.amount0) * (reserve1 - result.amount1);
+        ComputeBurnAmountsAndConstantDecrementsParams memory params
+    )
+        internal
+        pure
+        returns (ComputeBurnAmountsAndConstantDecrementsResult memory result)
+    {
+        result.amount0 = params.reserve0.mulDiv(
+            params.amount,
+            params.totalSupply
+        );
+        result.amount1 = params.reserve1.mulDiv(
+            params.amount,
+            params.totalSupply
+        );
+        uint kLast = (params.reserve0 - result.amount0) *
+            (params.reserve1 - result.amount1);
 
-        if (result.amount0 > balance0Net) {
-            result.amount0 = balance0Net;
+        if (result.amount0 > params.balance0Net) {
+            result.amount0 = params.balance0Net;
             uint reserve1Adjusted = kLast.divRoundingUp(
-                reserve0 - result.amount0
+                params.reserve0 - result.amount0
             );
-            result.amount1 = reserve1 - reserve1Adjusted;
-        } else if (result.amount1 > balance1Net) {
-            result.amount1 = balance1Net;
+            result.amount1 = params.reserve1 - reserve1Adjusted;
+        } else if (result.amount1 > params.balance1Net) {
+            result.amount1 = params.balance1Net;
             uint reserve0Adjusted = kLast.divRoundingUp(
-                reserve1 - result.amount1
+                params.reserve1 - result.amount1
             );
-            result.amount0 = reserve0 - reserve0Adjusted;
+            result.amount0 = params.reserve0 - reserve0Adjusted;
         }
 
-        uint reserve0After = reserve0 - result.amount0;
-        uint reserve1After = reserve1 - result.amount1;
+        uint reserve0After = params.reserve0 - result.amount0;
+        uint reserve1After = params.reserve1 - result.amount1;
 
-        uint ratioX96Before = reserve0.mulDiv(1 << 96, reserve1);
-        uint ratioX96After = (reserve0After).mulDiv(1 << 96, reserve1After);
+        uint ratioX96Before = params.reserve0.mulDiv(1 << 96, params.reserve1);
+        uint ratioX96After = reserve0After.mulDiv(1 << 96, reserve1After);
 
         uint reserve0Last = reserve0After;
         uint reserve1Last = reserve1After;
@@ -261,13 +289,17 @@ library PoolMath {
         if (ratioX96Before < ratioX96After) {
             result.constant0Decrement =
                 reserve0After -
-                (reserve0 * reserve1After).divRoundingUp(reserve1);
+                (params.reserve0 * reserve1After).divRoundingUp(
+                    params.reserve1
+                );
             reserve0Last -= result.constant0Decrement;
         }
         if (ratioX96Before > ratioX96After) {
             result.constant1Decrement =
                 reserve1After -
-                (reserve1 * reserve0After).divRoundingUp(reserve0);
+                (params.reserve1 * reserve0After).divRoundingUp(
+                    params.reserve0
+                );
             reserve1Last -= result.constant1Decrement;
         }
 
@@ -281,7 +313,7 @@ library PoolMath {
             reserve1Last
         );
         result.amountLock = (liquidityAfter - liquidityLast).mulDiv(
-            totalSupply,
+            params.totalSupply - params.amount,
             liquidityAfter
         );
     }
