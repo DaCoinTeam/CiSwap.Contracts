@@ -152,7 +152,7 @@ library PoolMath {
         return liquidityAfter >= liquidityBefore;
     }
 
-    function computeMintAmountAndConstantIncrements(
+    function computeMintAmountsAndConstantIncrements(
         uint totalSupply,
         uint reserve0Before,
         uint reserve1Before,
@@ -161,7 +161,12 @@ library PoolMath {
     )
         internal
         pure
-        returns (uint amount, uint constant0Increment, uint constant1Increment)
+        returns (
+            uint amount,
+            uint amountLock,
+            uint constant0Increment,
+            uint constant1Increment
+        )
     {
         uint liquidityBefore = PoolMath.computeLiquidity(
             reserve0Before,
@@ -178,16 +183,32 @@ library PoolMath {
         );
         uint ratioX96Before = reserve0Before.mulDiv(1 << 96, reserve1Before);
         uint ratioX96After = (reserve0After).mulDiv(1 << 96, reserve1After);
+
+        uint reserve0Last = reserve0After;
+        uint reserve1Last = reserve1After;
+
         if (ratioX96Before < ratioX96After) {
             constant1Increment =
                 (reserve0After * reserve1Before).divRoundingUp(reserve0Before) -
                 reserve1After;
+            reserve1Last += constant1Increment;
         }
         if (ratioX96Before > ratioX96After) {
             constant0Increment =
                 (reserve1After * reserve0Before).divRoundingUp(reserve1Before) -
                 reserve0After;
+            reserve0Last += constant0Increment;
         }
+
+        // compute liquidity deltas
+        uint liquidityLast = PoolMath.computeLiquidity(
+            reserve0Last,
+            reserve1Last
+        );
+        amountLock = (liquidityLast - liquidityAfter).mulDivRoundingUp(
+            totalSupply,
+            liquidityAfter
+        );
     }
 
     function computeBurnAmountsAndConstantDecrements(
@@ -203,6 +224,7 @@ library PoolMath {
         returns (
             uint amount0,
             uint amount1,
+            uint amountLock,
             uint constant0Decrement,
             uint constant1Decrement
         )
@@ -226,20 +248,35 @@ library PoolMath {
 
         uint ratioX96Before = reserve0.mulDiv(1 << 96, reserve1);
         uint ratioX96After = (reserve0After).mulDiv(1 << 96, reserve1After);
+
+        uint reserve0Last = reserve0After;
+        uint reserve1Last = reserve1After;
+
         if (ratioX96Before < ratioX96After) {
-            //bf0 / bf1 < at0/at1
-            //bf0 /bf1 = (at0-X)/at1
-            //bf0 * at1 = (at0 - X) * bf1
-            //bf0 * at1 / bf1 = at0 - X
-            // X = at0 - bf0 * at1 / bf1
             constant0Decrement =
                 reserve0After -
                 (reserve0 * reserve1After).divRoundingUp(reserve1);
+            reserve0Last -= constant0Decrement;
         }
         if (ratioX96Before > ratioX96After) {
             constant1Decrement =
                 reserve1After -
                 (reserve1 * reserve0After).divRoundingUp(reserve0);
+            reserve1Last -= constant1Decrement;
         }
+
+        // compute liquidity deltas
+        uint liquidityAfter = PoolMath.computeLiquidity(
+            reserve0After,
+            reserve1After
+        );
+        uint liquidityLast = PoolMath.computeLiquidity(
+            reserve0Last,
+            reserve1Last
+        );
+        amountLock = (liquidityAfter - liquidityLast).mulDiv(
+            totalSupply,
+            liquidityAfter
+        );
     }
 }

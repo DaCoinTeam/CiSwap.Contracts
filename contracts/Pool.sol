@@ -173,12 +173,12 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
             unlocked: true
         });
 
-        uint liquidityLock = PoolMath.computeLiquidity(
+        uint amountLock = PoolMath.computeLiquidity(
             balance0NetWithConstant,
             balance1NetWithConstant
         );
 
-        _mint(address(this), liquidityLock);
+        _mint(address(this), amountLock);
 
         emit Initialized();
     }
@@ -328,18 +328,24 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
             "Insufficient amount transferred"
         );
 
+        uint amountLock;
         uint constant0Increment;
         uint constant1Increment;
-        (amount, constant0Increment, constant1Increment) = PoolMath
-            .computeMintAmountAndConstantIncrements(
-                _totalSupply,
-                _slot0.reserve0,
-                _slot0.reserve1,
-                balance0NetWithConstant,
-                balance1NetWithConstant
-            );
+        (
+            amount,
+            amountLock,
+            constant0Increment,
+            constant1Increment
+        ) = PoolMath.computeMintAmountsAndConstantIncrements(
+            _totalSupply,
+            _slot0.reserve0,
+            _slot0.reserve1,
+            balance0NetWithConstant,
+            balance1NetWithConstant
+        );
 
         _mint(recipient, amount);
+        _mint(address(this), amountLock);
 
         uint balance0NetWithConstantUpdated = balance0NetWithConstant;
         uint balance1NetWithConstantUpdated = balance1NetWithConstant;
@@ -381,22 +387,29 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
         uint balance0Net = _balance0Net();
         uint balance1Net = _balance1Net();
 
+        uint amountLock;
         uint constant0Decrement;
         uint constant1Decrement;
-        (amount0, amount1, constant0Decrement, constant1Decrement) = PoolMath
-            .computeBurnAmountsAndConstantDecrements(
-                amount,
-                _totalSupply,
-                _slot0.reserve0,
-                _slot0.reserve1,
-                balance0Net,
-                balance1Net
-            );
+        (
+            amount0,
+            amount1,
+            amountLock,
+            constant0Decrement,
+            constant1Decrement
+        ) = PoolMath.computeBurnAmountsAndConstantDecrements(
+            amount,
+            _totalSupply,
+            _slot0.reserve0,
+            _slot0.reserve1,
+            balance0Net,
+            balance1Net
+        );
 
         SafeTransfer.transfer(token0, recipient, amount0);
         SafeTransfer.transfer(token1, recipient, amount1);
 
         _burn(_msgSender(), amount);
+        _burn(address(this), amountLock);
 
         uint balance0NetWithConstant = balance0Net + constants.token0 - amount0;
         uint balance1NetWithConstant = balance1Net + constants.token1 - amount1;

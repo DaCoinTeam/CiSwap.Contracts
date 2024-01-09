@@ -43,7 +43,7 @@ describe("test router", () => {
                     },
                     token1: {
                         address: _initialize.tokens[0].address,
-                        amount: BigInt(10e19),
+                        amount: BigInt(0),
                     },
                     prices: {
                         base0X96: 0.5,
@@ -97,9 +97,9 @@ describe("test router", () => {
     })
 
     it("should exact output successful", async () => {
-        // await _initialize.tokens[2].contract
-        //     .getFunction("approve")
-        //     .send(_initialize.router.address, BigInt(10e20))
+        await _initialize.tokens[0].contract
+            .getFunction("approve")
+            .send(_initialize.router.address, BigInt(10e20))
         // for (let i = 0; i < 20; i++) {
         //     await time.increase(30 * 60)
         //     await _initialize.router.contract.getFunction("exactOutput").send({
@@ -126,41 +126,54 @@ describe("test router", () => {
         //   BigInt(Date.now()) / BigInt(1000) + BigInt(60 * 60 * 24 * 2 * 60),
         //     })
         // }
-        await time.increase(60 * 60 * 24)
-        const values = await _initialize.oracleAggregator.contract
-            .getFunction("aggregatePriceX96")
-            .staticCall(
-                BigInt(60 * 60),
-                10,
-                ethers.solidityPacked(
-                    [
-                        "address",
-                        "uint32",
-                        "address",
-                        "uint32",
-                        "address"
-                    ],
-                    [
-                        _initialize.tokens[0].address,
-                        0,
-                        _initialize.tokens[1].address,
-                        0,
-                        _initialize.tokens[2].address,
-                    ]
-                )
-            )
-        console.log(values.map((value) => (value * BigInt(1000)) >> BigInt(96)))
+        await _initialize.router.contract
+            .getFunction("exactOutputSingle")
+            .send({
+                amountOut: BigInt(10e17),
+                amountInMax: BigInt(10e19),
+                recipient: _initialize.signers[0].address,
+                tokenIn: _initialize.tokens[0].address,
+                tokenOut: _initialize.tokens[1].address,
+                indexPool: 0,
+                deadline:
+          BigInt(Date.now()) / BigInt(1000) + BigInt(60 * 60 * 24 * 2 * 60),
+            })
 
-    //     const values2 = await _initialize.oracleAggregator.contract
-    //         .getFunction("aggregateLiquidity")
-    //         .staticCall(
-    //             BigInt(60 * 60),
-    //             BigInt(7),
-    //             _initialize.tokens[0].address,
-    //             _initialize.tokens[1].address,
-    //             0
-    //         )
-    //     console.log(values2)
+        // await time.increase(60 * 60 * 24)
+        // const values = await _initialize.oracleAggregator.contract
+        //     .getFunction("aggregatePriceX96")
+        //     .staticCall(
+        //         BigInt(60 * 60),
+        //         10,
+        //         ethers.solidityPacked(
+        //             [
+        //                 "address",
+        //                 "uint32",
+        //                 "address",
+        //                 "uint32",
+        //                 "address"
+        //             ],
+        //             [
+        //                 _initialize.tokens[0].address,
+        //                 0,
+        //                 _initialize.tokens[1].address,
+        //                 0,
+        //                 _initialize.tokens[2].address,
+        //             ]
+        //         )
+        //     )
+        // console.log(values.map((value) => (value * BigInt(1000)) >> BigInt(96)))
+
+        //     const values2 = await _initialize.oracleAggregator.contract
+        //         .getFunction("aggregateLiquidity")
+        //         .staticCall(
+        //             BigInt(60 * 60),
+        //             BigInt(7),
+        //             _initialize.tokens[0].address,
+        //             _initialize.tokens[1].address,
+        //             0
+        //         )
+        //     console.log(values2)
 
     //     // test next price
     //     time.increase(24 * 60 * 60)
