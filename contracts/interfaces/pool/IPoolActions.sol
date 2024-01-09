@@ -33,15 +33,12 @@ interface IPoolActions {
     ) external returns (uint paid0, uint paid1);
 
     function collectProtocol(
-        address recipient,
         uint amount0Requested,
         uint amount1Requested
     )
         external
         returns (
             uint amount0,
-            uint amount1,
-            uint amountFeeTo0,
-            uint amountFeeTo1
+            uint amount1
         );
 }

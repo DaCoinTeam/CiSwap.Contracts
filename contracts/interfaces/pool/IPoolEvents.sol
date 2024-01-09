@@ -42,8 +42,6 @@ interface IPoolEvents {
         address indexed sender,
         uint amount0,
         uint amount1,
-        uint amountFeeTo0,
-        uint amountFeeTo1,
         address indexed recipient
     );
 

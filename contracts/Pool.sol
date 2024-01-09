@@ -20,7 +20,7 @@ import "./interfaces/callee/IFlashCallee.sol";
 import "./interfaces/callee/IMintCallee.sol";
 import "./interfaces/callee/IBurnCallee.sol";
 
-contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
+contract Pool is IPool, Context, ERC20, NoDelegateCall, Multicall {
     using Oracle for Oracle.Observation[];
     using SafeCast for *;
     using ExtendMath for uint;
@@ -58,10 +58,7 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
     }
     Constants public override constants;
 
-    constructor()
-        Ownable(_msgSender())
-        ERC20("Liquidity Provider Token", "LP Token")
-    {
+    constructor() ERC20("Liquidity Provider Token", "LP Token") {
         (factory, fee, config) = IPoolDeployer(_msgSender()).deployParams();
         bool order;
         (token0, token1, order) = TokenLib.sortTokens(
@@ -89,7 +86,12 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
     }
 
     modifier onlyFactory() {
-        require(_msgSender() == factory);
+        require(_msgSender() == factory, "Factory only");
+        _;
+    }
+
+    modifier onlyFactoryOwner() {
+        require(_msgSender() == Ownable(factory).owner(), "Factory owner only");
         _;
     }
 
@@ -477,51 +479,31 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
     }
 
     function collectProtocol(
-        address recipient,
         uint amount0Requested,
         uint amount1Requested
-    )
-        external
-        override
-        onlyOwner
-        returns (
-            uint amount0,
-            uint amount1,
-            uint amountFeeTo0,
-            uint amountFeeTo1
-        )
-    {
-        uint amount0Gross = amount0Requested;
+    ) external override onlyFactoryOwner returns (uint amount0, uint amount1) {
+        amount0 = amount0Requested;
 
         if (amount0Requested > protocolFees.token0)
-            amount0Gross = protocolFees.token0;
+            amount0 = protocolFees.token0;
 
-        uint amount1Gross = amount1Requested;
+        amount1 = amount1Requested;
         if (amount1Requested > protocolFees.token1)
-            amount1Gross = protocolFees.token1;
+            amount1 = protocolFees.token1;
 
         address feeTo = IFactory(factory).feeTo();
 
-        amountFeeTo0 = _computeFeeProtocol(amount0Gross);
-        amountFeeTo1 = _computeFeeProtocol(amount1Gross);
-        amount0 = amount0Gross - amountFeeTo0;
-        amount1 = amount1Gross - amountFeeTo1;
+        SafeTransfer.transfer(token0, feeTo, amount0);
+        SafeTransfer.transfer(token1, feeTo, amount1);
 
-        SafeTransfer.transfer(token0, recipient, amount0);
-        SafeTransfer.transfer(token1, recipient, amount1);
-        SafeTransfer.transfer(token0, feeTo, amountFeeTo0);
-        SafeTransfer.transfer(token1, feeTo, amountFeeTo0);
-
-        protocolFees.token0 -= amount0Gross;
-        protocolFees.token1 -= amount1Gross;
+        protocolFees.token0 -= amount0;
+        protocolFees.token1 -= amount1;
 
         emit CollectProtocol(
-            recipient,
+            _msgSender(),
             amount0,
             amount1,
-            amountFeeTo0,
-            amountFeeTo1,
-            recipient
+            feeTo
         );
     }
 
