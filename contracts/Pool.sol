@@ -328,45 +328,37 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
             "Insufficient amount transferred"
         );
 
-        uint amountLock;
-        uint constant0Increment;
-        uint constant1Increment;
-        (
-            amount,
-            amountLock,
-            constant0Increment,
-            constant1Increment
-        ) = PoolMath.computeMintAmountsAndConstantIncrements(
-            _totalSupply,
-            _slot0.reserve0,
-            _slot0.reserve1,
-            balance0NetWithConstant,
-            balance1NetWithConstant
-        );
+        PoolMath.MintAmountsAndConstantIncrements memory result = PoolMath
+            .computeMintAmountsAndConstantIncrements(
+                _totalSupply,
+                _slot0.reserve0,
+                _slot0.reserve1,
+                balance0NetWithConstant,
+                balance1NetWithConstant
+            );
+
+        amount = result.amount;
 
         _mint(recipient, amount);
-        _mint(address(this), amountLock);
+        _mint(address(this), result.amountLock);
 
         uint balance0NetWithConstantUpdated = balance0NetWithConstant;
         uint balance1NetWithConstantUpdated = balance1NetWithConstant;
-        if (constant0Increment > 0) {
-            constants.token0 += constant0Increment;
-            balance0NetWithConstantUpdated += constant0Increment;
+        if (result.constant0Increment > 0) {
+            constants.token0 += result.constant0Increment;
+            balance0NetWithConstantUpdated += result.constant0Increment;
         }
-        if (constant1Increment > 0) {
-            constants.token1 += constant1Increment;
-            balance1NetWithConstantUpdated += constant1Increment;
+        if (result.constant1Increment > 0) {
+            constants.token1 += result.constant1Increment;
+            balance1NetWithConstantUpdated += result.constant1Increment;
         }
 
         _update(balance0NetWithConstantUpdated, balance1NetWithConstantUpdated);
 
-        emit Mint(
-            _msgSender(),
-            amount,
-            balance0NetWithConstant - _slot0.reserve0,
-            balance1NetWithConstant - _slot0.reserve1,
-            recipient
-        );
+        uint amount0 = balance0NetWithConstant - _slot0.reserve0;
+        uint amount1 = balance1NetWithConstant - _slot0.reserve1;
+
+        emit Mint(_msgSender(), amount, amount0, amount1, recipient);
     }
 
     function burn(
@@ -387,42 +379,37 @@ contract Pool is IPool, Ownable, ERC20, NoDelegateCall, Multicall {
         uint balance0Net = _balance0Net();
         uint balance1Net = _balance1Net();
 
-        uint amountLock;
-        uint constant0Decrement;
-        uint constant1Decrement;
-        (
-            amount0,
-            amount1,
-            amountLock,
-            constant0Decrement,
-            constant1Decrement
-        ) = PoolMath.computeBurnAmountsAndConstantDecrements(
-            amount,
-            _totalSupply,
-            _slot0.reserve0,
-            _slot0.reserve1,
-            balance0Net,
-            balance1Net
-        );
+        PoolMath.BurnAmountsAndConstantDecrements memory result = PoolMath
+            .computeBurnAmountsAndConstantDecrements(
+                amount,
+                _totalSupply,
+                _slot0.reserve0,
+                _slot0.reserve1,
+                balance0Net,
+                balance1Net
+            );
+
+        amount0 = result.amount0;
+        amount1 = result.amount1;
 
         SafeTransfer.transfer(token0, recipient, amount0);
         SafeTransfer.transfer(token1, recipient, amount1);
 
         _burn(_msgSender(), amount);
-        _burn(address(this), amountLock);
+        _burn(address(this), result.amountLock);
 
         uint balance0NetWithConstant = balance0Net + constants.token0 - amount0;
         uint balance1NetWithConstant = balance1Net + constants.token1 - amount1;
 
         uint balance0NetWithConstantUpdated = balance0NetWithConstant;
         uint balance1NetWithConstantUpdated = balance1NetWithConstant;
-        if (constant0Decrement > 0) {
-            constants.token0 -= constant0Decrement;
-            balance0NetWithConstantUpdated -= constant0Decrement;
+        if (result.constant0Decrement > 0) {
+            constants.token0 -= result.constant0Decrement;
+            balance0NetWithConstantUpdated -= result.constant0Decrement;
         }
-        if (constant1Decrement > 0) {
-            constants.token1 -= constant1Decrement;
-            balance1NetWithConstantUpdated -= constant1Decrement;
+        if (result.constant1Decrement > 0) {
+            constants.token1 -= result.constant1Decrement;
+            balance1NetWithConstantUpdated -= result.constant1Decrement;
         }
         _update(balance0NetWithConstantUpdated, balance1NetWithConstantUpdated);
 
