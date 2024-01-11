@@ -127,7 +127,8 @@ describe("test addliquidity", () => {
         expect(lpPriceToken1).to.be.eq(lpPriceToken1X)
       
         await pool.contract
-            .getFunction("approve")
+            .getFunction("approve") 
+            
             .send(_initialize.router.address, BigInt(10e30))
         await _initialize.router.contract.getFunction("removeLiquidity").send({
             tokenA: _initialize.tokens[0].address,

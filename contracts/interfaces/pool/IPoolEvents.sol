@@ -45,6 +45,5 @@ interface IPoolEvents {
         address indexed recipient
     );
 
-
     event Sync(uint256 reserve0, uint256 reserve1);
 }
